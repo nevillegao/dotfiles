@@ -22,3 +22,6 @@ alias ppwd='pwd | sed "s^$HOME^~^"'  # replace $HOME with a tilde
 alias diff='colordiff'
 alias syn='rsync -avuzSP -e "ssh"'
 alias iosc='osc -A https://api.suse.de/'
+
+# For long running commands. Use like so: sleep 10; alert
+alias alert='notify-send --urgency=low -i "$(test $? -eq 0 && echo terminal || echo error)" "$(history | tail -n 1 | sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'

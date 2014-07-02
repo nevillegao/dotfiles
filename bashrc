@@ -17,7 +17,7 @@ test -f /etc/bash_completion && . /etc/bash_completion
 test -f "$HOME/bin/chs_completion" && . "$HOME/bin/chs_completion"
 
 # Color setup for 'ls'
-test -x /usr/bin/dircolors && "eval $(dircolors -b)"
+test -x /usr/bin/dircolors && eval "$(dircolors -b)"
 
 # Terminal title
 #export PS1='\u:\w> '

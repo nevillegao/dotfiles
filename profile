@@ -17,30 +17,9 @@ fi
 #test -d "$BIN_DIR" && export PATH="$(find -L "$BIN_DIR" -maxdepth 1 -type d -printf "%p:")$PATH"
 
 # Set up SSH agent
-SSH_ENV="$HOME/.ssh/environment"
-
-start_agent() {
-    echo "Initializing new SSH agent..."
-
-    if [[ -x /usr/bin/ssh-agent ]]; then
-        ssh-agent | sed 's/^echo/#echo/' > "$SSH_ENV"
-        echo "Succeeded!"
-    fi
-
-    chmod 600 "$SSH_ENV"
-    . "$SSH_ENV" > /dev/null
-
+if [[ -z "$SSH_AUTH_SOCK" || -z "$SSH_AGENT_PID" ]]; then
+    test -x /usr/bin/ssh-agent && eval "$(ssh-agent | sed 's/^echo/#echo/')"
     test -x /usr/bin/ssh-add && ssh-add
-}
-
-# Source SSH settings, if applicable
-if [[ -r "$SSH_ENV" ]]; then
-    . "$SSH_ENV" > /dev/null
-    ps -ef | grep -v grep | grep ssh-agent$ &>/dev/null || {
-        start_agent
-    }
-else
-    start_agent
 fi
 
 # Enable TrackPoint

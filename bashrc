@@ -74,22 +74,6 @@ export IGNOREEOF=100
 export EDITOR='/usr/bin/vim'
 export GROUP=$(id -gn)
 
-# Run this whenever you have an agent session running and a terminal that
-# can't see it.
-ssh-reagent() {
-    for agent in /tmp/ssh-*/agent.*; do
-        export SSH_AUTH_SOCK="$agent"
-
-        if /usr/bin/ssh-add -l &>/dev/null; then
-            echo "Found working SSH Agent:"
-            ssh-add -l
-            return
-        fi
-    done
-
-    echo "Cannot find ssh agent - maybe you should reconnect and forward it?"
-}
-
 gvim() {
     GVIM_BIN='/usr/bin/gvim'
     GVIM_SERVER_ARGS='--servername GVIM'

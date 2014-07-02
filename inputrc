@@ -1,0 +1,16 @@
+set bell-style none
+set visible-stats on
+set match-hidden-files off
+set show-all-if-unmodified on
+set completion-ignore-case on
+
+# Alt-h
+"\eh": dynamic-complete-history
+# Alt-s
+"\es": menu-complete
+# Ctrl-d
+"\C-d": magic-space
+# Up
+"\e[A": history-search-backward
+# Down
+"\e[B": history-search-forward

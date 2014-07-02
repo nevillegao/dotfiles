@@ -1,0 +1,45 @@
+#escape ^Zz
+#defescape ^Zz
+
+altscreen on
+defscrollback 50000
+#deflog on
+vbell off
+startup_message off
+shelltitle "> |"
+#password <PASSWORD>
+#multiuser on
+#acladd root <PASSWORD>
+
+# Alt-- to switch to the previous window
+bindkey "^[-" prev
+# Alt-= to switch to the next window
+bindkey "^[=" next
+
+# terminfo and termcap for nice 256 color terminal
+# Allow bold colors
+attrcolor b ".I" 
+# Tell screen how to set colors. AB = background, AF = foreground 
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm' 
+# Erase background with current bg color 
+defbce "on"
+
+caption always "%{Wb}%-w%{wr}[%n]%{-}%+w"
+#caption always "%?%F%{-b 4w}%:%{-b bb}%? %H | %Y/%m/%d %c:%s |%?%F%{-b 4w}%?%L=%-Lw%45>%{-b w4}%n%f* %t%{-}%+Lw%-0<"
+#caption always "%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]"
+
+hardstatus alwayslastline "%{R}[%n %t] %=%{G}[%Y/%m/%d %D %c:%s] %{Y}${LOGNAME}@%H"
+#hardstatus alwayslastline "%{wk}%-w%{Gk}[%n %t]%{wk}%+w%=%{Ck}%D %M"
+#hardstatus alwayslastline '%{= 45}%{+b w}Screen: %n | %t %=%c'
+
+
+#screen -t "IRC" 0 irssi
+#screen -t "Man Screen" 0 man screen
+#chdir $HOME/tmp
+#screen -t "Man Bash" 1 man bash
+#chdir $HOME/tmp
+#screen -t "Man Info" 2 man info
+#chdir
+
+# Source ~/.profile
+shell -$SHELL

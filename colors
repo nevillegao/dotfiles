@@ -1,0 +1,49 @@
+# vim:ft=sh:
+
+##########################################################
+# Colors
+# (http://wiki.archlinux.org/index.php/Color_Bash_Prompt)
+# {ESC}[{attr};{bg};{256colors};{fg}m
+##########################################################
+
+export NO_COLOR='\e[0m'
+
+# Regular colors
+export BLACK='\e[30;0m'
+export RED='\e[31;0m'
+export GREEN='\e[32;0m'
+export YELLOW='\e[33;0m'
+export BLUE='\e[34;0m'
+export MAGENTA='\e[35;0m'
+export CYAN='\e[36;0m'
+export WHITE='\e[37;0m'
+
+# Emphasized (bolded) colors
+export EBLACK='\e[30;1m'
+export ERED='\e[31;1m'
+export EGREEN='\e[32;1m'
+export EYELLOW='\e[33;1m'
+export EBLUE='\e[34;1m'
+export EMAGENTA='\e[35;1m'
+export ECYAN='\e[36;1m'
+export EWHITE='\e[37;1m'
+
+# Underlined colors
+export UBLACK='\e[30;4m'
+export URED='\e[31;4m'
+export UGREEN='\e[32;4m'
+export UYELLOW='\e[33;4m'
+export UBLUE='\e[34;4m'
+export UMAGENTA='\e[35;4m'
+export UCYAN='\e[36;4m'
+export UWHITE='\e[37;4m'
+
+# Background colors
+export BBLACK='\e[40m'
+export BRED='\e[41m'
+export BGREEN='\e[42m'
+export BYELLOW='\e[43m'
+export BBLUE='\e[44m'
+export BMAGENTA='\e[45m'
+export BCYAN='\e[46m'
+export BWHITE='\e[47m'

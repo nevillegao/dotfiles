@@ -1,0 +1,170 @@
+!!=========================
+!! urxvt Setting
+!!=========================
+Rxvt.termName:              rxvt-256color
+!Rxvt.geometry:              geometry
+!Rxvt.chdir:                 string
+!Rxvt.reverseVideo:          boolean
+Rxvt.loginShell:            True
+!Rxvt.jumpScroll:            boolean
+!Rxvt.skipScroll:            boolean
+!Rxvt.pastableTabs:          boolean
+Rxvt.scrollstyle:           plain
+Rxvt.scrollBar:             True
+Rxvt.scrollBar_right:       True
+Rxvt.scrollBar_floating:    True
+!Rxvt.scrollBar_align:       mode
+Rxvt.thickness:             6
+!Rxvt.scrollTtyOutput:       boolean
+!Rxvt.scrollTtyKeypress:     boolean
+!Rxvt.scrollWithBuffer:      boolean
+!Rxvt.inheritPixmap:         boolean
+Rxvt.transparent:           False
+!Rxvt.tintColor:             color
+!Rxvt.shading:               number
+!Rxvt.fading:                number
+!Rxvt.fadeColor:             color
+!Rxvt.utmpInhibit:           boolean
+Rxvt.urgentOnBell:          True
+Rxvt.visualBell:            False
+!Rxvt.mapAlert:              boolean
+!Rxvt.meta8:                 boolean
+Rxvt.mouseWheelScrollPage:  True
+!Rxvt.tripleclickwords:      boolean
+!Rxvt.insecure:              boolean
+Rxvt.cursorUnderline:       True
+Rxvt.cursorBlink:           True
+!Rxvt.pointerBlank:          boolean
+
+! Color
+!Tango scheme
+!transparency background
+!Rxvt.background:            rgba:1111/1111/1111/dddd
+Rxvt.background:            black
+Rxvt.foreground:            white
+!Black
+Rxvt.color0:                black
+Rxvt.color8:                #555753
+!Red
+Rxvt.color1:                #CC0000
+Rxvt.color9:                #EF2929
+!Green
+Rxvt.color2:                #4E9A06
+Rxvt.color10:               #8AE234
+!Yellow
+Rxvt.color3:                #C4A000
+Rxvt.color11:               #FCE94F
+!Blue
+Rxvt.color4:                #3465A4
+Rxvt.color12:               #729FCF
+!Mangenta
+Rxvt.color5:                #75507B
+Rxvt.color13:               #AD7FA8
+!Cyan
+Rxvt.color6:                #06989A
+Rxvt.color14:               #34E2E2
+!White
+Rxvt.color7:                #D3D7CF
+Rxvt.color15:               #EEEEEC
+
+Rxvt.colorBD:               yellow
+!Rxvt.colorIT:               color
+Rxvt.colorUL:               green
+!Rxvt.colorRV:               color
+!Rxvt.underlineColor:        color
+!Rxvt.scrollColor:           color
+!Rxvt.troughColor:           color
+!Rxvt.highlightColor:        color
+!Rxvt.cursorColor:           color
+!Rxvt.cursorColor2:          color
+!Rxvt.pointerColor:          color
+!Rxvt.pointerColor2:         color
+!Rxvt.borderColor:           color
+
+! Font
+Rxvt.font:                  xft:DejaVu Sans Mono:size=10:style=Book,xft:LiHei Pro:size=10:style=Regular
+Rxvt.boldFont:              xft:DejaVu Sans Mono:size=10:style=Bold,xft:LiHei Pro:size=10:style=Bold
+Rxvt.italicFont:            xft:DejaVu Sans Mono:size=10:style=Oblique,xft:LiHei Pro:size=10:style=Oblique
+Rxvt.boldItalicFont:        xft:DejaVu Sans Mono:size=10:style=Bold Oblique,xft:LiHei Pro:size=10:style=Bold Oblique
+!Rxvt.intensityStyles:       boolean
+!Rxvt.inputMethod:           name
+Rxvt.preeditType:           Root
+!Rxvt.imLocale:              string
+!Rxvt.imFont:                fontname
+!Rxvt.title:                 string
+!Rxvt.iconName:              string
+Rxvt.saveLines:             50000
+Rxvt.depth:                 32
+!Rxvt.buffered:              boolean
+!Rxvt.transient-for:         windowid
+!Rxvt.override-redirect:     boolean
+!Rxvt.hold:                  boolean
+!Rxvt.externalBorder:        number
+Rxvt.internalBorder:        0
+!Rxvt.borderLess:            boolean
+!Rxvt.lineSpace:             number
+!Rxvt.skipBuiltinGlyphs:     boolean
+!Rxvt.pointerBlankDelay:     number
+!Rxvt.backspacekey:          string
+!Rxvt.deletekey:             string
+!Rxvt.print-pipe:            string
+!Rxvt.modifier:              modifier
+Rxvt.cutchars:              "()*,<>[]{}|'"
+!Rxvt.answerbackString:      string
+!Rxvt.secondaryScreen:       boolean
+Rxvt.secondaryScroll:       True
+!Rxvt.perl-lib:              string
+!Rxvt.perl-eval:             perl-eval
+Rxvt.perl-ext-common:       default,matcher
+Rxvt.matcher.button:        1
+!Rxvt.matcher.pattern.1:     \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
+Rxvt.urlLauncher:           gnome-open
+!Rxvt.perl-ext:              string
+!Rxvt.iso14755_52:           boolean
+!Rxvt.keysym.sym:            keysym
+
+
+!!=========================
+!! xterm Setting
+!!=========================
+XTerm*termName:             xterm-256color
+XTerm*scrollBar:            true
+XTerm*rightScrollBar:       true
+XTerm*cursorBlink:          true
+XTerm*saveLines:            50000
+XTerm*faceName:             Dejavu Sans Mono
+XTerm*faceNameDoublesize:   LiHei Pro
+XTerm*faceSize:             10
+XTerm*allowWindowOps:       true
+! Color
+XTerm*colorBDMode:          true
+XTerm*colorBD:              yellow
+XTerm*colorULMode:          true
+XTerm*colorUL:              green
+!Tango scheme
+XTerm*background:           black
+XTerm*foreground:           white
+!Black
+XTerm*color0:               black
+XTerm*color8:               #555753
+!Red
+XTerm*color1:               #CC0000
+XTerm*color9:               #EF2929
+!Green
+XTerm*color2:               #4E9A06
+XTerm*color10:              #8AE234
+!Yellow
+XTerm*color3:               #C4A000
+XTerm*color11:              #FCE94F
+!Blue
+XTerm*color4:               #3465A4
+XTerm*color12:              #729FCF
+!Mangenta
+XTerm*color5:               #75507B
+XTerm*color13:              #AD7FA8
+!Cyan
+XTerm*color6:               #06989A
+XTerm*color14:              #34E2E2
+!White
+XTerm*color7:               #D3D7CF
+XTerm*color15:              #EEEEEC

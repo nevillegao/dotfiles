@@ -1,0 +1,32 @@
+# vim:ft=gitconfig:
+
+[user]
+    name = Neville Gao
+    email = neville@nevillegao.com
+
+[color]
+    ui = auto
+
+[rerere]
+    enabled = true
+    autoupdate = true
+
+[push]
+    default = tracking
+
+[alias]
+    ps = push
+    pl = pull
+    ci = commit
+    st = status
+    di = diff
+    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+
+[url "ssh://git@github.com:"]
+    insteadof = gh:
+[url "ssh://git@bitbucket.org:"]
+    insteadof = bb:
+[url "git://git.gnome.org/"]
+    insteadof = gnome:
+[url "git://anongit.freedesktop.org/"]
+    insteadof = fd:

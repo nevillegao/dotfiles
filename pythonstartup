@@ -1,3 +1,5 @@
+# vim:ft=python:
+
 # Startup script for python to enable saving of interpreter history and
 # enabling name completion
 

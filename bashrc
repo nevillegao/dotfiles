@@ -47,7 +47,6 @@ fi
 export PYTHONSTARTUP="$HOME/.pythonstartup"
 export GREP_OPTIONS='--color=auto -I --exclude-dir=.svn --exclude=*.po'
 export LESS='-M -i -R'
-export APT_CONFIG="$HOME/.apt/config"
 
 # Less colors for man pages
 export GROFF_NO_SGR='yes'               # enable manpage color

@@ -14,33 +14,6 @@ if [[ -d "$BIN_DIR" ]]; then
     done
 fi
 
-# Set up SSH agent
-SSH_ENV="$HOME/.ssh/environment"
-
-start_agent() {
-    echo "Initialising new SSH agent..."
-
-    if [[ -x /usr/bin/ssh-agent ]]; then
-        ssh-agent | sed 's/^echo/#echo/'
-        echo succeeded
-    fi
-
-    chmod 600 "${SSH_ENV}"
-    . "${SSH_ENV}" >/dev/null
-
-    test -x /usr/bin/ssh-add && ssh-add
-}
-
-# Source SSH settings, if applicable
-if [[ -f "${SSH_ENV}" ]]; then
-    . "${SSH_ENV}" >/dev/null
-    ps uxU "$USER" | grep ssh-agent | grep -v grep >/dev/null || {
-        start_agent
-    }
-else
-    start_agent
-fi
-
 # Enable TrackPoint
 if [[ -x /usr/bin/xinput ]] && xinput --version &>/dev/null; then
     xinput --set-prop --type=int --format=8 "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation" 1

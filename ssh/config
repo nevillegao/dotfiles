@@ -13,7 +13,7 @@ Host tunnel-local
     HostName 0.0.0.0
     LocalForward 80 127.0.0.1:8080
 
-## VM
+# VM
 Host vm1
     # Ubuntu 12.04 LTS
     HostName 10.162.152.219
@@ -45,7 +45,7 @@ Host vm6
     User ngao
 
 
-## Headlights
+# Headlights
 Host hl-build
     HostName 10.162.130.249
     User hl

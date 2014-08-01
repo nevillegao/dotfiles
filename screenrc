@@ -2,7 +2,7 @@
 #defescape ^Zz
 
 altscreen on
-defscrollback 50000
+defscrollback 1000000
 #deflog on
 vbell off
 startup_message off
@@ -11,10 +11,10 @@ shelltitle "> |"
 #multiuser on
 #acladd root <PASSWORD>
 
-# Alt-- to switch to the previous window
-bindkey "^[-" prev
-# Alt-= to switch to the next window
-bindkey "^[=" next
+# Alt-; to switch to the previous window
+bindkey "^[;" prev
+# Alt-' to switch to the next window
+bindkey "^['" next
 
 # terminfo and termcap for nice 256 color terminal
 # Allow bold colors
@@ -32,14 +32,9 @@ hardstatus alwayslastline "%{R}[%n %t] %=%{G}[%Y/%m/%d %D %c:%s] %{Y}${LOGNAME}@
 #hardstatus alwayslastline "%{wk}%-w%{Gk}[%n %t]%{wk}%+w%=%{Ck}%D %M"
 #hardstatus alwayslastline '%{= 45}%{+b w}Screen: %n | %t %=%c'
 
-
-#screen -t "IRC" 0 irssi
-#screen -t "Man Screen" 0 man screen
-#chdir $HOME/tmp
-#screen -t "Man Bash" 1 man bash
-#chdir $HOME/tmp
-#screen -t "Man Info" 2 man info
-#chdir
-
 # Source ~/.profile
 shell -$SHELL
+
+#screen -t "IRC" 0 irssi
+#screen -t "Man Screen" 1 man screen
+#chdir

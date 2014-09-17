@@ -15,7 +15,7 @@ Host tunnel-local
 
 # VM
 Host vm1
-    # Ubuntu 12.04 LTS
+    # Ubuntu 14.04.1 LTS
     HostName 10.162.152.219
     User hl
 
@@ -46,10 +46,6 @@ Host vm6
 
 
 # Headlights
-Host hl-build
-    HostName 10.162.130.249
-    User hl
-
 Host hl-monitor
     HostName 10.162.152.213
     User labuser
@@ -58,10 +54,26 @@ Host hb-monitor
     HostName 10.5.182.14
     User ngao
 
-Host hadoop-prod
-    HostName 10.5.81.186
-    User hlhadoop
+Host hadoop-dev1
+    HostName 10.5.132.175
+    User ngao
 
-Host hadoop-dev
+Host hadoop-dev2
     HostName 10.5.132.176
-    User hlhadoop
+    User ngao
+
+Host hadoop-stg1
+    HostName 10.5.117.203
+    User ngao
+
+Host hadoop-stg2
+    HostName 10.5.117.204
+    User ngao
+
+Host hadoop-prod1
+    HostName 10.5.81.185
+    User ngao
+
+Host hadoop-prod2
+    HostName 10.5.81.186
+    User ngao

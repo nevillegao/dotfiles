@@ -3,7 +3,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " Programming
 Plugin 'a.vim'

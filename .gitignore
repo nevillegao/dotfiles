@@ -1,4 +1,4 @@
-ssh/authorized_keys
+ssh/authorized_keys2
 ssh/id_rsa
 ssh/id_rsa.pub
 ssh/known_hosts

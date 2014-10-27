@@ -21,5 +21,10 @@ if [[ -x /usr/bin/xinput ]] && xinput --version &>/dev/null; then
     xinput --set-prop --type=int --format=8 "TPPS/2 IBM TrackPoint" "Evdev Wheel Emulation Axes" 6 7 4 5
 fi
 
+# Enable NumLock
+if [[ -x /usr/bin/numlockx ]] && numlockx --version &>/dev/null; then
+    numlockx on
+fi
+
 # Load .bashrc if running bash
 test -n "$BASH_VERSION" && test -r "$HOME/.bashrc" && . "$HOME/.bashrc"

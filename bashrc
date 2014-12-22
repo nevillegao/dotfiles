@@ -35,7 +35,7 @@ case "${TERM}" in
 esac
 
 # Terminal color
-if [[ -n "${COLORTERM}" && -r /usr/share/terminfo/x/xterm+256color ]]; then
+if [[ -n "${DISPLAY}" && -r /usr/share/terminfo/x/xterm+256color ]]; then
     if [[ "${TERM}" =~ 'xterm' ]]; then
         export TERM='xterm-256color'
     elif [[ "${TERM}" =~ 'screen' ]]; then

@@ -1,5 +1,5 @@
 # If not running interactively, don't do anything
-test -z "$PS1" && return
+test -z "${PS1}" && return
 
 # Check the window size after each command and, if necessary, update the
 # values of LINES and COLUMNS
@@ -9,12 +9,12 @@ shopt -s checkwinsize
 test -x /usr/bin/lesspipe && eval "$(SHELL=/bin/sh lesspipe)"
 
 # Load various rc files
-test -f "$HOME/.colors" && . "$HOME/.colors"
-test -f "$HOME/.alias" && . "$HOME/.alias"
+test -f "${HOME}/.colors" && . "${HOME}/.colors"
+test -f "${HOME}/.alias" && . "${HOME}/.alias"
 
 # Enable programmable completion
 test -f /etc/bash_completion && . /etc/bash_completion
-test -f "$HOME/bin/chs_completion" && . "$HOME/bin/chs_completion"
+test -f "${HOME}/bin/chs_completion" && . "${HOME}/bin/chs_completion"
 
 # Color setup for 'ls'
 test -x /usr/bin/dircolors && eval "$(dircolors -b)"
@@ -22,7 +22,7 @@ test -x /usr/bin/dircolors && eval "$(dircolors -b)"
 # Terminal title
 #export PS1='\u:\w> '
 export PS1="\[${ECYAN}\][\u\[${NO_COLOR}\]:\[${EYELLOW}\]\w]\[${NO_COLOR}\]$ "
-case "$TERM" in
+case "${TERM}" in
     xterm*|rxvt*)
         export PROMPT_COMMAND='echo -ne "\e]0;$(ppwd)\007"'
         ;;
@@ -30,21 +30,21 @@ case "$TERM" in
         export PROMPT_COMMAND='echo -ne "\ek$(basename "$(ppwd)")\e\\"'
         ;;
     *)
-        export PS1="\[${EMAGENTA}\][\A]$PS1"
+        export PS1="\[${EMAGENTA}\][\A]${PS1}"
         ;;
 esac
 
 # Terminal color
-if [[ -n "$COLORTERM" && -r /usr/share/terminfo/x/xterm+256color ]]; then
-    if [[ "$TERM" =~ 'xterm' ]]; then
+if [[ -n "${COLORTERM}" && -r /usr/share/terminfo/x/xterm+256color ]]; then
+    if [[ "${TERM}" =~ 'xterm' ]]; then
         export TERM='xterm-256color'
-    elif [[ "$TERM" =~ 'screen' ]]; then
+    elif [[ "${TERM}" =~ 'screen' ]]; then
         export TERM='screen-256color'
     fi
 fi
 
 # Utilities options
-export PYTHONSTARTUP="$HOME/.pythonstartup"
+export PYTHONSTARTUP="${HOME}/.pythonstartup"
 export GREP_OPTIONS='--color=auto -I --exclude-dir=.svn --exclude=*.po'
 export LESS='-M -i -R'
 
@@ -64,7 +64,7 @@ export HISTSIZE=1000000
 export HISTFILESIZE=1024000000
 export HISTTIMEFORMAT='%F %T '
 shopt -s histappend
-export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND}"
 
 # Type Ctrl-D 100 times to exit shell to prevent accidental exiting
 export IGNOREEOF=100
@@ -79,9 +79,9 @@ gvim() {
     GVIM_CLIENT_ARGS='--remote-tab-silent'
 
     if [[ $# -lt 1 ]]; then
-        "$GVIM_BIN" "$GVIM_SERVER_ARGS"
+        "${GVIM_BIN}" "${GVIM_SERVER_ARGS}"
     else
-        "$GVIM_BIN" "$GVIM_SERVER_ARGS" "$GVIM_CLIENT_ARGS" "$@"
+        "${GVIM_BIN}" "${GVIM_SERVER_ARGS}" "${GVIM_CLIENT_ARGS}" "$@"
     fi
 }
 
@@ -90,12 +90,12 @@ emacs() {
     EMACS_CLIENT_BIN='/usr/bin/emacsclient'
 
     if [[ $# -lt 1 ]]; then
-        "$EMACS_SERVER_BIN"
+        "${EMACS_SERVER_BIN}"
     else
-        "$EMACS_CLIENT_BIN" -a "$EMACS_SERVER_BIN" "$@"
+        "${EMACS_CLIENT_BIN}" -a "${EMACS_SERVER_BIN}" "$@"
     fi
 }
 
 # Turn on sandbox for Chromium, set CHROME_DEVEL_SANDBOX to an empty string to
 # disable it
-export CHROME_DEVEL_SANDBOX="$HOME/bin/chrome-linux/chrome_sandbox"
+export CHROME_DEVEL_SANDBOX="${HOME}/bin/chrome-linux/chrome_sandbox"

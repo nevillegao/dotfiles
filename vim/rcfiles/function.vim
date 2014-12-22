@@ -9,6 +9,6 @@ autocmd BufReadPost *
 
 " Only open the file smaller than 10MB
 autocmd BufReadPre *
-    \ if getfsize(expand("<afile>")) >= 10*1024*1024 |
+    \ if getfsize(expand("<afile>")) >= 100*1024*1024 |
     \     exit |
     \ endif

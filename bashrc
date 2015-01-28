@@ -20,14 +20,13 @@ test -f "${HOME}/bin/chs_completion" && . "${HOME}/bin/chs_completion"
 test -x /usr/bin/dircolors && eval "$(dircolors -b)"
 
 # Terminal title
-#export PS1='\u:\w> '
-export PS1="\[${ECYAN}\][\u\[${NO_COLOR}\]:\[${EYELLOW}\]\w]\[${NO_COLOR}\]$ "
+export PS1="\[${ECYAN}\][\u\[${NO_COLOR}\]:\[${EYELLOW}\]\W]\[${NO_COLOR}\]$ "
 case "${TERM}" in
     xterm*|rxvt*)
         export PROMPT_COMMAND='echo -ne "\e]0;$(ppwd)\007"'
         ;;
     screen*)
-        export PROMPT_COMMAND='echo -ne "\ek$(basename "$(ppwd)")\e\\"'
+        export PROMPT_COMMAND='echo -ne "\ek$(ppwd)\e\\"'
         ;;
     *)
         export PS1="\[${EMAGENTA}\][\A]${PS1}"
@@ -66,7 +65,7 @@ export HISTTIMEFORMAT='%F %T '
 shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND}"
 
-# Type Ctrl-D 100 times to exit shell to prevent accidental exiting
+# Type Ctrl-d 100 times to exit shell to prevent accidental exiting
 export IGNOREEOF=100
 
 # Custom variables

@@ -12,3 +12,26 @@ ControlPersist yes
 Host tunnel-local
     HostName 0.0.0.0
     LocalForward 80 127.0.0.1:8080
+
+Host cee1
+    HostName ceehadoop1.gsslab.rdu2.redhat.com
+    User ngao
+
+Host cee2
+    HostName ceehadoop2.gsslab.rdu2.redhat.com
+    User ngao
+
+Host cee3
+    HostName ceehadoop3.gsslab.rdu2.redhat.com
+    User ngao
+
+Host cee4
+    HostName ceehadoop4.gsslab.rdu2.redhat.com
+    User ngao
+
+Host work
+    HostName 10.66.192.135
+
+Host test
+    HostName 10.66.192.170
+    User root

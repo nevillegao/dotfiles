@@ -19,7 +19,6 @@ alias sed='sed -r'
 alias grep='grep -nP'
 
 alias screen='screen -xR'
-alias tmux='(tmux ls | grep -vq attached && tmux at) || tmux'
 alias ctags='ctags -R .'
 
 alias ppwd='pwd | sed "s^$HOME^~^"'  # replace $HOME with a tilde

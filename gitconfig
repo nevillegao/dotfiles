@@ -18,8 +18,12 @@
     ps = push
     pl = pull
     ci = commit
+    co = checkout
     st = status
     di = diff
+    bc = branch
+    ss = stash
+    so = show
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 
 [url "ssh://git@github.com:"]

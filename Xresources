@@ -82,10 +82,10 @@ Rxvt.colorUL:               green
 !Rxvt.borderColor:           color
 
 ! Font
-Rxvt.font:                  xft:DejaVu Sans Mono:size=10:style=Book,xft:LiHei Pro:size=10:style=Regular
-Rxvt.boldFont:              xft:DejaVu Sans Mono:size=10:style=Bold,xft:LiHei Pro:size=10:style=Bold
-Rxvt.italicFont:            xft:DejaVu Sans Mono:size=10:style=Oblique,xft:LiHei Pro:size=10:style=Oblique
-Rxvt.boldItalicFont:        xft:DejaVu Sans Mono:size=10:style=Bold Oblique,xft:LiHei Pro:size=10:style=Bold Oblique
+Rxvt.font:                  xft:DejaVu Sans Mono:size=14:style=Book,xft:LiHei Pro:size=14:style=Regular
+Rxvt.boldFont:              xft:DejaVu Sans Mono:size=14:style=Bold,xft:LiHei Pro:size=14:style=Bold
+Rxvt.italicFont:            xft:DejaVu Sans Mono:size=14:style=Oblique,xft:LiHei Pro:size=14:style=Oblique
+Rxvt.boldItalicFont:        xft:DejaVu Sans Mono:size=14:style=Bold Oblique,xft:LiHei Pro:size=14:style=Bold Oblique
 !Rxvt.intensityStyles:       boolean
 !Rxvt.inputMethod:           name
 Rxvt.preeditType:           Root
@@ -134,8 +134,9 @@ XTerm*cursorBlink:          true
 XTerm*saveLines:            50000
 XTerm*faceName:             Dejavu Sans Mono
 XTerm*faceNameDoublesize:   LiHei Pro
-XTerm*faceSize:             10
+XTerm*faceSize:             14
 XTerm*allowWindowOps:       true
+XTerm*metaSendsEscape:      true
 ! Color
 XTerm*colorBDMode:          true
 XTerm*colorBD:              yellow

@@ -1,14 +1,11 @@
-#escape ^Zz
-#defescape ^Zz
-
 altscreen on
-defscrollback 10000
+defscrollback 50000
 #deflog on
 vbell off
 startup_message off
 shelltitle "> |"
 #password <PASSWORD>
-#multiuser on
+multiuser on
 #acladd root <PASSWORD>
 
 # Alt-; to switch to the previous window
@@ -25,16 +22,7 @@ termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 defbce "on"
 
 caption always "%{Wb}%-w%{wr}[%n]%{-}%+w"
-#caption always "%?%F%{-b 4w}%:%{-b bb}%? %H | %Y/%m/%d %c:%s |%?%F%{-b 4w}%?%L=%-Lw%45>%{-b w4}%n%f* %t%{-}%+Lw%-0<"
-#caption always "%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %m-%d %{W}%c %{g}]"
+hardstatus alwayslastline "%{R}[%n %t] %=%{G}[%Y-%m-%d %D %c:%s] %{Y}${LOGNAME}@%H"
 
-hardstatus alwayslastline "%{R}[%n %t] %=%{G}[%Y/%m/%d %D %c:%s] %{Y}${LOGNAME}@%H"
-#hardstatus alwayslastline "%{wk}%-w%{Gk}[%n %t]%{wk}%+w%=%{Ck}%D %M"
-#hardstatus alwayslastline '%{= 45}%{+b w}Screen: %n | %t %=%c'
-
-# Source ~/.profile
+# Start as a login-shell
 shell -$SHELL
-
-#screen -t "IRC" 0 irssi
-#screen -t "Man Screen" 1 man screen
-#chdir

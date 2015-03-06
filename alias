@@ -15,7 +15,6 @@ alias rm='echo "This is not the command you are looking for."; false'  # use \rm
 #alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
-alias sed='sed -r'
 alias grep='grep -nP'
 
 alias screen='screen -xR'

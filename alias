@@ -12,7 +12,6 @@ alias la='ls -AF'
 alias lh='ll -I "[^.]*"'  # list hidden files
 
 alias rm='echo "This is not the command you are looking for."; false'  # use \rm instead
-#alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 alias grep='grep -nP'

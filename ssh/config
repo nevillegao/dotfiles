@@ -3,7 +3,6 @@
 ServerAliveInterval 60
 Compression yes
 ForwardAgent yes
-ForwardX11 yes
 
 # Share connections
 ControlMaster auto

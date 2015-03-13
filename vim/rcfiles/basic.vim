@@ -15,7 +15,6 @@ set wildmode=list:full
 " Display
 "colorscheme inkpot
 colorscheme molokai
-
 if &term =~ "xterm"
     set title
     set icon
@@ -45,6 +44,13 @@ set incsearch
 set ignorecase
 set hlsearch
 
+" Fold
+set foldenable
+set foldmethod=indent
+set foldminlines=3
+set foldlevel=9999
+set foldcolumn=6
+
 " Format
 set autoindent
 set smartindent
@@ -55,6 +61,7 @@ set tabstop=4
 set shiftwidth=4
 set formatoptions+=mB
 set expandtab
+set textwidth=79
 
 filetype plugin indent on
 

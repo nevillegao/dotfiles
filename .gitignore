@@ -1,6 +1,5 @@
-ssh/authorized_keys2
-ssh/id_rsa
-ssh/id_rsa.pub
-ssh/known_hosts
-vim/bundle
-vim/info
+ssh/*
+!ssh/config
+
+vim/*
+!vim/rcfiles

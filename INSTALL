@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+for i in *; do
+    if [[ "${i}" != "INSTALL" ]]; then
+        if [[ -d "${i}" && ! -L "${i}" ]]; then
+            rm -rfv "${HOME}/.${i}"
+        fi
+
+        chmod -Rc go-rwx "${i}"
+        ln -sfv "${PWD}/${i}" "${HOME}/.${i}"
+    fi
+done
+
+# Set up Vim
+mkdir -pv "${HOME}/info/undo"
+mkdir -pv "${HOME}/info/fuf-data"

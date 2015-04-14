@@ -12,5 +12,5 @@ for i in *; do
 done
 
 # Set up Vim
-mkdir -pv "${HOME}/info/undo"
-mkdir -pv "${HOME}/info/fuf-data"
+mkdir -pv "${HOME}/.vim/info/undo"
+mkdir -pv "${HOME}/.vim/info/fuf-data"

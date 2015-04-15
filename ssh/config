@@ -13,9 +13,20 @@ Host tunnel-local
     HostName 0.0.0.0
     LocalForward 80 127.0.0.1:8080
 
-Host ceehadoop?
-    HostName %h.gsslab.rdu2.redhat.com
+Host *.redhat.com
     User ngao
+
+Host cee1
+    HostName ceehadoop1.gsslab.rdu2.redhat.com
+
+Host cee2
+    HostName ceehadoop2.gsslab.rdu2.redhat.com
+
+Host cee3
+    HostName ceehadoop3.gsslab.rdu2.redhat.com
+
+Host cee4
+    HostName ceehadoop4.gsslab.rdu2.redhat.com
 
 Host atomic
     HostName vm78.gsslab.rdu2.redhat.com

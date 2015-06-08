@@ -44,7 +44,7 @@ fi
 
 # Utilities options
 export PYTHONSTARTUP="${HOME}/.pythonstartup"
-export GREP_OPTIONS='--color=auto -I --exclude-dir=.svn --exclude=*.po'
+export GREP_OPTIONS='--color=auto -I'
 export LESS='-M -i -R'
 
 # Less colors for man pages

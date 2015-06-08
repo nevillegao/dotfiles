@@ -15,16 +15,16 @@ if [[ -d "${BIN_DIR}" ]]; then
 fi
 
 # Enable NumLock
-if [[ -x /usr/bin/numlockx ]] && numlockx --version &>/dev/null; then
-    numlockx on
+if [[ -x /usr/bin/numlockx ]]; then
+    /usr/bin/numlockx on
 fi
 
 # Enable TrackPoint on laptop
 DEV_NAME="TPPS/2 IBM TrackPoint"
-if [[ -x /usr/bin/xinput ]] && xinput --version &>/dev/null && xinput list | grep "${DEV_NAME}" &>/dev/null; then
-    xinput set-prop --type=int --format=8 "${DEV_NAME}" "Evdev Wheel Emulation" 1
-    xinput set-prop --type=int --format=8 "${DEV_NAME}" "Evdev Wheel Emulation Button" 2
-    xinput set-prop --type=int --format=8 "${DEV_NAME}" "Evdev Wheel Emulation Axes" 6 7 4 5
+if [[ -x /usr/bin/xinput ]] && xinput list | grep "${DEV_NAME}" &>/dev/null; then
+    /usr/bin/xinput set-prop --type=int --format=8 "${DEV_NAME}" "Evdev Wheel Emulation" 1
+    /usr/bin/xinput set-prop --type=int --format=8 "${DEV_NAME}" "Evdev Wheel Emulation Button" 2
+    /usr/bin/xinput set-prop --type=int --format=8 "${DEV_NAME}" "Evdev Wheel Emulation Axes" 6 7 4 5
 fi
 
 # Load .bashrc if running bash

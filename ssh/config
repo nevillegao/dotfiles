@@ -16,19 +16,10 @@ Host tunnel-local
 Host *.redhat.com
     User ngao
 
-Host cee1
+Host dev
     HostName ceehadoop1.gsslab.rdu2.redhat.com
 
-Host cee2
-    HostName ceehadoop2.gsslab.rdu2.redhat.com
-
-Host cee3
-    HostName ceehadoop3.gsslab.rdu2.redhat.com
-
-Host cee4
-    HostName ceehadoop4.gsslab.rdu2.redhat.com
-
-Host atomic
+Host docker
     HostName vm78.gsslab.rdu2.redhat.com
     User telemetry
 

@@ -14,11 +14,6 @@ if [[ -d "${BIN_DIR}" ]]; then
     done
 fi
 
-# Enable NumLock
-if [[ -x /usr/bin/numlockx ]]; then
-    /usr/bin/numlockx on
-fi
-
 # Enable TrackPoint on laptop
 DEV_NAME="TPPS/2 IBM TrackPoint"
 if [[ -x /usr/bin/xinput ]] && xinput list | grep "${DEV_NAME}" &>/dev/null; then

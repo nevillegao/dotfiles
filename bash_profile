@@ -16,7 +16,7 @@ fi
 
 # Enable TrackPoint on laptop
 DEV_NAME="TPPS/2 IBM TrackPoint"
-if [[ -x /usr/bin/xinput ]] && xinput list | grep "${DEV_NAME}" &>/dev/null; then
+if [[ -n "${DISPLAY}" && -x /usr/bin/xinput ]] && /usr/bin/xinput list | grep "${DEV_NAME}" &>/dev/null; then
     /usr/bin/xinput set-prop --type=int --format=8 "${DEV_NAME}" "Evdev Wheel Emulation" 1
     /usr/bin/xinput set-prop --type=int --format=8 "${DEV_NAME}" "Evdev Wheel Emulation Button" 2
     /usr/bin/xinput set-prop --type=int --format=8 "${DEV_NAME}" "Evdev Wheel Emulation Axes" 6 7 4 5

@@ -14,7 +14,7 @@ alias lh='ll -I "[^.]*"'  # list hidden files
 alias rm='echo "This is not the command you are looking for."; false'  # use \rm instead
 alias cp='cp -i'
 alias mv='mv -i'
-alias grep='grep -nP'
+alias grep='grep --color=auto -PnI'
 
 alias screen='screen -xR'
 alias ctags='ctags -R .'

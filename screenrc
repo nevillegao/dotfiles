@@ -15,10 +15,10 @@ bindkey "^['" next
 
 # terminfo and termcap for nice 256 color terminal
 # Allow bold colors
-attrcolor b ".I" 
-# Tell screen how to set colors. AB = background, AF = foreground 
-termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm' 
-# Erase background with current bg color 
+attrcolor b ".I"
+# Tell screen how to set colors. AB = background, AF = foreground
+termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# Erase background with current bg color
 defbce "on"
 
 caption always "%{Wb}%-w%{wr}[%n]%{-}%+w"

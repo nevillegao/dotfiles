@@ -1,8 +1,6 @@
 colorscheme desertEx
 set vb t_vb=
 set guifont=Monaco\ 12
-"set guioptions=r
-" if set nowrap, then guioptions+=b
 
 map <F1> :h
 
@@ -22,4 +20,4 @@ noremap <M-8> :tabnext 8<CR>
 noremap <M-9> :tabnext 9<CR>
 
 " Toggle horizontal scroll bar according to wrap status
-nnoremap <silent><expr> <f2> ':set wrap! go'.'-+'[&wrap]."=b\r"
+nnoremap <silent><expr> <F2> ':set wrap! go'.'-+'[&wrap]."=b\r"

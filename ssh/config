@@ -24,4 +24,5 @@ Host docker
     User telemetry
 
 Host work
-    HostName 10.66.192.135
+    HostName ngao.usersys.redhat.com
+    User neville

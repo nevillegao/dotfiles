@@ -2,7 +2,7 @@ colorscheme desertEx
 set vb t_vb=
 set guifont=Monaco\ 12
 
-map <F1> :h
+nnoremap <F1> :h
 
 " Tab
 noremap <C-S-T> :tabnew<CR>

@@ -4,7 +4,7 @@ set guifont=Monaco\ 12
 "set guioptions=r
 " if set nowrap, then guioptions+=b
 
-map <F1> :h 
+map <F1> :h
 
 " Tab
 noremap <C-S-T> :tabnew<CR>

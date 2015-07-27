@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 
-for i in *; do
-    if [[ "${i}" != "INSTALL" ]]; then
-        if [[ -d "${i}" && ! -L "${i}" ]]; then
-            rm -rfv "${HOME}/.${i}"
+for path in $(dirname $0)/*; do
+    name=$(basename "${path}")
+    if [[ "${name}" != "INSTALL" ]]; then
+        if [[ -d "${path}" && ! -L "${path}" ]]; then
+            rm -rf "${HOME}/.${name}"
         fi
 
-        chmod -Rc go-rwx "${i}"
-        ln -sfv "${PWD}/${i}" "${HOME}/.${i}"
+        chmod -R go-rwx "${path}"
+        ln -sf "${PWD}/${path}" "${HOME}/.${name}"
     fi
 done
 
-# Set up Vim
-mkdir -pv "${HOME}/.vim/info/undo"
-mkdir -pv "${HOME}/.vim/info/fuf-data"
+# Install Vim Vundle
+git clone https://github.com/VundleVim/Vundle.Vim ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall

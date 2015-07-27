@@ -1,21 +1,19 @@
 #!/usr/bin/env bash
 
-ROOT_DIR=$(dirname $0)
+rm -rf "vim/bundle"
+find "vim/info" -type f ! -name .gitkeep -exec rm {} \;
 
-rm -rf "${ROOT_DIR}/vim/bundle" "${ROOT_DIR}/vim/info"
+chmod go-rwx -R "ssh/config" "vim/rcfiles"
 
-for path in "${ROOT_DIR}"/*; do
-    name=$(basename "${path}")
-    if [[ "${name}" != "INSTALL" ]]; then
-        if [[ -d "${path}" && ! -L "${path}" ]]; then
-            rm -rf "${HOME}/.${name}"
-        fi
-
-        chmod -R go-rwx "${path}"
-        ln -sf "${PWD}/${path}" "${HOME}/.${name}"
+for i in *; do
+    if [[ "${i}" == "INSTALL" ]]; then
+        continue
     fi
+
+    rm -rf "${HOME}/.${i}"
+    chmod go-rwx "${i}"
+    ln -sf "${PWD}/${i}" "${HOME}/.${i}"
 done
 
-# Install Vim Vundle
 git clone https://github.com/VundleVim/Vundle.Vim ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall

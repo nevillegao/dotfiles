@@ -3,22 +3,25 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.Vim'
 
 " Programming
-Plugin 'a.vim'
-Plugin 'c.vim'
-Plugin 'OmniCppComplete'
-Plugin 'echofunc.vim'
-Plugin 'tpope/vim-rails'
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'sukima/xmledit'
-Plugin 'http://git.code.sf.net/p/vim-latex/vim-latex'
 Plugin 'msanders/snipmate.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'taglist.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'winmanager--Fox'
+Plugin 'tpope/vim-fugitive'
+
+" C/C++
+Plugin 'a.vim'
+Plugin 'c.vim'
+Plugin 'OmniCppComplete'
+Plugin 'echofunc.vim'
+
+" HTML
+Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+Plugin 'sukima/xmledit'
 
 " Utility
 Plugin 'powerline/powerline'
@@ -26,9 +29,9 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'mattn/calendar-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'sjl/gundo.vim'
-Plugin 'tpope/vim-fugitive'
 Plugin 'L9'
 Plugin 'FuzzyFinder'
+Plugin 'kien/ctrlp.vim'
 Plugin 'grep.vim'
 Plugin 'rking/ag.vim'
 Plugin 'AutoComplPop'

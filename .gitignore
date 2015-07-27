@@ -1,5 +1,16 @@
 ssh/*
 !ssh/config
 
-vim/*
-!vim/rcfiles
+vim/info/*
+
+!vim/info/undo/
+vim/info/undo/*
+!vim/info/undo/.gitkeep
+
+!vim/info/netrw/
+vim/info/netrw/*
+!vim/info/netrw/.gitkeep
+
+!vim/info/fuf-data/
+vim/info/fuf-data/*
+!vim/info/fuf-data/.gitkeep

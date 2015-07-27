@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 
-for path in $(dirname $0)/*; do
+ROOT_DIR=$(dirname $0)
+
+rm -rf "${ROOT_DIR}/vim/bundle" "${ROOT_DIR}/vim/info"
+
+for path in "${ROOT_DIR}"/*; do
     name=$(basename "${path}")
     if [[ "${name}" != "INSTALL" ]]; then
         if [[ -d "${path}" && ! -L "${path}" ]]; then

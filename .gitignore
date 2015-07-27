@@ -1,6 +1,7 @@
 ssh/*
 !ssh/config
 
+vim/bundle/
 vim/info/*
 
 !vim/info/undo/

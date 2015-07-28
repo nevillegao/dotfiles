@@ -24,8 +24,11 @@ nnoremap <F6> :set spell!<CR><BAR>:echo "Spell check: " . strpart("OffOn", 3 * &
 nnoremap <SPACE> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
 
 " QuickFix Window
-nnoremap <F3> :cnext<CR>
-nnoremap <Leader><F3> :cprev<CR>
+nnoremap <F4> :cnext<CR>
+nnoremap <Leader><F4> :cprev<CR>
 
 " Inverse Tab
 nnoremap <S-Tab> <<
+
+" Toggle 'CursorLine' & 'CursorColumn'
+nnoremap <silent> <Leader>c :set cursorline! cursorcolumn!<CR>

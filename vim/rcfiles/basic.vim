@@ -13,8 +13,7 @@ set wildmenu
 set wildmode=list:full
 
 " Display
-"colorscheme inkpot
-colorscheme molokai
+colorscheme desert256
 if &term =~ "xterm"
     set title
     set icon

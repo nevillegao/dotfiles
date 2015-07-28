@@ -1,4 +1,3 @@
-colorscheme desertEx
 set vb t_vb=
 set guifont=Monaco\ 12
 

@@ -3,7 +3,7 @@
 rm -rf "vim/bundle"
 find "vim/info" -type f ! -name .gitkeep -exec rm {} \;
 
-chmod go-rwx -R "ssh/config" "vim/rcfiles"
+chmod go-rwx -R "ssh/config" "vim/rcfiles" "znc/configs"
 
 for i in *; do
     if [[ "${i}" == "INSTALL" ]]; then

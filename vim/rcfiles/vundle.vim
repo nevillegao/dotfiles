@@ -26,23 +26,22 @@ Plugin 'sukima/xmledit'
 
 " Utility
 Plugin 'mbbill/fencview'
+Plugin 'CmdlineComplete'
+Plugin 'rking/ag.vim'
+Plugin 'kien/ctrlp.vim'
 Plugin 'powerline/powerline'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-surround'
 Plugin 'sjl/gundo.vim'
 Plugin 'AutoComplPop'
-Plugin 'CmdlineComplete'
-Plugin 'rking/ag.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'jlanzarotta/bufexplorer'
 Plugin 'Mark'
 Plugin 'FavEx'
 Plugin 'VisIncr'
 Plugin 'DrawIt'
 
 " Color
-Plugin 'molokai'
 Plugin 'desert256.vim'
+Plugin 'molokai'
 Plugin 'vividchalk.vim'
 Plugin 'ciaranm/inkpot'
 

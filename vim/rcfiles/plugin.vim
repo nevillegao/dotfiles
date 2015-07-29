@@ -1,9 +1,12 @@
+" fencview
+let g:fencview_autodetect = 1
+
 " Cmdline Complete
 cmap <C-Y> <Plug>CmdlineCompleteBackward
 cmap <C-E> <Plug>CmdlineCompleteForward
 
-" Ag
+" ag
 nnoremap <Leader><F4> :Ag 
 
-" Gundo
+" gundo
 nnoremap <silent> <Leader><F5> :GundoToggle<CR>

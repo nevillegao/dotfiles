@@ -6,43 +6,37 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.Vim'
 
 " Programming
-Plugin 'msanders/snipmate.vim'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/nerdtree'
-Plugin 'winmanager--Fox'
 Plugin 'tpope/vim-fugitive'
-Plugin 'L9'
+Plugin 'Valloric/YouCompleteMe'
+"Plugin 'msanders/snipmate.vim'
+"Plugin 'majutsushi/tagbar'
+"Plugin 'winmanager--Fox'
+Plugin 'rstacruz/sparkup'
 
 " C/C++
-Plugin 'a.vim'
-Plugin 'c.vim'
-Plugin 'OmniCppComplete'
-Plugin 'echofunc.vim'
-
-" HTML
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plugin 'sukima/xmledit'
+"Plugin 'a.vim'
+"Plugin 'c.vim'
+"Plugin 'OmniCppComplete'
+"Plugin 'echofunc.vim'
 
 " Utility
 Plugin 'mbbill/fencview'
 Plugin 'CmdlineComplete'
 Plugin 'rking/ag.vim'
 Plugin 'kien/ctrlp.vim'
-Plugin 'powerline/powerline'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-surround'
 Plugin 'sjl/gundo.vim'
-Plugin 'AutoComplPop'
-Plugin 'Mark'
+Plugin 'Mark--Karkat'
 Plugin 'FavEx'
 Plugin 'VisIncr'
 Plugin 'DrawIt'
 
 " Color
 Plugin 'desert256.vim'
-Plugin 'molokai'
-Plugin 'vividchalk.vim'
+Plugin 'tomasr/molokai'
+Plugin 'tpope/vim-vividchalk'
 Plugin 'ciaranm/inkpot'
 
 call vundle#end()

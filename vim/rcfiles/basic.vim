@@ -63,5 +63,3 @@ set expandtab
 set textwidth=79
 
 filetype plugin indent on
-
-autocmd BufNewFile,BufRead Makefile set noexpandtab

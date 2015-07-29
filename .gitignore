@@ -11,7 +11,3 @@ vim/info/undo/*
 !vim/info/netrw/
 vim/info/netrw/*
 !vim/info/netrw/.gitkeep
-
-!vim/info/fuf-data/
-vim/info/fuf-data/*
-!vim/info/fuf-data/.gitkeep

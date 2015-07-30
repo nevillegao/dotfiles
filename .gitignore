@@ -1,18 +1,8 @@
 ssh/*
 !ssh/config
 
-
 vim/bundle/
-vim/info/*
-
-!vim/info/undo/
-vim/info/undo/*
-!vim/info/undo/.gitkeep
-
-!vim/info/netrw/
-vim/info/netrw/*
-!vim/info/netrw/.gitkeep
-
+vim/info/
 
 weechat/*
 !weechat/buffers.conf
@@ -21,13 +11,4 @@ weechat/*
 !weechat/plugins.conf
 !weechat/weechat.conf
 
-weechat/perl/*
-!weechat/perl/autoload/
-weechat/perl/autoload/*
-!weechat/perl/autoload/.gitkeep
-
-
 irssi/scripts/*
-!irssi/scripts/autorun/
-irssi/scripts/autorun/*
-!irssi/scripts/autorun/.gitkeep

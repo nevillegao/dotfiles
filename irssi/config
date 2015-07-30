@@ -8,6 +8,7 @@ servers = (
     address = "irc.gimp.org";
     chatnet = "GIMPNet";
     port = "6667";
+    autoconnect = "yes";
   },
   {
     address = "irc.devel.redhat.com";
@@ -198,15 +199,12 @@ settings = {
   "fe-common/core" = {
     autolog_path = "~/logs/irssi/$tag\\-$0\\-%y%m%d.irssilog";
     autolog = "yes";
-    theme = "themes/envy.theme";
+
     beep_when_window_active = "yes";
     beep_when_away = "yes";
     beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
     bell_beeps = "yes";
   };
-
-  "perl/core/scripts" = {
-    nicklist_automode = "screen";
-    nicklist_width = "14";
-  };
 };
+
+logs = { };

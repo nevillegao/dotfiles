@@ -1,0 +1,212 @@
+servers = (
+  {
+    address = "irc.freenode.net";
+    chatnet = "Freenode";
+    port = "6667";
+  },
+  {
+    address = "irc.gimp.org";
+    chatnet = "GIMPNet";
+    port = "6667";
+  },
+  {
+    address = "irc.devel.redhat.com";
+    chatnet = "RedHat1";
+    port = "6667";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.devel.redhat.com";
+    chatnet = "RedHat2";
+    port = "6667";
+    autoconnect = "yes";
+  },
+  {
+    address = "localhost";
+    chatnet = "ZNC1";
+    port = "6667";
+    password = "neville/RedHat:neville";
+  },
+  {
+    address = "localhost";
+    chatnet = "ZNC2";
+    port = "6667";
+    password = "ngao/RedHat:ngao";
+  }
+);
+
+chatnets = {
+  Freenode = {
+    type = "IRC";
+    nick = "figod";
+  };
+  GIMPNet = {
+    type = "IRC";
+  };
+  RedHat1 = {
+    type = "IRC";
+    autosendcmd = "/^MSG UserServ login neville H9oP8318i1409QZlZ1gw; wait 2000";
+  };
+  RedHat2 = {
+    type = "IRC";
+    nick = "ngao";
+    autosendcmd = "/^MSG UserServ login ngao 0vb7H96MMfl8lTD40PIh; wait 2000";
+  };
+  ZNC1 = {
+    type = "IRC";
+  };
+  ZNC2 = {
+    type = "IRC";
+  };
+};
+
+channels = (
+  {
+    name = "#chinalug";
+    chatnet = "Freenode";
+  },
+  {
+    name = "#beijinggug";
+    chatnet = "GIMPNet";
+  },
+  {
+    name = "#eng-china";
+    chatnet = "RedHat1";
+    autojoin = "yes";
+  },
+  {
+    name = "#beijing";
+    chatnet = "RedHat1";
+    autojoin = "yes";
+  },
+  {
+    name = "#customer-platform";
+    chatnet = "RedHat1";
+    autojoin = "yes";
+  },
+  {
+    name = "#wabash";
+    chatnet = "RedHat1";
+    autojoin = "yes";
+  },
+  {
+    name = "#rhphd";
+    chatnet = "RedHat1";
+    autojoin = "yes";
+  },
+  {
+    name = "#Insights";
+    chatnet = "RedHat1";
+    autojoin = "yes";
+  }
+);
+
+statusbar = {
+  items = {
+    barstart = "{sbstart}";
+    barend = "{sbend}";
+
+    topicbarstart = "{topicsbstart}";
+    topicbarend = "{topicsbend}";
+
+    time = "{sb $Z}";
+    user = "{sb {sbnickmode $cumode}$N{sbmode $usermode}{sbaway $A}}";
+
+    window = "{sb $winref:$tag/$itemname{sbmode $M}}";
+    window_empty = "{sb $winref{sbservertag $tag}}";
+    prompt = "{prompt $[.15]itemname}";
+    prompt_empty = "{prompt $winname}";
+    topic = " $topic";
+    topic_empty = " Irssi v$J - http://www.irssi.org";
+
+    lag = "{sb Lag: $0-}";
+    act = "{sb Act: $0-}";
+    more = "-- more --";
+  };
+
+  default = {
+    window = {
+      disabled = "no";
+      type = "window";
+      placement = "bottom";
+      position = "1";
+      visible = "active";
+
+      items = {
+        barstart = { priority = "100"; };
+        time = { };
+        user = { };
+        window = { };
+        window_empty = { };
+        lag = { priority = "-1"; };
+        act = { priority = "10"; };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+
+    window_inact = {
+      type = "window";
+      placement = "bottom";
+      position = "1";
+      visible = "inactive";
+      items = {
+        barstart = { priority = "100"; };
+        window = { };
+        window_empty = { };
+        more = { priority = "-1"; alignment = "right"; };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
+
+    prompt = {
+      type = "root";
+      placement = "bottom";
+      position = "100";
+      visible = "always";
+      items = {
+        prompt = { priority = "-1"; };
+        prompt_empty = { priority = "-1"; };
+        input = { priority = "10"; };
+      };
+    };
+
+    topic = {
+      type = "root";
+      placement = "top";
+      position = "1";
+      visible = "always";
+      items = {
+        topicbarstart = { priority = "100"; };
+        topic = { };
+        topic_empty = { };
+        topicbarend = { priority = "100"; alignment = "right"; };
+      };
+    };
+  };
+};
+
+settings = {
+  core = {
+    real_name = "Neville Gao";
+    user_name = "neville";
+    nick = "neville";
+  };
+
+  "fe-text" = { actlist_sort = "refnum"; };
+
+  "fe-common/core" = {
+    autolog_path = "~/logs/irssi/$tag\\-$0\\-%y%m%d.irssilog";
+    autolog = "yes";
+    theme = "themes/envy.theme";
+    beep_when_window_active = "yes";
+    beep_when_away = "yes";
+    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
+    bell_beeps = "yes";
+  };
+
+  "perl/core/scripts" = {
+    nicklist_automode = "screen";
+    nicklist_width = "14";
+  };
+};

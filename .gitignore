@@ -1,6 +1,7 @@
 ssh/*
 !ssh/config
 
+
 vim/bundle/
 vim/info/*
 
@@ -11,3 +12,10 @@ vim/info/undo/*
 !vim/info/netrw/
 vim/info/netrw/*
 !vim/info/netrw/.gitkeep
+
+
+irssi/scripts/*
+
+!irssi/scripts/autorun/
+irssi/scripts/autorun/*
+!irssi/scripts/autorun/.gitkeep

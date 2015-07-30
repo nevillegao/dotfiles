@@ -23,13 +23,16 @@ install_weechat() {
 }
 
 install_irssi() {
-    irssi_plugins=(scriptassist.pl nickcolor.pl nicklist.pl beep_beep.pl)
+    irssi_plugins=(nickcolor.pl nicklist.pl beep_beep.pl)
     for i in ${irssi_plugins[@]}; do
         script_dir="irssi/scripts"
         mkdir -p "${script_dir}/autorun"
         svn export https://github.com/irssi/scripts.irssi.org.git/trunk/scripts/${i} "${script_dir}/${i}"
         (cd "${script_dir}/autorun" && ln -sf "../${i}")
     done
+
+    curl -o "${script_dir}/adv_windowlist.pl" http://anti.teamidiot.de/static/nei/*/Code/Irssi/adv_windowlist.pl
+    (cd "${script_dir}/autorun" && ln -sf "../adv_windowlist.pl")
 }
 
 rm -rf "vim/bundle" "vim/info" "weechat/perl" "irssi/scripts"

@@ -7,13 +7,15 @@ set helplang=cn
 set noswapfile
 set nobackup
 set viminfo+=n~/.vim/info/viminfo
-set undodir=~/.vim/info/undo/
-set undofile
+if v:version >= 703
+    set undodir=~/.vim/info/undo/
+    set undofile
+endif
 set wildmenu
 set wildmode=list:full
 
 " Display
-colorscheme desert256
+silent! colorscheme desert256
 if &term =~ "xterm"
     set title
     set icon
@@ -32,8 +34,10 @@ set showcmd
 set showmode
 set listchars+=trail:*,tab:>-
 set completeopt=longest,menu
-set colorcolumn=79
-highlight colorcolumn guibg=blue
+if v:version >= 703
+    set colorcolumn=79
+    highlight colorcolumn guibg=blue
+endif
 set laststatus=2
 set statusline=%<[%n]\ %F\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}][%{&ff}][ASCII=\%04.4B]\ %-10.(%l,%c%V%)\ %P
 

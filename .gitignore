@@ -14,8 +14,20 @@ vim/info/netrw/*
 !vim/info/netrw/.gitkeep
 
 
-irssi/scripts/*
+weechat/*
+!weechat/buffers.conf
+!weechat/logger.conf
+!weechat/irc.conf
+!weechat/plugins.conf
+!weechat/weechat.conf
 
+weechat/perl/*
+!weechat/perl/autoload/
+weechat/perl/autoload/*
+!weechat/perl/autoload/.gitkeep
+
+
+irssi/scripts/*
 !irssi/scripts/autorun/
 irssi/scripts/autorun/*
 !irssi/scripts/autorun/.gitkeep

@@ -1,13 +1,14 @@
 #!/usr/bin/env bash
 
-install_vim() {
+get_vim_plugins() {
+    rm -rf "vim/bundle" "vim/info"
     mkdir -p "vim/info/undo" "vim/info/netrw"
 
-    git clone https://github.com/VundleVim/Vundle.Vim ~/.vim/bundle/Vundle.vim
+    git clone https://github.com/VundleVim/Vundle.vim "vim/bundle/Vundle.vim"
     vim +PluginInstall +qall
 }
 
-install_weechat() {
+get_weechat_plugins() {
     weechat_plugins=(buffers.pl beep.pl)
     for i in ${weechat_plugins[@]}; do
         ext=${i##*.}
@@ -16,33 +17,39 @@ install_weechat() {
         fi
 
         script_dir="weechat/${dir}"
+        rm -rf "${script_dir}"
         mkdir -p "${script_dir}/autoload"
+
         curl -o "${script_dir}/${i}" https://weechat.org/files/scripts/${i}
         (cd "${script_dir}/autoload" && ln -sf "../${i}")
     done
 }
 
-install_irssi() {
+get_irssi_plugins() {
     irssi_plugins=(nickcolor.pl)
     for i in ${irssi_plugins[@]}; do
         script_dir="irssi/scripts"
+        rm -rf "${script_dir}"
         mkdir -p "${script_dir}/autorun"
+
         svn export https://github.com/irssi/scripts.irssi.org.git/trunk/scripts/${i} "${script_dir}/${i}"
         (cd "${script_dir}/autorun" && ln -sf "../${i}")
     done
 }
 
-rm -rf "vim/bundle" "vim/info" "weechat/perl" "irssi/scripts"
-for i in *; do
-    if [[ "${i}" == "INSTALL" ]]; then
-        continue
-    fi
+install() {
+    for i in *; do
+        if [[ "${i}" == "INSTALL" ]]; then
+            continue
+        fi
 
-    rm -rf "${HOME}/.${i}"
-    chmod -R go-rwx "${i}"
-    ln -sf "${PWD}/${i}" "${HOME}/.${i}"
-done
+        rm -rf "${HOME}/.${i}"
+        chmod -R go-rwx "${i}"
+        ln -sf "${PWD}/${i}" "${HOME}/.${i}"
+    done
+}
 
-install_vim
-install_weechat
-install_irssi
+get_vim_plugins
+get_weechat_plugins
+get_irssi_plugins
+install

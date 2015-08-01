@@ -20,7 +20,7 @@ get_weechat_plugins() {
         rm -rf "${script_dir}"
         mkdir -p "${script_dir}/autoload"
 
-        curl -o "${script_dir}/${i}" https://weechat.org/files/scripts/${i}
+        curl -o "${script_dir}/${i}" "https://weechat.org/files/scripts/${i}"
         (cd "${script_dir}/autoload" && ln -sf "../${i}")
     done
 }
@@ -32,7 +32,7 @@ get_irssi_plugins() {
         rm -rf "${script_dir}"
         mkdir -p "${script_dir}/autorun"
 
-        svn export https://github.com/irssi/scripts.irssi.org.git/trunk/scripts/${i} "${script_dir}/${i}"
+        svn export "https://github.com/irssi/scripts.irssi.org.git/trunk/scripts/${i}" "${script_dir}/${i}"
         (cd "${script_dir}/autorun" && ln -sf "../${i}")
     done
 }

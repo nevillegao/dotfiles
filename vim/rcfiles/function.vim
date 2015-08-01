@@ -3,7 +3,8 @@ let @n=expand("%:p")
 
 " netrw
 let g:netrw_home = $HOME . '/.vim/info/netrw'
-let g:netrw_liststyle=3
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 20
 
 autocmd BufNewFile,BufRead Makefile
     \ set noexpandtab

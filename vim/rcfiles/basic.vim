@@ -7,7 +7,7 @@ set helplang=cn
 set noswapfile
 set nobackup
 set viminfo+=n~/.vim/info/viminfo
-if v:version >= 703
+if has("persistent_undo")
     set undodir=~/.vim/info/undo/
     set undofile
 endif

@@ -4,8 +4,8 @@ set guifont=Monaco\ 12
 nnoremap <F1> :h
 
 " Tab
-noremap <C-S-T> :tabnew<CR>
-noremap <C-S-W> :tabclose<CR>
+noremap <C-M-T> :tabnew<CR>
+noremap <C-M-W> :tabclose<CR>
 noremap <M-;> :tabprevious<CR>
 noremap <M-'> :tabnext<CR>
 noremap <M-1> :tabnext 1<CR>

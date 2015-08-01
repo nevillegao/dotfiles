@@ -36,4 +36,4 @@ nnoremap <S-Tab> <<
 nnoremap <silent> <Leader>g :set cursorline! cursorcolumn!<CR>
 
 " netrw
-nnoremap <silent> <Leader>k :Explore<CR>
+nnoremap <silent> <Leader><F9> :Vexplore<CR>

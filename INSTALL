@@ -9,29 +9,30 @@ get_vim_plugins() {
 }
 
 get_weechat_plugins() {
+    declare -A dir=(["pl"]="perl")
+    for i in ${dir[@]}; do
+        script_dir="weechat/${i}"
+        rm -rf "${script_dir}"
+        mkdir -p "${script_dir}/autoload"
+    done
+
     weechat_plugins=(buffers.pl beep.pl)
     for i in ${weechat_plugins[@]}; do
         ext=${i##*.}
-        if [[ "${ext}" == "pl" ]]; then
-            dir=perl
-        fi
-
-        script_dir="weechat/${dir}"
-        rm -rf "${script_dir}"
-        mkdir -p "${script_dir}/autoload"
-
+        script_dir="weechat/${dir[${ext}]}"
         curl -o "${script_dir}/${i}" "https://weechat.org/files/scripts/${i}"
         (cd "${script_dir}/autoload" && ln -sf "../${i}")
     done
 }
 
 get_irssi_plugins() {
-    irssi_plugins=(nickcolor.pl)
-    for i in ${irssi_plugins[@]}; do
-        script_dir="irssi/scripts"
-        rm -rf "${script_dir}"
-        mkdir -p "${script_dir}/autorun"
+    script_dir="irssi/scripts"
+    rm -rf "${script_dir}"
+    mkdir -p "${script_dir}/autorun"
 
+    irssi_plugins=(nickcolor.pl)
+
+    for i in ${irssi_plugins[@]}; do
         svn export "https://github.com/irssi/scripts.irssi.org.git/trunk/scripts/${i}" "${script_dir}/${i}"
         (cd "${script_dir}/autorun" && ln -sf "../${i}")
     done

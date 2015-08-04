@@ -11,22 +11,15 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 if v:version >= 703
-    "Plugin 'Valloric/YouCompleteMe'
+    Plugin 'Valloric/YouCompleteMe'
 endif
+"Plugin 'sirver/ultisnips'
+"Plugin 'honza/vim-snippets'
 Plugin 'tpope/vim-fugitive'
 
-"Plugin 'MarcWeber/vim-addon-mw-utils'
-"Plugin 'tomtom/tlib_vim'
-"Plugin 'garbas/vim-snipmate'
-"Plugin 'honza/vim-snippets'
-
-"Plugin 'rstacruz/sparkup'
-
-" C/C++
-"Plugin 'a.vim'
-"Plugin 'c.vim'
-"Plugin 'OmniCppComplete'
-"Plugin 'echofunc.vim'
+" HTML/XML
+"Plugin 'mattn/emmet-vim'
+"Plugin 'othree/xml.vim'
 
 " Utility
 Plugin 'CmdlineComplete'
@@ -36,12 +29,14 @@ Plugin 'kien/ctrlp.vim'
 "Plugin 'mbbill/fencview'
 "Plugin 'tpope/vim-surround'
 Plugin 'sjl/gundo.vim'
-"Plugin 'mbbill/undotree'
+Plugin 'mbbill/undotree'
 "Plugin 'Mark--Karkat'
 "Plugin 'FavEx'
 "Plugin 'VisIncr'
 "Plugin 'DrawIt'
 "Plugin 'fholgado/minibufexpl.vim'
+"Plugin 'powerline/powerline'
+"Plugin 'bling/vim-airline'
 
 " Color
 Plugin 'desert256.vim'

@@ -1,32 +1,42 @@
 # vim:ft=python:
 
-# Startup script for python to enable saving of interpreter history and
-# enabling name completion
+try:
+    from jedi.utils import setup_readline
+except ImportError:
+    print("Module Jedi not available, falling back to readline.")
 
-# Import needed modules
-import atexit
-import os
-import readline
-import rlcompleter
+    try:
+        import readline
+    except ImportError:
+        print "Module readline not available."
+    else:
+        import rlcompleter
+        readline.parse_and_bind("tab: complete")
 
-# Where is history saved
-historyPath = os.path.expanduser("~/.pyhistory")
+        try:
+            import os
+        except ImportError:
+            print "Module os not available."
+        else:
+            hist_path = os.path.expanduser("~/.pyhistory")
 
-# Handler for saving history
-def save_history(historyPath=historyPath):
-    import readline
-    readline.write_history_file(historyPath)
+            if os.path.exists(hist_path):
+                readline.set_history_length(1000000)
+                readline.read_history_file(hist_path)
 
-# Read history, if it exists
-if os.path.exists(historyPath):
-    readline.set_history_length(1000000)
-    readline.read_history_file(historyPath)
+            try:
+                import atexit
+            except ImportError:
+                print "Module atexit not available."
+            else:
+                atexit.register(readline.write_history_file, hist_path)
 
-# Register saving handler
-atexit.register(save_history)
+                del atexit
 
-# Enable completion
-readline.parse_and_bind('tab: complete')
+            del os, hist_path
 
-# Cleanup
-del os, atexit, readline, rlcompleter, save_history, historyPath
+        del readline, rlcompleter
+else:
+    setup_readline()
+
+    del setup_readline

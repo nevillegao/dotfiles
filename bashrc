@@ -43,7 +43,7 @@ if [[ -n "${DISPLAY}" && -r /usr/share/terminfo/x/xterm+256color ]]; then
 fi
 
 # Utilities options
-export PYTHONSTARTUP="${HOME}/.pythonstartup"
+export PYTHONSTARTUP="${HOME}/.pythonrc"
 export LESS='-M -i -R'
 
 # Less colors for man pages

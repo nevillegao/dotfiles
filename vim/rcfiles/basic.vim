@@ -6,9 +6,9 @@ set helplang=cn
 " Misc
 set noswapfile
 set nobackup
-set viminfo+=n~/.vim/info/viminfo
+set viminfo+=n~/.vim/info
 if has("persistent_undo")
-    set undodir=~/.vim/info/undo/
+    set undodir=~/.vim/undo/
     set undofile
 endif
 set wildmenu

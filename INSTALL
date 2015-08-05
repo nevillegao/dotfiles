@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 get_vim_plugins() {
-    rm -rf vim/bundle vim/info
-    mkdir -p vim/info/undo vim/info/netrw
+    rm -rf vim.d/bundle
+    mkdir -p "${HOME}/.vim/undo" "${HOME}/.vim/netrw"
 
-    git clone https://github.com/VundleVim/Vundle.vim vim/bundle/Vundle.vim
+    git clone https://github.com/VundleVim/Vundle.vim vim.d/bundle/Vundle.vim
     vim +PluginInstall +qall
 }
 

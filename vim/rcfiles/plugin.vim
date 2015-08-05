@@ -1,5 +1,5 @@
 " netrw
-let g:netrw_home = $HOME . "/.vim/info/netrw"
+let g:netrw_home = $HOME . "/.viminfo/netrw"
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 40
 

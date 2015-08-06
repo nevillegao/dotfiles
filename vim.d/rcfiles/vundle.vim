@@ -1,7 +1,7 @@
 filetype off
 
 set rtp+=~/.vim.d/bundle/Vundle.vim
-call vundle#rc("~/.vim.d/bundle")
+call vundle#rc("$HOME/.vim.d/bundle")
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'

@@ -1,8 +1,7 @@
 ssh/*
 !ssh/config
 
-vim/bundle/
-vim/info/
+vim.d/bundle/
 
 weechat/*
 !weechat/buffers.conf

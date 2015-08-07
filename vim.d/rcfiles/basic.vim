@@ -7,7 +7,7 @@ set helplang=cn
 set noswapfile
 set nobackup
 set viminfo+=n~/.vim/info
-if has("persistent_undo")
+if has('persistent_undo')
     set undodir=~/.vim/undo
     set undofile
 endif
@@ -16,12 +16,12 @@ set wildmode=list:full
 
 " Display
 silent! colorscheme desert256
-if &term =~ "xterm"
+if &term =~ 'xterm'
     set title
     set icon
     set t_AB=[48;5;%dm
     set t_AF=[38;5;%dm
-elseif &term =~ "screen"
+elseif &term =~ 'screen'
     set t_ts=k
     set t_fs=\
     set title titlestring=%t
@@ -39,7 +39,7 @@ if v:version >= 703
     highlight colorcolumn guibg=blue
 endif
 set laststatus=2
-set statusline=%<[%n]\ %F\ %h%m%r%=%k[%{(&fenc==\"\")?&enc:&fenc}%{(&bomb?\",BOM\":\"\")}][%{&ff}][ASCII=\%04.4B]\ %-10.(%l,%c%V%)\ %P
+set statusline=%<[%n]\ %F\ %h%m%r%=%k[%{(&fenc==\'\')?&enc:&fenc}%{(&bomb?\',BOM\':\'\')}][%{&ff}][ASCII=\%04.4B]\ %-10.(%l,%c%V%)\ %P
 
 " Search
 set magic

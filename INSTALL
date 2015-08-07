@@ -19,7 +19,7 @@ get_weechat_plugins() {
         mkdir -p "${script_dir}/autoload"
     done
 
-    weechat_plugins=(buffers.pl beep.pl)
+    declare -a weechat_plugins=(buffers.pl beep.pl)
     for i in ${weechat_plugins[@]}; do
         ext=${i##*.}
         script_dir="weechat/${dir[${ext}]}"
@@ -33,8 +33,7 @@ get_irssi_plugins() {
     rm -rf "${script_dir}"
     mkdir -p "${script_dir}/autorun"
 
-    irssi_plugins=(nickcolor.pl)
-
+    declare -a irssi_plugins=(nickcolor.pl)
     for i in ${irssi_plugins[@]}; do
         svn export "https://github.com/irssi/scripts.irssi.org.git/trunk/scripts/${i}" "${script_dir}/${i}"
         (cd "${script_dir}/autorun" && ln -sf "../${i}")

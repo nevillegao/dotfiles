@@ -53,7 +53,7 @@ install() {
     done
 }
 
+install
 get_vim_plugins
 get_weechat_plugins
 get_irssi_plugins
-install

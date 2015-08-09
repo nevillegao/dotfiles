@@ -35,19 +35,19 @@ esac
 
 # Terminal color
 if [[ -n "${DISPLAY}" && -r /usr/share/terminfo/x/xterm+256color ]]; then
-    if [[ "${TERM}" =~ 'xterm' ]]; then
-        export TERM='xterm-256color'
-    elif [[ "${TERM}" =~ 'screen' ]]; then
-        export TERM='screen-256color'
+    if [[ "${TERM}" =~ "xterm" ]]; then
+        export TERM="xterm-256color"
+    elif [[ "${TERM}" =~ "screen" ]]; then
+        export TERM="screen-256color"
     fi
 fi
 
 # Utilities options
 export PYTHONSTARTUP="${HOME}/.pythonrc"
-export LESS='-M -i -R'
+export LESS="-M -i -R"
 
 # Less colors for man pages
-export GROFF_NO_SGR='yes'               # enable manpage color
+export GROFF_NO_SGR="yes"               # enable manpage color
 export LESS_TERMCAP_mb=$'\E[01;31m'     # enter blink mode
 export LESS_TERMCAP_md=$'\E[01;31m'     # enter bold mode
 export LESS_TERMCAP_me=$'\E[0m'         # exit attribute mode
@@ -60,7 +60,7 @@ export LESS_TERMCAP_ue=$'\E[0m'         # exit underline mode
 export HISTCONTROL=ignoredups:erasedups
 export HISTSIZE=1000000
 export HISTFILESIZE=1024000000
-export HISTTIMEFORMAT='%F %T '
+export HISTTIMEFORMAT="%F %T "
 shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND}"
 
@@ -68,24 +68,24 @@ export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND}"
 export IGNOREEOF=100
 
 # Custom variables
-export EDITOR='/usr/bin/vim'
+export EDITOR="/usr/bin/vim"
 export GROUP=$(id -gn)
 
 gvim() {
-    GVIM_BIN='/usr/bin/gvim'
-    GVIM_SERVER_ARGS='--servername GVIM'
-    GVIM_CLIENT_ARGS='--remote-tab-silent'
+    if vim --version | grep "\+clientserver" &> /dev/null; then
+        GVIM_SERVER_ARG="--servername GVIMSERVER"
 
-    if [[ $# -lt 1 ]]; then
-        "${GVIM_BIN}" "${GVIM_SERVER_ARGS}"
-    else
-        "${GVIM_BIN}" "${GVIM_SERVER_ARGS}" "${GVIM_CLIENT_ARGS}" "$@"
+        if [[ $# -ge 1 ]]; then
+            GVIM_CLIENT_ARG="--remote-tab-silent"
+        fi
     fi
+
+    /usr/bin/gvim ${GVIM_SERVER_ARG} ${GVIM_CLIENT_ARG} "$@"
 }
 
 emacs() {
-    EMACS_SERVER_BIN='/usr/bin/emacs'
-    EMACS_CLIENT_BIN='/usr/bin/emacsclient'
+    EMACS_SERVER_BIN="/usr/bin/emacs"
+    EMACS_CLIENT_BIN="/usr/bin/emacsclient"
 
     if [[ $# -lt 1 ]]; then
         "${EMACS_SERVER_BIN}"

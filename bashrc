@@ -83,17 +83,6 @@ gvim() {
     /usr/bin/gvim ${GVIM_SERVER_ARG} ${GVIM_CLIENT_ARG} "$@"
 }
 
-emacs() {
-    EMACS_SERVER_BIN="/usr/bin/emacs"
-    EMACS_CLIENT_BIN="/usr/bin/emacsclient"
-
-    if [[ $# -lt 1 ]]; then
-        "${EMACS_SERVER_BIN}"
-    else
-        "${EMACS_CLIENT_BIN}" -a "${EMACS_SERVER_BIN}" "$@"
-    fi
-}
-
 # Turn on sandbox for Chromium, set CHROME_DEVEL_SANDBOX to an empty string to
 # disable it
 export CHROME_DEVEL_SANDBOX="${HOME}/bin/chrome-linux/chrome_sandbox"

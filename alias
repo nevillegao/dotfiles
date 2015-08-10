@@ -19,6 +19,7 @@ alias grep='grep --color=auto -PnI'
 alias screen='screen -xR'
 alias ppwd='pwd | sed "s^$HOME^~^"'  # replace $HOME with a tilde
 alias diff='colordiff'
+alias emacs='emacs -nw'
 
 # Docker
 alias rmdc='for i in $(docker ps -f status=exited -q); do docker rm $i; done'

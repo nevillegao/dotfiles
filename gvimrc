@@ -1,4 +1,4 @@
-set vb t_vb=
+set t_vb=
 set guifont=Monaco\ 12
 
 nnoremap <F1> :h

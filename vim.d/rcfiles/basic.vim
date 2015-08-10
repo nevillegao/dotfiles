@@ -13,6 +13,7 @@ if has('persistent_undo')
 endif
 set wildmenu
 set wildmode=list:full
+set visualbell
 
 " Display
 silent! colorscheme desert256

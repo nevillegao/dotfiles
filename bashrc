@@ -71,6 +71,7 @@ export IGNOREEOF=100
 export EDITOR="/usr/bin/vim"
 export GROUP=$(id -gn)
 
+# GVim server mode
 gvim() {
     if vim --version | grep "\+clientserver" &> /dev/null; then
         GVIM_SERVER_ARG="--servername GVIMSERVER"

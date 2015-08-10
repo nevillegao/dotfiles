@@ -76,5 +76,5 @@ nnoremap <silent> <Leader>r :SyntasticReset<CR>
 "let g:ycm_collect_identifiers_from_tags_files = 1
 
 
-" fencview
-"let g:fencview_autodetect = 1
+" EasyMotion
+" surround

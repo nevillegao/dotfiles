@@ -5,19 +5,23 @@ inoremap <Down> <C-O>gj
 
 nnoremap <Leader><F1> :h 
 
-" QuickFix Window
-nnoremap <Leader><F2> :cprev<CR>
-nnoremap <Leader><F3> :cnext<CR>
+" QuickFix List
+nnoremap <Leader><F5> :cprevious<CR>
+nnoremap <Leader><F6> :cnext<CR>
+
+" Location List
+nnoremap <Leader><F7> :lprevious<CR>
+nnoremap <Leader><F8> :lnext<CR>
 
 " Toggle 'Spell Check'
 nnoremap <silent> <Leader><F4> :set spell!<CR>
 
 " Toggle 'Paste'
-nnoremap <silent> <Leader><F5> :set paste<CR>
-nnoremap <silent> <Leader><F6> :set nopaste<CR>
-inoremap <silent> <Leader><F5> <C-O>:set paste<CR>
-inoremap <silent> <Leader><F6> <Nop>
-set pastetoggle=<Leader><F6>
+nnoremap <silent> <Leader><F2> :set paste<CR>
+nnoremap <silent> <Leader><F3> :set nopaste<CR>
+inoremap <silent> <Leader><F2> <C-O>:set paste<CR>
+inoremap <silent> <Leader><F3> <Nop>
+set pastetoggle=<Leader><F3>
 
 " Toggle 'List'
 nnoremap <silent> <C-L> :set list!<CR>

@@ -37,7 +37,7 @@ cmap <C-E> <Plug>CmdlineCompleteForward
 
 " Ag
 let g:ag_highlight = 1
-nnoremap <silent> <Leader>* :Ag <C-R>=expand('<cword>')<CR><CR>
+nnoremap <silent> <Leader><F10> :Ag <C-R>=expand('<cword>')<CR><CR>
 
 
 " Gundo
@@ -58,14 +58,9 @@ nnoremap <silent> <Leader><F9> :TagbarToggle<CR>
 
 
 " syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 let g:syntastic_mode_map = {'mode': 'passive'}
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-nnoremap <silent> <Leader>s :SyntasticCheck<CR>
-nnoremap <silent> <Leader>r :SyntasticReset<CR>
 
 
 " YouCompleteMe

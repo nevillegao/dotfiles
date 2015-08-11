@@ -2,32 +2,7 @@
 let g:netrw_home = $HOME . '/.vim/netrw'
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 40
-
-" Toggle Vexplore with Ctrl-E
-function! ToggleVExplorer()
-    if exists('t:expl_buf_num') && exists('t:prev_win_num')
-        let expl_win_num = bufwinnr(t:expl_buf_num)
-        if expl_win_num != -1
-            exec expl_win_num . 'wincmd w'
-            close
-        endif
-
-        exec t:prev_win_num . 'wincmd w'
-
-        unlet t:prev_win_num
-        unlet t:expl_buf_num
-    else
-        let t:prev_win_num = winnr()
-
-        Vexplore
-        exec 'wincmd h'
-        exec 'wincmd H'
-        exec 'vertical resize '. g:netrw_winsize
-
-        let t:expl_buf_num = bufnr('%')
-    endif
-endfunction
-noremap <silent> <C-E> :call ToggleVExplorer()<CR>
+noremap <silent> <C-E> :Lexplore<CR>
 
 
 " Cmdline Complete

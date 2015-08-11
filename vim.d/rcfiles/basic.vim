@@ -36,8 +36,7 @@ set showmode
 set listchars+=trail:*,tab:>-
 set completeopt=longest,menu
 if v:version >= 703
-    set colorcolumn=79
-    highlight colorcolumn guibg=blue
+    set colorcolumn=+1
 endif
 set laststatus=2
 set statusline=%<[%n]\ %F\ %h%m%r%=%k[%{(&fenc==\'\')?&enc:&fenc}%{(&bomb?\',BOM\':\'\')}][%{&ff}][ASCII=\%04.4B]\ %-10.(%l,%c%V%)\ %P
@@ -65,6 +64,6 @@ set tabstop=4
 set shiftwidth=4
 set formatoptions+=mB
 set expandtab
-set textwidth=79
+set textwidth=78
 
 filetype plugin indent on

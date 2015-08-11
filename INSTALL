@@ -42,7 +42,7 @@ get_irssi_plugins() {
 
 install() {
     for i in *; do
-        if [[ "${i}" == "INSTALL" ]]; then
+        if [[ "${i}" == $(basename $0) ]]; then
             continue
         fi
 

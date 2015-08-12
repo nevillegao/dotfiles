@@ -1,17 +1,29 @@
 #!/usr/bin/env bash
 
 get_vim_plugins() {
-    if [[ ! -d "${HOME}/.vim" ]]; then
-        rm -rf "${HOME}/.vim"
+    # Clean up
+    info_dir="${HOME}/.vim"
+    if [[ ! -d "${info_dir}" ]]; then
+        rm -rf "${info_dir}"
     fi
-    mkdir -p "${HOME}/.vim/undo" "${HOME}/.vim/netrw"
+    mkdir -p "${info_dir}/undo" "${info_dir}/netrw"
 
-    rm -rf vim.d/bundle
-    git clone https://github.com/VundleVim/Vundle.vim vim.d/bundle/Vundle.vim
+    # Install 'Vundle'
+    bundle_dir="vim.d/bundle"
+    rm -rf "${bundle_dir}"
+    git clone https://github.com/VundleVim/Vundle.vim "${bundle_dir}/Vundle.vim"
+
+    # Install plugins
     vim +PluginInstall +qall
+
+    # Compile 'YouCompleteMe'
+    if [[ -d "${bundle_dir}/YouCompleteMe" ]]; then
+        bash "${bundle_dir}/YouCompleteMe/install.sh"
+    fi
 }
 
 get_weechat_plugins() {
+    # Clean up
     declare -A dir=(["pl"]="perl")
     for i in ${dir[@]}; do
         script_dir="weechat/${i}"
@@ -29,6 +41,7 @@ get_weechat_plugins() {
 }
 
 get_irssi_plugins() {
+    # Clean up
     script_dir="irssi/scripts"
     rm -rf "${script_dir}"
     mkdir -p "${script_dir}/autorun"

@@ -19,7 +19,7 @@ endif
 
 " HTML/XML
 "Plugin 'mattn/emmet-vim'
-Plugin 'sukima/xmledit'
+"Plugin 'sukima/xmledit'
 
 " Utility
 "Plugin 'powerline/powerline'

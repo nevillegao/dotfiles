@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
+install() {
+    for i in *; do
+        if [[ "${i}" == $(basename $0) ]]; then
+            continue
+        fi
+
+        rm -rf "${HOME}/.${i}"
+        chmod -R go-rwx "${i}"
+        ln -sf "${PWD}/${i}" "${HOME}/.${i}"
+    done
+}
+
 get_vim_plugins() {
     # Clean up
     info_dir="${HOME}/.vim"
@@ -50,18 +62,6 @@ get_irssi_plugins() {
     for i in ${irssi_plugins[@]}; do
         svn export "https://github.com/irssi/scripts.irssi.org.git/trunk/scripts/${i}" "${script_dir}/${i}"
         (cd "${script_dir}/autorun" && ln -sf "../${i}")
-    done
-}
-
-install() {
-    for i in *; do
-        if [[ "${i}" == $(basename $0) ]]; then
-            continue
-        fi
-
-        rm -rf "${HOME}/.${i}"
-        chmod -R go-rwx "${i}"
-        ln -sf "${PWD}/${i}" "${HOME}/.${i}"
     done
 }
 

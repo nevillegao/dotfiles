@@ -14,7 +14,8 @@ test -f "${HOME}/.alias" && . "${HOME}/.alias"
 
 # Enable programmable completion
 test -f /etc/bash_completion && . /etc/bash_completion
-test -f "${HOME}/bin/chs_completion" && . "${HOME}/bin/chs_completion"
+test -f "${HOME}/bin/bash-completion-pinyin/chs_completion" && \
+. "${HOME}/bin/bash-completion-pinyin/chs_completion"
 
 # Color setup for 'ls'
 test -x /usr/bin/dircolors && eval "$(dircolors -b)"

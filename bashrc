@@ -72,19 +72,6 @@ export IGNOREEOF=100
 export EDITOR="/usr/bin/vim"
 export GROUP=$(id -gn)
 
-# GVim server mode
-gvim() {
-    if vim --version | grep "\+clientserver" &> /dev/null; then
-        GVIM_SERVER_ARG="--servername GVIMSERVER"
-
-        if [[ $# -ge 1 ]]; then
-            GVIM_CLIENT_ARG="--remote-tab-silent"
-        fi
-    fi
-
-    /usr/bin/gvim ${GVIM_SERVER_ARG} ${GVIM_CLIENT_ARG} "$@"
-}
-
 # Turn on sandbox for Chromium, set CHROME_DEVEL_SANDBOX to an empty string to
 # disable it
 export CHROME_DEVEL_SANDBOX="${HOME}/bin/chrome-linux/chrome_sandbox"

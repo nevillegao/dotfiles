@@ -6,10 +6,11 @@ call vundle#begin('$HOME/.vim.d/bundle')
 Plugin 'VundleVim/Vundle.vim'
 
 " Programming
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'Raimondi/delimitMate'
-Plugin 'majutsushi/tagbar'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
+Plugin 'Raimondi/delimitMate'
+Plugin 'jpalardy/vim-slime'
+Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 if v:version >= 703
     Plugin 'Valloric/YouCompleteMe'
@@ -22,8 +23,6 @@ endif
 "Plugin 'sukima/xmledit'
 
 " Utility
-"Plugin 'powerline/powerline'
-"Plugin 'bling/vim-airline'
 Plugin 'CmdlineComplete'
 Plugin 'rking/ag.vim'
 Plugin 'thinca/vim-visualstar'

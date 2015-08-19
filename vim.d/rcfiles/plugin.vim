@@ -38,6 +38,11 @@ let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 "let g:ycm_collect_identifiers_from_tags_files = 1
 
+" SLIME
+let g:slime_target = "tmux"
+let g:slime_paste_file = $HOME . '/.vim/slime_paste'
+let g:slime_python_ipython = 1
+
 " EasyMotion
 " surround
 " ctrl-p

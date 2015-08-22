@@ -1,12 +1,11 @@
 altscreen on
 defscrollback 50000
-#deflog on
 vbell off
 startup_message off
 shelltitle "> |"
-#password <PASSWORD>
+password ZC9LVqUuYN1eQ  # neville
 multiuser on
-#acladd root <PASSWORD>
+acladd root QCzfyCfbJo0tI  # root
 
 # Alt-; to switch to the previous window
 bindkey "^[;" prev

@@ -2,7 +2,7 @@
 let g:netrw_home = $HOME . '/.vim/netrw'
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 40
-noremap <silent> <C-E> :Lexplore<CR>
+noremap <silent> <Leader><F9> :Lexplore<CR>
 
 " Cmdline Complete
 cmap <C-Y> <Plug>CmdlineCompleteBackward
@@ -25,7 +25,7 @@ nnoremap <silent> <C-U> :GundoToggle<CR>
 "nnoremap <silent> <C-U> :UndotreeToggle<CR>
 
 " Tagbar
-nnoremap <silent> <Leader><F9> :TagbarToggle<CR>
+nnoremap <silent> <Leader><F11> :TagbarToggle<CR>
 
 " syntastic
 let g:syntastic_mode_map = {'mode': 'passive'}
@@ -44,5 +44,8 @@ let g:slime_paste_file = $HOME . '/.vim/slime_paste'
 let g:slime_python_ipython = 1
 
 " EasyMotion
+let g:EasyMotion_startofline = 0
+let g:EasyMotion_smartcase = 1
+
 " surround
 " ctrl-p

@@ -45,6 +45,7 @@ set statusline=%<[%n]\ %F\ %h%m%r%=%k[%{(&fenc==\'\')?&enc:&fenc}%{(&bomb?\',BOM
 set magic
 set incsearch
 set ignorecase
+set smartcase
 set hlsearch
 
 " Fold

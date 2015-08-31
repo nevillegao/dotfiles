@@ -22,5 +22,5 @@ if [[ -n "${DISPLAY}" && -x /usr/bin/xinput ]] && /usr/bin/xinput list | grep "$
     /usr/bin/xinput set-prop --type=int --format=8 "${DEV_NAME}" "Evdev Wheel Emulation Axes" 6 7 4 5
 fi
 
-# Load .bashrc if running bash
-test -n "${BASH_VERSION}" && test -r "${HOME}/.bashrc" && . "${HOME}/.bashrc"
+# Load .bashrc
+test -r "${HOME}/.bashrc" && . "${HOME}/.bashrc"

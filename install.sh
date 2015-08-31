@@ -37,8 +37,8 @@ get_vim_plugins() {
 get_weechat_plugins() {
     # Clean up
     declare -A dir=(["pl"]="perl")
-    for i in ${dir[@]}; do
-        script_dir="weechat/${i}"
+    for i in ${!dir[@]}; do
+        script_dir="weechat/${dir[$i]}"
         rm -rf "${script_dir}"
         mkdir -p "${script_dir}/autoload"
     done

@@ -2,7 +2,7 @@
 let g:netrw_home = $HOME . '/.vim/netrw'
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 40
-noremap <silent> <Leader><F5> :Lexplore<CR>
+noremap <silent> <Leader><F2> :Lexplore<CR>
 
 " Cmdline Complete
 cmap <C-Y> <Plug>CmdlineCompleteBackward
@@ -10,22 +10,22 @@ cmap <C-E> <Plug>CmdlineCompleteForward
 
 " Ag
 let g:ag_highlight = 1
-nnoremap <silent> <Leader><F6> :Ag <C-R>=expand('<cword>')<CR><CR>
+nnoremap <silent> <Leader><F3> :Ag <C-R>=expand('<cword>')<CR><CR>
 
 " Gundo
 let g:gundo_width = 30
 let g:gundo_preview_height = 25
 let g:gundo_preview_bottom = 1
-nnoremap <silent> <C-U> :GundoToggle<CR>
+nnoremap <silent> <Leader><F4> :GundoToggle<CR>
 
 " undotree
 "let g:undotree_WindowLayout = 2
 "let g:undotree_DiffpanelHeight = 25
 "let g:undotree_SetFocusWhenToggle = 1
-"nnoremap <silent> <C-U> :UndotreeToggle<CR>
+"nnoremap <silent> <Leader><F4> :UndotreeToggle<CR>
 
 " Tagbar
-nnoremap <silent> <Leader><F7> :TagbarToggle<CR>
+nnoremap <silent> <Leader><F5> :TagbarToggle<CR>
 
 " syntastic
 let g:syntastic_mode_map = {'mode': 'passive'}

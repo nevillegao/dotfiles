@@ -21,7 +21,7 @@ termcapinfo xterm 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
 defbce "on"
 
 caption always "%{Wb}%-w%{wr}[%n]%{-}%+w"
-hardstatus alwayslastline "%{R}[%n %t] %=%{G}[%Y-%m-%d %D %c:%s] %{Y}${LOGNAME}@%H"
+hardstatus alwayslastline "%{R}[%n %t] %=%{G}[%Y-%m-%d %D %0c:%s] %{Y}${LOGNAME}@%H"
 
 # Start as a login-shell
 shell -$SHELL

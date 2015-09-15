@@ -30,7 +30,7 @@ get_vim_plugins() {
 
     # Compile 'YouCompleteMe'
     if [[ -d "${bundle_dir}/YouCompleteMe" ]]; then
-        bash "${bundle_dir}/YouCompleteMe/install.sh"
+        bash "${bundle_dir}/YouCompleteMe/install.py"
     fi
 }
 

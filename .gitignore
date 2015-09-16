@@ -10,4 +10,7 @@ weechat/*
 !weechat/plugins.conf
 !weechat/weechat.conf
 
-irssi/scripts/*
+irssi/scripts/
+
+znc/*
+!znc/configs/

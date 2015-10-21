@@ -13,15 +13,20 @@ Host tunnel-local
     HostName 0.0.0.0
     LocalForward 80 127.0.0.1:8080
 
-Host *.redhat.com rh-*
-    User ngao
-
 Host rh-dev
     HostName ceehadoop1.gsslab.rdu2.redhat.com
 
 Host rh-docker
     HostName vm78.gsslab.rdu2.redhat.com
     User telemetry
+
+Host rh-pek
+    HostName 10.66.209.103
+    User root
+    ForwardX11 yes
+
+Host *.redhat.com rh-*
+    User ngao
 
 Host server
     HostName ngao-server.usersys.redhat.com

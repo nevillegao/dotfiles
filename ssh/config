@@ -31,8 +31,5 @@ Host *.redhat.com rh-*
 Host server
     HostName ngao-server.usersys.redhat.com
 
-Host rhel7
-    HostName 10.66.210.109
-
 Host work
     HostName 10.66.192.22

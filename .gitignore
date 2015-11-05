@@ -12,5 +12,8 @@ weechat/*
 
 irssi/scripts/
 
-znc/*
-!znc/configs/
+znc/moddata
+znc/users/*/moddata/*
+!znc/users/*/moddata/autoattach/
+znc/users/*/networks/*/moddata/*
+!znc/users/*/networks/*/moddata/perform/

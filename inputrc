@@ -1,15 +1,19 @@
 set bell-style none
-set visible-stats on
-set match-hidden-files off
-set show-all-if-unmodified on
-set completion-ignore-case on
+set visible-stats On
+set match-hidden-files Off
+set show-all-if-ambiguous On
+set show-all-if-unmodified On
+set completion-ignore-case On
+set completion-display-width 0
+set completion-prefix-display-length 1
+set mark-symlinked-directories On
+# set skip-completed-text On
 
-# Alt-h
 "\eh": dynamic-complete-history
-# Alt-s
-"\es": menu-complete
-# Ctrl-d
-"\C-d": magic-space
+"\er": forward-search-history
+C-j: menu-complete
+C-k: menu-complete-backward
+C-d: magic-space
 # Up
 "\e[A": history-search-backward
 # Down

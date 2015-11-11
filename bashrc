@@ -34,15 +34,6 @@ case "${TERM}" in
         ;;
 esac
 
-# Terminal color
-if [[ -n "${DISPLAY}" && -r /usr/share/terminfo/x/xterm+256color ]]; then
-    if [[ "${TERM}" =~ "xterm" ]]; then
-        export TERM="xterm-256color"
-    elif [[ "${TERM}" =~ "screen" ]]; then
-        export TERM="screen-256color"
-    fi
-fi
-
 # Utilities options
 export PYTHONSTARTUP="${HOME}/.pythonrc"
 export LESS="-M -i -R"

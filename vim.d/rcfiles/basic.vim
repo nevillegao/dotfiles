@@ -16,18 +16,14 @@ set wildmode=list:full
 set visualbell
 
 " Display
+syntax on
 silent! colorscheme desert256
-if &term =~ 'xterm'
-    set title
-    set icon
-    set t_AB=[48;5;%dm
-    set t_AF=[38;5;%dm
-elseif &term =~ 'screen'
+if &term =~ 'screen'
     set t_ts=k
     set t_fs=\
-    set title titlestring=%t
 endif
-syntax on
+set title
+set titlestring=%t
 set display=lastline
 set ruler
 set number

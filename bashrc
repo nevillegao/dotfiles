@@ -50,8 +50,8 @@ export LESS_TERMCAP_ue=$'\E[0m'         # exit underline mode
 
 # History options
 export HISTCONTROL=ignoredups:erasedups
-export HISTSIZE=1000000
-export HISTFILESIZE=1024000000
+export HISTSIZE=65535
+export HISTFILESIZE=1024000
 export HISTTIMEFORMAT="%F %T "
 shopt -s histappend
 export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND}"

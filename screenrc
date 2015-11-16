@@ -1,6 +1,6 @@
 term screen-256color
 altscreen on
-defscrollback 50000
+defscrollback 65535
 vbell off
 startup_message off
 shelltitle "> |"

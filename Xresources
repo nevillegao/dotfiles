@@ -7,13 +7,13 @@ URxvt*termName:                       rxvt-unicode-256color
 !URxvt*reverseVideo:                   boolean
 URxvt*loginShell:                     True
 !URxvt*multiClickTime:                 number
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!URxvt*jumpScroll:                     boolean
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!URxvt*skipScroll:                     boolean
+URxvt*jumpScroll:                     True
+!URxvt*skipScroll:                     boolean
 URxvt*pastableTabs:                   True
 URxvt*scrollstyle:                    plain
 !URxvt*scrollBar:                      boolean
 URxvt*scrollBar_right:                True
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!URxvt*scrollBar_floating:             False
+!URxvt*scrollBar_floating:             False
 !URxvt*scrollBar_align:                mode
 URxvt*thickness:                      6
 !URxvt*scrollTtyOutput:                boolean
@@ -71,7 +71,7 @@ URxvt*color15:                        #EEEEEC
 !URxvt*colorIT:                        color
 !URxvt*colorUL:                        color
 !URxvt*colorRV:                        color
-URxvt*underlineColor:                 Green
+!URxvt*underlineColor:                 color
 !URxvt*scrollColor:                    color
 !URxvt*troughColor:                    color
 !URxvt*highlightColor:                 color
@@ -86,10 +86,10 @@ URxvt*underlineColor:                 Green
 !URxvt*iconFile:                       file
 
 ! Font
-URxvt*font:                           xft:Consolas:size=14:style=Regular
-URxvt*boldFont:                       xft:Consolas:size=14:style=Bold
-URxvt*italicFont:                     xft:Consolas:size=14:style=Italic
-URxvt*boldItalicFont:                 xft:Consolas:size=14:style=Bold Italic
+URxvt*font:                           xft:Consolas:size=15
+!URxvt*boldFont:                       fontname
+!URxvt*italicFont:                     fontname
+!URxvt*boldItalicFont:                 fontname
 !URxvt*intensityStyles:                boolean
 !URxvt*inputMethod:                    name
 !URxvt*preeditType:                    style
@@ -121,24 +121,21 @@ URxvt*saveLines:                      65535
 !URxvt*secondaryScroll:                boolean
 !URxvt*perl-lib:                       string
 !URxvt*perl-eval:                      perl-eval
-URxvt*perl-ext-common:                default,matcher
+!URxvt*perl-ext-common:                string
 !URxvt*perl-ext:                       string
-!URxvt*iso14755:                       boolean
-!URxvt*iso14755_52:                    boolean
+URxvt*iso14755:                       False
+URxvt*iso14755_52:                    False
 !URxvt*xrm:                            string
-URxvt*keysym.C-C:                      perl:clipboard:copy
-URxvt*keysym.C-V:                      perl:clipboard:paste
+!URxvt*keysym.sym:                     keysym
 !URxvt*background.border:              boolean
 !URxvt*background.expr:                string
 !URxvt*background.interval:            seconds
 !URxvt*bell-command:                   string
 !URxvt*kuake.hotkey:                   string
-!!1!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-URxvt*matcher.button:                 1
+!URxvt*matcher.button:                 string
 !URxvt*matcher.launcher:               string
 !URxvt*matcher.launcher.*:             string
-URxvt*matcher.pattern.1:              \\bwww\\.[\\w-]+\\.[\\w./?&@#-]*[\\w/-]
-!URxvt*matcher.pattern.2:              [a-zA-Z\\d-@:%._+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_+.~#?&//=]*)
+!URxvt*matcher.pattern.*:              string
 !URxvt*matcher.rend.*:                 string
 !URxvt*remote-clipboard.fetch:         string
 !URxvt*remote-clipboard.store:         string
@@ -162,17 +159,14 @@ XTerm*scrollBar:                       True
 XTerm*rightScrollBar:                  True
 XTerm*cursorBlink:                     True
 XTerm*saveLines:                       65535
-XTerm*faceName:                        Dejavu Sans Mono
+XTerm*locale:                          True
+XTerm*faceName:                        Consolas
 XTerm*faceNameDoublesize:              LiHei Pro
-XTerm*faceSize:                        14
-XTerm*allowWindowOps:                  True
+XTerm*faceSize:                        15
 XTerm*metaSendsEscape:                 True
+XTerm*bellIsUrgent:                    True
 
 ! Color
-XTerm*colorBDMode:                     True
-XTerm*colorBD:                         Red
-XTerm*colorULMode:                     True
-XTerm*colorUL:                         Green
 !Tango scheme
 XTerm*background:                      Black
 XTerm*foreground:                      White
@@ -200,3 +194,8 @@ XTerm*color14:                         #34E2E2
 !White
 XTerm*color7:                          #D3D7CF
 XTerm*color15:                         #EEEEEC
+
+!XTerm*colorBDMode:                     colour
+!XTerm*colorBD:                         colour
+!XTerm*colorULMode:                     colour
+!XTerm*colorUL:                         colour

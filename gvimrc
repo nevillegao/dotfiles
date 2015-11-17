@@ -1,5 +1,5 @@
 set t_vb=
-set guifont=Monaco\ 12
+set guifont=Consolas\ 14
 
 nnoremap <F1> :h
 

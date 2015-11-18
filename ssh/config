@@ -2,7 +2,6 @@
 
 ServerAliveInterval 60
 Compression yes
-ForwardAgent yes
 
 # Share connections
 ControlMaster auto
@@ -13,8 +12,9 @@ Host tunnel-local
     HostName 0.0.0.0
     LocalForward 80 127.0.0.1:8080
 
-Host rh-dev
-    HostName ceehadoop1.gsslab.rdu2.redhat.com
+Host ceehadoop1 ceehadoop2 ceehadoop3 ceehadoop4
+    HostName %h.gsslab.rdu2.redhat.com
+    User ngao
 
 Host rh-docker
     HostName vm78.gsslab.rdu2.redhat.com
@@ -25,11 +25,18 @@ Host rh-pek
     User root
     ForwardX11 yes
 
-Host *.redhat.com rh-*
-    User ngao
+Host insights-batch-pek-server.usersys.redhat.com
+Host insights-batch-pek-1.usersys.redhat.com
+Host insights-batch-pek-2.usersys.redhat.com
+Host insights-batch-pek-3.usersys.redhat.com
+Host insights-batch-pek-4.usersys.redhat.com
+Host insights-batch-pek-5.usersys.redhat.com
+Host insights-batch-pek-6.usersys.redhat.com
+Host insights-batch-pek-*
+    User root
+
+Host work
+    HostName ngao.usersys.redhat.com
 
 Host server
     HostName ngao-server.usersys.redhat.com
-
-Host work
-    HostName 10.66.192.22

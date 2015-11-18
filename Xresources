@@ -8,17 +8,17 @@ URxvt*termName:                       rxvt-unicode-256color
 URxvt*loginShell:                     True
 !URxvt*multiClickTime:                 number
 URxvt*jumpScroll:                     True
-!URxvt*skipScroll:                     boolean
+URxvt*skipScroll:                     False
 URxvt*pastableTabs:                   True
-URxvt*scrollstyle:                    plain
-!URxvt*scrollBar:                      boolean
-URxvt*scrollBar_right:                True
+!URxvt*scrollstyle:                    mode
+URxvt*scrollBar:                      False
+!URxvt*scrollBar_right:                boolean
 !URxvt*scrollBar_floating:             False
 !URxvt*scrollBar_align:                mode
-URxvt*thickness:                      6
-!URxvt*scrollTtyOutput:                boolean
-!URxvt*scrollTtyKeypress:              boolean
-!URxvt*scrollWithBuffer:               boolean
+!URxvt*thickness:                      number
+URxvt*scrollTtyOutput:                False
+URxvt*scrollTtyKeypress:              True
+URxvt*scrollWithBuffer:               True
 !URxvt*inheritPixmap:                  boolean
 !URxvt*transparent:                    boolean
 !URxvt*tintColor:                      color
@@ -154,17 +154,20 @@ URxvt*iso14755_52:                    False
 !!=========================
 !! xterm Setting
 !!=========================
+XTerm*fullscreen:                      true
 XTerm*termName:                        xterm-256color
-XTerm*scrollBar:                       True
-XTerm*rightScrollBar:                  True
-XTerm*cursorBlink:                     True
+!XTerm*scrollBar:                       boolean
+!XTerm*rightScrollBar:                  boolean
+XTerm*scrollTtyOutput:                 false
+XTerm*scrollKey:                       true
+XTerm*cursorBlink:                     true
 XTerm*saveLines:                       65535
-XTerm*locale:                          True
+XTerm*locale:                          true
 XTerm*faceName:                        Consolas
 XTerm*faceNameDoublesize:              LiHei Pro
 XTerm*faceSize:                        15
-XTerm*metaSendsEscape:                 True
-XTerm*bellIsUrgent:                    True
+XTerm*metaSendsEscape:                 true
+XTerm*bellIsUrgent:                    true
 
 ! Color
 !Tango scheme

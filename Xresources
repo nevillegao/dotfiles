@@ -68,9 +68,9 @@ URxvt*color7:                         #D3D7CF
 URxvt*color15:                        #EEEEEC
 
 URxvt*colorBD:                        red
-URxvt*colorIT:                        blue
+URxvt*colorIT:                        pink
 URxvt*colorUL:                        green
-!URxvt*colorRV:                        color
+URxvt*colorRV:                        blue
 !URxvt*underlineColor:                 color
 !URxvt*scrollColor:                    color
 !URxvt*troughColor:                    color
@@ -154,7 +154,7 @@ URxvt*iso14755_52:                    False
 !!=========================
 !! xterm Setting
 !!=========================
-XTerm*fullscreen:                      true
+!XTerm*fullscreen:                      boolean
 XTerm*termName:                        xterm-256color
 !XTerm*scrollBar:                       boolean
 !XTerm*rightScrollBar:                  boolean
@@ -201,7 +201,9 @@ XTerm*color15:                         #EEEEEC
 XTerm*colorBDMode:                     true
 XTerm*colorBD:                         red
 XTerm*colorITMode:                     true
-XTerm*colorIT:                         blue
+XTerm*colorIT:                         pink
 XTerm*colorULMode:                     true
 XTerm*colorUL:                         green
+XTerm*colorRVMode:                     true
+XTerm*colorRV:                         blue
 XTerm*veryBoldColors:                  518

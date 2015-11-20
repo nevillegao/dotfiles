@@ -40,13 +40,13 @@ URxvt*cursorBlink:                    True
 
 ! Color
 !Tango scheme
-URxvt*background:                     Black
-URxvt*foreground:                     White
+URxvt*background:                     black
+URxvt*foreground:                     white
 !Black
-URxvt*color0:                         Black
+URxvt*color0:                         black
 URxvt*color8:                         #555753
 !Red
-URxvt*color1:                         Red
+URxvt*color1:                         red
 URxvt*color9:                         #EF2929
 !Green
 URxvt*color2:                         #4E9A06
@@ -67,9 +67,9 @@ URxvt*color14:                        #34E2E2
 URxvt*color7:                         #D3D7CF
 URxvt*color15:                        #EEEEEC
 
-!URxvt*colorBD:                        color
-!URxvt*colorIT:                        color
-!URxvt*colorUL:                        color
+URxvt*colorBD:                        red
+URxvt*colorIT:                        blue
+URxvt*colorUL:                        green
 !URxvt*colorRV:                        color
 !URxvt*underlineColor:                 color
 !URxvt*scrollColor:                    color
@@ -121,7 +121,7 @@ URxvt*saveLines:                      65535
 !URxvt*secondaryScroll:                boolean
 !URxvt*perl-lib:                       string
 !URxvt*perl-eval:                      perl-eval
-!URxvt*perl-ext-common:                string
+URxvt*perl-ext-common:                default,matcher
 !URxvt*perl-ext:                       string
 URxvt*iso14755:                       False
 URxvt*iso14755_52:                    False
@@ -171,13 +171,13 @@ XTerm*bellIsUrgent:                    true
 
 ! Color
 !Tango scheme
-XTerm*background:                      Black
-XTerm*foreground:                      White
+XTerm*background:                      black
+XTerm*foreground:                      white
 !Black
-XTerm*color0:                          Black
+XTerm*color0:                          black
 XTerm*color8:                          #555753
 !Red
-XTerm*color1:                          Red
+XTerm*color1:                          red
 XTerm*color9:                          #EF2929
 !Green
 XTerm*color2:                          #4E9A06
@@ -198,7 +198,10 @@ XTerm*color14:                         #34E2E2
 XTerm*color7:                          #D3D7CF
 XTerm*color15:                         #EEEEEC
 
-!XTerm*colorBDMode:                     colour
-!XTerm*colorBD:                         colour
-!XTerm*colorULMode:                     colour
-!XTerm*colorUL:                         colour
+XTerm*colorBDMode:                     true
+XTerm*colorBD:                         red
+XTerm*colorITMode:                     true
+XTerm*colorIT:                         blue
+XTerm*colorULMode:                     true
+XTerm*colorUL:                         green
+XTerm*veryBoldColors:                  518

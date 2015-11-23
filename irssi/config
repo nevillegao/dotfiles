@@ -1,6 +1,6 @@
 servers = (
   {
-    address = "irc.freenode.net";
+    address = "chat.freenode.net";
     chatnet = "Freenode";
     port = "6667";
   },
@@ -39,6 +39,8 @@ servers = (
 chatnets = {
   Freenode = {
     type = "IRC";
+    real_name = "Figod";
+    user_name = "figod";
     nick = "figod";
   };
   GIMPNet = {
@@ -69,31 +71,6 @@ channels = (
   {
     name = "#beijinggug";
     chatnet = "GIMPNet";
-  },
-  {
-    name = "#eng-china";
-    chatnet = "RedHat1";
-    autojoin = "yes";
-  },
-  {
-    name = "#beijing";
-    chatnet = "RedHat1";
-    autojoin = "yes";
-  },
-  {
-    name = "#customer-platform";
-    chatnet = "RedHat1";
-    autojoin = "yes";
-  },
-  {
-    name = "#wabash";
-    chatnet = "RedHat1";
-    autojoin = "yes";
-  },
-  {
-    name = "#rhphd";
-    chatnet = "RedHat1";
-    autojoin = "yes";
   },
   {
     name = "#Insights";

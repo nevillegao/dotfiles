@@ -1,5 +1,6 @@
 # If not running interactively, don't do anything
-test -z "${PS1}" && exit
+# This needs to be disabled to invoke 'mosh'
+# test -z "${PS1}" && exit
 
 # Check the window size after each command and, if necessary, update the
 # values of LINES and COLUMNS

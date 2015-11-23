@@ -17,7 +17,7 @@ alias mv='mv -i'
 alias grep='grep --color=always -PnI'
 
 alias screen='screen -xR'
-alias tmux='tmux new-session -A'
+alias tmux='tmux attach-session || tmux new-session -A'
 alias diff='colordiff'
 alias emacs='emacs -nw'
 

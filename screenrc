@@ -3,7 +3,7 @@ altscreen on
 defscrollback 65535
 vbell off
 startup_message off
-shelltitle "> |"
+shelltitle "$ |"
 password ZC9LVqUuYN1eQ  # neville
 multiuser on
 acladd root QCzfyCfbJo0tI  # root
@@ -13,8 +13,8 @@ bindkey "^[;" prev
 # Alt-' to switch to the next window
 bindkey "^['" next
 
-caption always "%{Wb}%-w%{wr}[%n]%{-}%+w"
-hardstatus alwayslastline "%{R}[%n %t] %=%{G}[%Y-%m-%d %D %0c:%s] %{Y}${LOGNAME}@%H"
+caption always "%{bk}%-w%{wr}[%n %h]%{-}%+w %=%{G}[%Y-%m-%d %D %0c:%s] %{Y}${LOGNAME}@%H"
+hardstatus string "%h"
 
 # Start as a login-shell
 shell -$SHELL

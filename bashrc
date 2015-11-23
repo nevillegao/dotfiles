@@ -29,7 +29,13 @@ case "${TERM}" in
     screen*)
         export PS1="\[${ECYAN}\][\u\[${NO_COLOR}\]:\[${EYELLOW}\]\W]\[${NO_COLOR}\]$ "
         update_title() { printf "\e]0;%s\e\\" "$1"; }
-        export PROMPT_COMMAND='echo -ne "\ek${USER}@${HOSTNAME%%.*}:${PWD/$HOME/\~}\e\\"; update_title ${PWD/$HOME/\~}'
+
+        if [[ -n ${TMUX} ]]; then
+            export PROMPT_COMMAND='echo -ne "\ek${USER}@${HOSTNAME%%/*}:${PWD/$HOME/\~}\e\\"; update_title ${PWD/$HOME/\~}'
+        else
+            export PROMPT_COMMAND='echo -ne "\ek${PWD/$HOME/\~}\e\\"; update_title ${PWD/$HOME/\~}'
+        fi
+
         trap 'update_title "${BASH_COMMAND}"' DEBUG
         ;;
     *)

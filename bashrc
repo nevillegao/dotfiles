@@ -21,14 +21,15 @@ test -f "${HOME}/bin/bash-completion-pinyin/chs_completion" && \
 test -x /usr/bin/dircolors && eval "$(dircolors -b)"
 
 # Terminal title
-export PS1="\[${ECYAN}\][\u\[${NO_COLOR}\]:\[${EYELLOW}\]\W]\[${NO_COLOR}\]$ "
 case "${TERM}" in
     xterm*|rxvt*)
-        export PROMPT_COMMAND='echo -ne "\e]0;$(ppwd)\a"'
+        export PS1="\[${ECYAN}\][\u${NO_COLOR}@${EMAGENTA}${HOSTNAME%%.*}\[${NO_COLOR}\]:\[${EYELLOW}\]\W]\[${NO_COLOR}\]$ "
+        export PROMPT_COMMAND='echo -ne "\e]0;${PWD/$HOME/\~}\a"'
         ;;
     screen*)
+        export PS1="\[${ECYAN}\][\u\[${NO_COLOR}\]:\[${EYELLOW}\]\W]\[${NO_COLOR}\]$ "
         update_title() { printf "\e]0;%s\e\\" "$1"; }
-        export PROMPT_COMMAND='echo -ne "\ek$(ppwd)\e\\"; update_title $(ppwd)'
+        export PROMPT_COMMAND='echo -ne "\ek${USER}@${HOSTNAME%%.*}:${PWD/$HOME/\~}\e\\"; update_title ${PWD/$HOME/\~}'
         trap 'update_title "${BASH_COMMAND}"' DEBUG
         ;;
     *)

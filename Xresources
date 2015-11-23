@@ -86,10 +86,10 @@ URxvt*colorRV:                        blue
 !URxvt*iconFile:                       file
 
 ! Font
-URxvt*font:                           xft:Consolas:size=15
-!URxvt*boldFont:                       fontname
-!URxvt*italicFont:                     fontname
-!URxvt*boldItalicFont:                 fontname
+URxvt*font:                           xft:Consolas:style=Regular:size=15,xft:Microsoft YaHei:style=Regular:size=15
+URxvt*boldFont:                       xft:Consolas:style=Bold:size=15,xft:Microsoft YaHei:style=Bold:size:15
+URxvt*italicFont:                     xft:Consolas:style=Italic:size=15
+URxvt*boldItalicFont:                 xft:Consolas:style=Bold Italic:size=15
 !URxvt*intensityStyles:                boolean
 !URxvt*inputMethod:                    name
 !URxvt*preeditType:                    style
@@ -164,7 +164,7 @@ XTerm*cursorBlink:                     true
 XTerm*saveLines:                       65535
 XTerm*locale:                          true
 XTerm*faceName:                        Consolas
-XTerm*faceNameDoublesize:              LiHei Pro
+XTerm*faceNameDoublesize:              Microsoft YaHei
 XTerm*faceSize:                        15
 XTerm*metaSendsEscape:                 true
 XTerm*bellIsUrgent:                    true

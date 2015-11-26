@@ -21,6 +21,7 @@ test -f "${HOME}/bin/bash-completion-pinyin/chs_completion" && \
 # Color setup for 'ls'
 test -x /usr/bin/dircolors && eval "$(dircolors -b)"
 
+export PS1="\[${ECYAN}\][\u\[${NO_COLOR}\]:\[${EYELLOW}\]\W]\[${NO_COLOR}\]$ "
 # Terminal title
 case "${TERM}" in
     xterm*|rxvt*)
@@ -28,7 +29,6 @@ case "${TERM}" in
         export PROMPT_COMMAND='echo -ne "\e]0;${PWD/$HOME/\~}\a"'
         ;;
     screen*)
-        export PS1="\[${ECYAN}\][\u\[${NO_COLOR}\]:\[${EYELLOW}\]\W]\[${NO_COLOR}\]$ "
         update_title() { printf "\e]0;%s\e\\" "$1"; }
 
         if [[ -n ${TMUX} ]]; then

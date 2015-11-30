@@ -2,20 +2,21 @@ set bell-style none
 set match-hidden-files Off
 set colored-stats On
 set visible-stats On
-set show-all-if-ambiguous On
 set show-all-if-unmodified On
 set mark-symlinked-directories On
+set expand-tilde Off
 set completion-ignore-case On
 set completion-display-width 0
 set completion-prefix-display-length 1
 set skip-completed-text On
 
-"\eh": dynamic-complete-history
-"\er": forward-search-history
-"\C-j": menu-complete
-"\C-k": menu-complete-backward
-"\C-d": magic-space
+"\ej": menu-complete
+"\ek": menu-complete-backward
 # Up
 "\e[A": history-search-backward
 # Down
 "\e[B": history-search-forward
+"\eh": dynamic-complete-history
+"\C-d": magic-space
+
+"\C-x\C-q": "exit\n"

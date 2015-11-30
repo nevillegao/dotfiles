@@ -17,6 +17,5 @@ set skip-completed-text On
 # Down
 "\e[B": history-search-forward
 "\eh": dynamic-complete-history
-"\C-d": magic-space
 
 "\C-x\C-q": "exit\n"

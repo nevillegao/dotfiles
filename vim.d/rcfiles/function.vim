@@ -4,10 +4,12 @@ let @n=expand('%:p')
 autocmd BufNewFile,BufRead Makefile
     \ set noexpandtab
 
-" When editing a file, always jump to the last known cursor position
-autocmd BufReadPost *
-    \ if line("'\"") > 0 && line("'\"") <= line('$') |
-    \     exe 'normal g`"' |
+" When editing a file, always jump to the last known cursor position and line
+" it at center of window
+autocmd BufEnter *
+    \ let last_cur_pos = line("'\"") |
+    \ if last_cur_pos >= 1 && last_cur_pos <= line("$") |
+    \     exe "normal! " . last_cur_pos . "zz" |
     \ endif
 
 " Only open the file smaller than 100MB

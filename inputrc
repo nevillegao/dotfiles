@@ -4,7 +4,6 @@ set colored-stats On
 set visible-stats On
 set show-all-if-unmodified On
 set mark-symlinked-directories On
-set expand-tilde Off
 set completion-ignore-case On
 set completion-display-width 0
 set completion-prefix-display-length 1
@@ -18,4 +17,4 @@ set skip-completed-text On
 "\e[B": history-search-forward
 "\eh": dynamic-complete-history
 
-"\C-x\C-q": "exit\n"
+"\eq\ep": "exit\n"

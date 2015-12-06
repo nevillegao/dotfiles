@@ -13,28 +13,74 @@ stty -ixon
 test -f "${HOME}/.colors" && . "${HOME}/.colors"
 test -f "${HOME}/.alias" && . "${HOME}/.alias"
 
+# Enable programmable completion
+if [[ -e /etc/bash_completion ]]; then
+    . /etc/bash_completion
+
+    if [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
+        . /usr/lib/git-core/git-sh-prompt
+
+        PROMPT_GIT_ENABLE=1
+    fi
+fi
+
+if [[ -e "${HOME}/bin/bash-completion-pinyin/chs_completion" ]]; then
+    . "${HOME}/bin/bash-completion-pinyin/chs_completion"
+fi
+
 # Terminal prompt string & title
-export PS1="\[${ECYAN}\][\u\[${NO_COLOR}\]:\[${EYELLOW}\]\W]\[${NO_COLOR}\]$ "
 case "${TERM}" in
     xterm*|rxvt*)
-        export PS1="\[${ECYAN}\][\u${NO_COLOR}@${EMAGENTA}${HOSTNAME%%.*}\[${NO_COLOR}\]:\[${EYELLOW}\]\W]\[${NO_COLOR}\]$ "
+        PROMPT_HOST_ENABLE=1
+
         export PROMPT_COMMAND='echo -ne "\e]0;${PWD/$HOME/\~}\a"'
         ;;
     screen*)
-        update_title() { printf "\e]0;%s\e\\" "$1"; }
+        update_title() {
+            # Ignore git-prompt
+            if [[ $1 =~ "__git_ps1" ]]; then
+                return
+            fi
+
+            printf "\e]0;%s\e\\" "$1";
+        }
 
         if [[ -n ${TMUX} ]]; then
             export PROMPT_COMMAND='echo -ne "\ek${USER}@${HOSTNAME%%/*}:${PWD/$HOME/\~}\e\\"; update_title ${PWD/$HOME/\~}'
-        else
-            export PROMPT_COMMAND='echo -ne "\ek${PWD/$HOME/\~}\e\\"; update_title ${PWD/$HOME/\~}'
-        fi
 
-        trap 'update_title "${BASH_COMMAND}"' DEBUG
+            trap 'update_title "${BASH_COMMAND}"' DEBUG
+        else
+            export PROMPT_COMMAND='echo -ne "\ek${PWD/$HOME/\~}\e\\"'
+        fi
         ;;
     *)
-        export PS1="\[${EMAGENTA}\][\A]${PS1}"
+        PROMPT_TIME_ENABLE=1
         ;;
 esac
+
+PROMPT_USER="\[${COLOR_ECYAN}\][\u\[${COLOR_NO}\]"
+PROMPT_HOST="${PROMPT_HOST_ENABLE:+\[${COLOR_NO}\]@\[${COLOR_EMAGENTA}\]${HOSTNAME%%.*}\[${COLOR_NO}\]}"
+PROMPT_PATH="\[${COLOR_NO}\]:\[${COLOR_EYELLOW}\]\W]\[${COLOR_NO}\]"
+PROMPT_TIME="${PROMPT_TIME_ENABLE:+\[${COLOR_EMAGENTA}\][\A]\[${COLOR_NO}\]}"
+PROMPT_STR="${PROMPT_TIME}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PATH}"
+
+if [[ -n ${PROMPT_GIT_ENABLE} ]]; then
+    export GIT_PS1_SHOWDIRTYSTATE=1
+    export GIT_PS1_SHOWSTASHSTATE=1
+    export GIT_PS1_SHOWUNTRACKEDFILES=1
+    export GIT_PS1_SHOWUPSTREAM="verbose"
+    export GIT_PS1_DESCRIBE_STYLE="branch"
+    export GIT_PS1_SHOWCOLORHINTS=1
+    export GIT_PS1_HIDE_IF_PWD_IGNORED=1
+
+    if [[ -n ${GIT_PS1_SHOWCOLORHINTS} ]]; then
+        export PROMPT_COMMAND="${PROMPT_COMMAND}; "'__git_ps1 "${PROMPT_STR}" "\\\$ "'
+    fi
+
+    PROMPT_GIT="\[${COLOR_ERED}\]\$(__git_ps1 ' (%s)')\[${COLOR_NO}\]"
+fi
+
+export PS1="${PROMPT_STR}${PROMPT_GIT}\$ "
 
 # History options
 export HISTCONTROL=ignoredups:erasedups
@@ -46,11 +92,6 @@ export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND}"
 
 # Type Ctrl-d 100 times to exit shell to prevent accidental exiting
 export IGNOREEOF=100
-
-# Enable programmable completion
-test -f /etc/bash_completion && . /etc/bash_completion
-test -f "${HOME}/bin/bash-completion-pinyin/chs_completion" && \
-. "${HOME}/bin/bash-completion-pinyin/chs_completion"
 
 # Color setup for 'ls'
 test -x /usr/bin/dircolors && eval "$(dircolors -b)"

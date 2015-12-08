@@ -54,6 +54,8 @@ PROMPT_PATH="\[${COLOR_NO}\]:\[${COLOR_EYELLOW}\]\W]\[${COLOR_NO}\]"
 PROMPT_TIME="${PROMPT_TIME_ENABLE:+\[${COLOR_EMAGENTA}\][\A]\[${COLOR_NO}\]}"
 PROMPT_STR="${PROMPT_TIME}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PATH}"
 
+export PS1="${PROMPT_STR}${PROMPT_GIT}\\\$ "
+
 # Enable third party git prompt
 if [[ -e "${BIN_DIR}/bash-git-prompt/gitprompt.sh" ]]; then
     GIT_PROMPT_ONLY_IN_REPO=1
@@ -80,8 +82,6 @@ elif [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
 
     . /usr/lib/git-core/git-sh-prompt
 fi
-
-export PS1="${PROMPT_STR}${PROMPT_GIT}\$ "
 
 # History options
 export HISTCONTROL=ignoredups:erasedups

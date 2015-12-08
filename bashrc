@@ -1,7 +1,3 @@
-# If not running interactively, don't do anything
-# This needs to be disabled to invoke 'mosh'
-# test -z "${PS1}" && exit
-
 # Check the window size after each command and, if necessary, update the
 # values of LINES and COLUMNS
 shopt -s checkwinsize
@@ -17,11 +13,20 @@ test -f "${HOME}/.alias" && . "${HOME}/.alias"
 if [[ -e /etc/bash_completion ]]; then
     . /etc/bash_completion
 
-    if [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
-        . /usr/lib/git-core/git-sh-prompt
+    # Enable built-in git prompt
+    # if [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
+    #     GIT_PS1_SHOWDIRTYSTATE=1
+    #     GIT_PS1_SHOWSTASHSTATE=1
+    #     GIT_PS1_SHOWUNTRACKEDFILES=1
+    #     GIT_PS1_SHOWUPSTREAM="verbose"
+    #     GIT_PS1_DESCRIBE_STYLE="branch"
+    #     GIT_PS1_SHOWCOLORHINTS=1
+    #     GIT_PS1_HIDE_IF_PWD_IGNORED=1
 
-        PROMPT_GIT_ENABLE=1
-    fi
+    #     . /usr/lib/git-core/git-sh-prompt
+
+    #     PROMPT_GIT_BUILT_IN_ENABLE=1
+    # fi
 fi
 
 if [[ -e "${HOME}/bin/bash-completion-pinyin/chs_completion" ]]; then
@@ -33,12 +38,12 @@ case "${TERM}" in
     xterm*|rxvt*)
         PROMPT_HOST_ENABLE=1
 
-        export PROMPT_COMMAND='echo -ne "\e]0;${PWD/$HOME/\~}\a"'
+        export PROMPT_COMMAND='echo -ne "\e]0;${PWD/${HOME}/\~}\a"'
         ;;
     screen*)
         update_title() {
             # Ignore git-prompt
-            if [[ $1 =~ "__git_ps1" ]]; then
+            if [[ "__git_ps1 setGitPrompt" =~ $1 ]]; then
                 return
             fi
 
@@ -46,11 +51,11 @@ case "${TERM}" in
         }
 
         if [[ -n ${TMUX} ]]; then
-            export PROMPT_COMMAND='echo -ne "\ek${USER}@${HOSTNAME%%/*}:${PWD/$HOME/\~}\e\\"; update_title ${PWD/$HOME/\~}'
+            export PROMPT_COMMAND='echo -ne "\ek${USER}@${HOSTNAME%%/*}:${PWD/${HOME}/\~}\e\\"; update_title ${PWD/${HOME}/\~}'
 
             trap 'update_title "${BASH_COMMAND}"' DEBUG
         else
-            export PROMPT_COMMAND='echo -ne "\ek${PWD/$HOME/\~}\e\\"'
+            export PROMPT_COMMAND='echo -ne "\ek${PWD/${HOME}/\~}\e\\"'
         fi
         ;;
     *)
@@ -64,20 +69,12 @@ PROMPT_PATH="\[${COLOR_NO}\]:\[${COLOR_EYELLOW}\]\W]\[${COLOR_NO}\]"
 PROMPT_TIME="${PROMPT_TIME_ENABLE:+\[${COLOR_EMAGENTA}\][\A]\[${COLOR_NO}\]}"
 PROMPT_STR="${PROMPT_TIME}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PATH}"
 
-if [[ -n ${PROMPT_GIT_ENABLE} ]]; then
-    export GIT_PS1_SHOWDIRTYSTATE=1
-    export GIT_PS1_SHOWSTASHSTATE=1
-    export GIT_PS1_SHOWUNTRACKEDFILES=1
-    export GIT_PS1_SHOWUPSTREAM="verbose"
-    export GIT_PS1_DESCRIBE_STYLE="branch"
-    export GIT_PS1_SHOWCOLORHINTS=1
-    export GIT_PS1_HIDE_IF_PWD_IGNORED=1
+if [[ -n ${PROMPT_GIT_BUILT_IN_ENABLE} ]]; then
+    PROMPT_GIT="\[${COLOR_ERED}\]\$(__git_ps1 ' (%s)')\[${COLOR_NO}\]"
 
     if [[ -n ${GIT_PS1_SHOWCOLORHINTS} ]]; then
         export PROMPT_COMMAND="${PROMPT_COMMAND}; "'__git_ps1 "${PROMPT_STR}" "\\\$ "'
     fi
-
-    PROMPT_GIT="\[${COLOR_ERED}\]\$(__git_ps1 ' (%s)')\[${COLOR_NO}\]"
 fi
 
 export PS1="${PROMPT_STR}${PROMPT_GIT}\$ "
@@ -112,6 +109,15 @@ export LESS_TERMCAP_se=$(echo -ne "\e[0m")         # end standout mode
 export LESS_TERMCAP_us=$(echo -ne "\e[04;32m")     # start underlining
 export LESS_TERMCAP_ue=$(echo -ne "\e[0m")         # end underlining
 export LESS_TERMCAP_me=$(echo -ne "\e[0m")         # end all mode like so, us, mb, md, and mr
+
+# Enable third party git prompt if built-in git prompt is not enabled
+if [[ -z ${PROMPT_GIT_BUILT_IN_ENABLE} && -e ~/bin/bash-git-prompt/gitprompt.sh ]]; then
+    GIT_PROMPT_ONLY_IN_REPO=1
+    GIT_PROMPT_FETCH_REMOTE_STATUS=0
+    GIT_PROMPT_THEME=Custom
+
+    . ~/bin/bash-git-prompt/gitprompt.sh
+fi
 
 # Turn on sandbox for Chromium, set CHROME_DEVEL_SANDBOX to an empty string to
 # disable it

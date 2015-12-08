@@ -5,32 +5,17 @@ shopt -s checkwinsize
 # Disable XON/XOFF flow control
 stty -ixon
 
+BIN_DIR="${HOME}/bin"
+
 # Load various rc files
 test -f "${HOME}/.colors" && . "${HOME}/.colors"
 test -f "${HOME}/.alias" && . "${HOME}/.alias"
 
 # Enable programmable completion
-if [[ -e /etc/bash_completion ]]; then
-    . /etc/bash_completion
+test -e /etc/bash_completion && . /etc/bash_completion
 
-    # Enable built-in git prompt
-    # if [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
-    #     GIT_PS1_SHOWDIRTYSTATE=1
-    #     GIT_PS1_SHOWSTASHSTATE=1
-    #     GIT_PS1_SHOWUNTRACKEDFILES=1
-    #     GIT_PS1_SHOWUPSTREAM="verbose"
-    #     GIT_PS1_DESCRIBE_STYLE="branch"
-    #     GIT_PS1_SHOWCOLORHINTS=1
-    #     GIT_PS1_HIDE_IF_PWD_IGNORED=1
-
-    #     . /usr/lib/git-core/git-sh-prompt
-
-    #     PROMPT_GIT_BUILT_IN_ENABLE=1
-    # fi
-fi
-
-if [[ -e "${HOME}/bin/bash-completion-pinyin/chs_completion" ]]; then
-    . "${HOME}/bin/bash-completion-pinyin/chs_completion"
+if [[ -e "${BIN_DIR}/bash-completion-pinyin/chs_completion" ]]; then
+    . "${BIN_DIR}/bash-completion-pinyin/chs_completion"
 fi
 
 # Terminal prompt string & title
@@ -43,14 +28,14 @@ case "${TERM}" in
     screen*)
         update_title() {
             # Ignore git-prompt
-            if [[ "__git_ps1 setGitPrompt" =~ $1 ]]; then
+            if [[ $1 =~ "__git_ps1" || $1 =~ "setGitPrompt" ]]; then
                 return
             fi
 
             printf "\e]0;%s\e\\" "$1";
         }
 
-        if [[ -n ${TMUX} ]]; then
+        if [[ -n "${TMUX}" ]]; then
             export PROMPT_COMMAND='echo -ne "\ek${USER}@${HOSTNAME%%/*}:${PWD/${HOME}/\~}\e\\"; update_title ${PWD/${HOME}/\~}'
 
             trap 'update_title "${BASH_COMMAND}"' DEBUG
@@ -69,12 +54,31 @@ PROMPT_PATH="\[${COLOR_NO}\]:\[${COLOR_EYELLOW}\]\W]\[${COLOR_NO}\]"
 PROMPT_TIME="${PROMPT_TIME_ENABLE:+\[${COLOR_EMAGENTA}\][\A]\[${COLOR_NO}\]}"
 PROMPT_STR="${PROMPT_TIME}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PATH}"
 
-if [[ -n ${PROMPT_GIT_BUILT_IN_ENABLE} ]]; then
+# Enable third party git prompt
+if [[ -e "${BIN_DIR}/bash-git-prompt/gitprompt.sh" ]]; then
+    GIT_PROMPT_ONLY_IN_REPO=1
+    GIT_PROMPT_FETCH_REMOTE_STATUS=0
+    GIT_PROMPT_THEME=Custom
+
+    . "${BIN_DIR}/bash-git-prompt/gitprompt.sh"
+
+# Enable built-in git prompt
+elif [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
+    GIT_PS1_SHOWDIRTYSTATE=1
+    GIT_PS1_SHOWSTASHSTATE=1
+    GIT_PS1_SHOWUNTRACKEDFILES=1
+    GIT_PS1_SHOWUPSTREAM="verbose"
+    GIT_PS1_DESCRIBE_STYLE="branch"
+    GIT_PS1_SHOWCOLORHINTS=1
+    GIT_PS1_HIDE_IF_PWD_IGNORED=1
+
     PROMPT_GIT="\[${COLOR_ERED}\]\$(__git_ps1 ' (%s)')\[${COLOR_NO}\]"
 
-    if [[ -n ${GIT_PS1_SHOWCOLORHINTS} ]]; then
+    if [[ -n "${GIT_PS1_SHOWCOLORHINTS}" ]]; then
         export PROMPT_COMMAND="${PROMPT_COMMAND}; "'__git_ps1 "${PROMPT_STR}" "\\\$ "'
     fi
+
+    . /usr/lib/git-core/git-sh-prompt
 fi
 
 export PS1="${PROMPT_STR}${PROMPT_GIT}\$ "
@@ -109,15 +113,6 @@ export LESS_TERMCAP_se=$(echo -ne "\e[0m")         # end standout mode
 export LESS_TERMCAP_us=$(echo -ne "\e[04;32m")     # start underlining
 export LESS_TERMCAP_ue=$(echo -ne "\e[0m")         # end underlining
 export LESS_TERMCAP_me=$(echo -ne "\e[0m")         # end all mode like so, us, mb, md, and mr
-
-# Enable third party git prompt if built-in git prompt is not enabled
-if [[ -z ${PROMPT_GIT_BUILT_IN_ENABLE} && -e ~/bin/bash-git-prompt/gitprompt.sh ]]; then
-    GIT_PROMPT_ONLY_IN_REPO=1
-    GIT_PROMPT_FETCH_REMOTE_STATUS=0
-    GIT_PROMPT_THEME=Custom
-
-    . ~/bin/bash-git-prompt/gitprompt.sh
-fi
 
 # Turn on sandbox for Chromium, set CHROME_DEVEL_SANDBOX to an empty string to
 # disable it

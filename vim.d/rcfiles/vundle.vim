@@ -15,12 +15,12 @@ Plugin 'scrooloose/syntastic'
 if v:version >= 703
     Plugin 'Valloric/YouCompleteMe'
 endif
-"Plugin 'sirver/ultisnips'
-"Plugin 'honza/vim-snippets'
+" Plugin 'sirver/ultisnips'
+" Plugin 'honza/vim-snippets'
 
 " HTML/XML
-"Plugin 'mattn/emmet-vim'
-"Plugin 'sukima/xmledit'
+" Plugin 'mattn/emmet-vim'
+" Plugin 'sukima/xmledit'
 
 " Utility
 Plugin 'CmdlineComplete'
@@ -31,7 +31,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'sjl/gundo.vim'
-"Plugin 'mbbill/undotree'
+" Plugin 'mbbill/undotree'
 Plugin 'Mark--Karkat'
 Plugin 'FavEx'
 

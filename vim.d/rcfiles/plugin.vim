@@ -19,10 +19,10 @@ let g:gundo_preview_bottom = 1
 nnoremap <silent> <Leader><F4> :GundoToggle<CR>
 
 " undotree
-"let g:undotree_WindowLayout = 2
-"let g:undotree_DiffpanelHeight = 25
-"let g:undotree_SetFocusWhenToggle = 1
-"nnoremap <silent> <Leader><F4> :UndotreeToggle<CR>
+" let g:undotree_WindowLayout = 2
+" let g:undotree_DiffpanelHeight = 25
+" let g:undotree_SetFocusWhenToggle = 1
+" nnoremap <silent> <Leader><F4> :UndotreeToggle<CR>
 
 " Tagbar
 nnoremap <silent> <Leader><F5> :TagbarToggle<CR>
@@ -34,9 +34,8 @@ let g:syntastic_auto_loc_list = 1
 
 " YouCompleteMe
 let g:ycm_register_as_syntastic_checker = 1
-let g:ycm_add_preview_to_completeopt = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
-"let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_collect_identifiers_from_tags_files = 1
 
 " SLIME
 let g:slime_target = "tmux"

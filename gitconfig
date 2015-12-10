@@ -25,12 +25,3 @@
     ss = stash
     so = show
     lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
-
-[url "ssh://git@github.com:"]
-    insteadof = gh:
-[url "ssh://git@bitbucket.org:"]
-    insteadof = bb:
-[url "git://git.gnome.org/"]
-    insteadof = gnome:
-[url "git://anongit.freedesktop.org/"]
-    insteadof = fd:

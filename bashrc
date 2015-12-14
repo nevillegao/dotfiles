@@ -108,11 +108,11 @@ test -x /usr/bin/lesspipe && eval "$(SHELL=/bin/sh lesspipe)"
 # 'less' colors for man pages
 export LESS_TERMCAP_mb=$(echo -ne "\e[01;31m")     # start blinking
 export LESS_TERMCAP_md=$(echo -ne "\e[01;31m")     # start bold mode
+export LESS_TERMCAP_me=$(echo -ne "\e[0m")         # end all mode like so, us, mb, md, and mr
 export LESS_TERMCAP_so=$(echo -ne "\e[01;44;33m")  # start standout mode
 export LESS_TERMCAP_se=$(echo -ne "\e[0m")         # end standout mode
 export LESS_TERMCAP_us=$(echo -ne "\e[04;32m")     # start underlining
 export LESS_TERMCAP_ue=$(echo -ne "\e[0m")         # end underlining
-export LESS_TERMCAP_me=$(echo -ne "\e[0m")         # end all mode like so, us, mb, md, and mr
 
 # Turn on sandbox for Chromium, set CHROME_DEVEL_SANDBOX to an empty string to
 # disable it

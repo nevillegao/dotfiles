@@ -2,8 +2,8 @@
 # values of LINES and COLUMNS
 shopt -s checkwinsize
 
-# Disable XON/XOFF flow control
-stty -ixon
+# Check if in an interactive shell and disable XON/XOFF flow control
+[[ $- == *i* ]] && stty -ixon
 
 BIN_DIR="${HOME}/bin"
 

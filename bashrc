@@ -23,7 +23,7 @@ case "${TERM}" in
     xterm*|rxvt*)
         PROMPT_HOST_ENABLE=1
 
-        export PROMPT_COMMAND='echo -ne "\e]0;${PWD/${HOME}/\~}\a"'
+        export PROMPT_COMMAND='echo -ne "\e]0;${PWD/${HOME}/\~}\a";'
         ;;
     screen*)
         update_title() {
@@ -36,11 +36,11 @@ case "${TERM}" in
         }
 
         if [[ -n "${TMUX}" ]]; then
-            export PROMPT_COMMAND='echo -ne "\ek${USER}@${HOSTNAME%%/*}:${PWD/${HOME}/\~}\e\\"; update_title ${PWD/${HOME}/\~}'
+            export PROMPT_COMMAND='echo -ne "\ek${USER}@${HOSTNAME%%/*}:${PWD/${HOME}/\~}\e\\"; update_title ${PWD/${HOME}/\~};'
 
             trap 'update_title "${BASH_COMMAND}"' DEBUG
         else
-            export PROMPT_COMMAND='echo -ne "\ek${PWD/${HOME}/\~}\e\\"'
+            export PROMPT_COMMAND='echo -ne "\ek${PWD/${HOME}/\~}\e\\";'
         fi
         ;;
     *)
@@ -77,7 +77,7 @@ elif [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
     PROMPT_GIT="\[${COLOR_ERED}\]\$(__git_ps1 ' (%s)')\[${COLOR_NO}\]"
 
     if [[ -n "${GIT_PS1_SHOWCOLORHINTS}" ]]; then
-        export PROMPT_COMMAND="${PROMPT_COMMAND}; "'__git_ps1 "${PROMPT_STR}" "\\\$ "'
+        export PROMPT_COMMAND="${PROMPT_COMMAND}"'__git_ps1 "${PROMPT_STR}" "\\\$ ";'
     fi
 
     . /usr/lib/git-core/git-sh-prompt

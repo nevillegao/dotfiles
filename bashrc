@@ -57,12 +57,12 @@ PROMPT_STR="${PROMPT_TIME}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PATH}"
 export PS1="${PROMPT_STR}${PROMPT_GIT}\\\$ "
 
 # Enable third party git prompt
-if [[ -e "${BIN_DIR}/bash-git-prompt/gitprompt.sh" ]]; then
+if [[ -e "${HOME}/.git-prompt/gitprompt.sh" ]]; then
     GIT_PROMPT_ONLY_IN_REPO=1
     GIT_PROMPT_FETCH_REMOTE_STATUS=0
     GIT_PROMPT_THEME=Custom
 
-    . "${BIN_DIR}/bash-git-prompt/gitprompt.sh"
+    . "${HOME}/.git-prompt/gitprompt.sh"
 
 # Enable built-in git prompt
 elif [[ -e /usr/lib/git-core/git-sh-prompt ]]; then

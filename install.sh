@@ -12,6 +12,10 @@ install() {
     done
 }
 
+git_prompt() {
+    git submodule update --init git-prompt
+}
+
 get_vim_plugins() {
     # Clean up
     info_dir="${HOME}/.vim"
@@ -66,6 +70,7 @@ get_irssi_plugins() {
 }
 
 install
+git_prompt
 get_vim_plugins
 get_weechat_plugins
 get_irssi_plugins

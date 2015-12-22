@@ -5,8 +5,6 @@ shopt -s checkwinsize
 # Check if in an interactive shell and disable XON/XOFF flow control
 [[ $- == *i* ]] && stty -ixon
 
-BIN_DIR="${HOME}/bin"
-
 # Load various rc files
 test -f "${HOME}/.colors" && . "${HOME}/.colors"
 test -f "${HOME}/.alias" && . "${HOME}/.alias"

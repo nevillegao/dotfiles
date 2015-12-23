@@ -28,6 +28,11 @@ Host server-pek
     User root
     ForwardX11 yes
 
+Host server-pek2
+    HostName 10.72.32.64
+    User root
+    ForwardX11 yes
+
 Host insights-batch-pek-server.usersys.redhat.com
 Host insights-batch-pek-1.usersys.redhat.com
 Host insights-batch-pek-2.usersys.redhat.com

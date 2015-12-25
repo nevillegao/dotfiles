@@ -15,5 +15,3 @@ irssi/scripts/
 znc/moddata
 znc/users/*/moddata/*
 !znc/users/*/moddata/autoattach/
-znc/users/*/networks/*/moddata/*
-!znc/users/*/networks/*/moddata/perform/

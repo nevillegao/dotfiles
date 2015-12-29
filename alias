@@ -20,6 +20,7 @@ alias screen='screen -xR'
 alias ttmux='tmux attach-session || tmux new-session -A'
 alias diff='colordiff'
 alias emacs='emacs -nw'
+alias rxvt='urxvtcd'
 
 # Docker
 alias drun='docker run --rm -i -t'

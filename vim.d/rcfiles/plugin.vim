@@ -46,5 +46,8 @@ let g:slime_python_ipython = 1
 let g:EasyMotion_startofline = 0
 let g:EasyMotion_smartcase = 1
 
-" surround
-" ctrl-p
+" CtrlP
+let g:ctrlp_cache_dir = $HOME . '/.vim/ctrlp/cache'
+let g:ctrlp_arg_map = 1
+let g:ctrlp_extensions = ['dir', 'mixed']
+let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU", "Dir", "Mixed"], v:count)'

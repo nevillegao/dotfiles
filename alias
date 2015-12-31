@@ -18,11 +18,13 @@ alias grep='grep --color=always -PnI'
 
 alias screen='screen -xR'
 alias ttmux='tmux attach-session || tmux new-session -A'
+alias tmtrw='tmate display-message -p "#{tmate_ssh}"'
+alias tmtro='tmate display-message -p "#{tmate_ssh_ro}"'
 alias diff='colordiff'
 alias emacs='emacs -nw'
 alias rxvt='urxvtcd'
 
 # Docker
 alias drun='docker run --rm -i -t'
-alias rmdc='for i in $(docker ps -f status=exited -q); do docker rm $i; done'
-alias rmdi='for i in $(docker images | awk '"'"'{if ($1 == "<none>") print $3}'"'"'); do docker rmi $i; done'
+alias rmdc='docker ps -f status=exited -q | xargs -i docker rm {}'
+alias rmdi='docker images | awk '"'"'{if ($1 == "<none>") print $3}'"'"' | xargs -i docker rmi {}'

@@ -15,6 +15,7 @@ alias rm='echo "This is not the command you are looking for."; false'  # use \rm
 alias cp='cp -i'
 alias mv='mv -i'
 alias grep='grep --color=always -PnI'
+alias dmesg='dmesg --color=always'
 
 alias screen='screen -xR'
 alias ttmux='tmux attach-session || tmux new-session -A'

@@ -12,6 +12,7 @@ Host tunnel-local
     HostName 0.0.0.0
     LocalForward 80 127.0.0.1:8080
 
+
 Host code.engineering.redhat.com
     User ngao
 
@@ -23,12 +24,12 @@ Host ceehadoop1 ceehadoop2 ceehadoop3 ceehadoop4
     HostName %h.gsslab.rdu2.redhat.com
     User ngao
 
-Host server-pek
+Host pek
     HostName 10.66.209.103
     User root
     ForwardX11 yes
 
-Host server-pek2
+Host pek2
     HostName 10.72.32.64
     User root
     ForwardX11 yes
@@ -43,11 +44,15 @@ Host insights-batch-pek-6.usersys.redhat.com
 Host insights-batch-pek-*
     User root
 
+
+Host dev
+    HostName ngao-dev.usersys.redhat.com
+
+Host ci
+    HostName ngao-ci.usersys.redhat.com
+
 Host server
     HostName ngao-server.usersys.redhat.com
-
-Host server2
-    HostName ngao-server2.usersys.redhat.com
 
 Host work
     HostName ngao.usersys.redhat.com

@@ -26,7 +26,7 @@ endif
 Plugin 'CmdlineComplete'
 Plugin 'rking/ag.vim'
 Plugin 'thinca/vim-visualstar'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'

@@ -174,7 +174,7 @@ settings = {
   "fe-text" = { actlist_sort = "refnum"; };
 
   "fe-common/core" = {
-    autolog_path = "~/logs/irssi/$tag\\-$0\\-%y%m%d.irssilog";
+    autolog_path = "~/logs/irssi/$tag/$0/%Y\\-%m\\-%d.irssilog";
     autolog = "yes";
 
     beep_when_window_active = "yes";

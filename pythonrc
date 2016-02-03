@@ -1,9 +1,10 @@
 # vim:ft=python:
 
 # try:
-    # from jedi.utils import setup_readline
+#     from jedi.utils import setup_readline
 # except ImportError:
-    # print "Module Jedi not available."
+#     print "Module Jedi not available"
+
 try:
     import readline
 except ImportError:
@@ -36,6 +37,6 @@ else:
 
     del readline, rlcompleter
 # else:
-    # setup_readline()
+#     setup_readline()
 
-    # del setup_readline
+#     del setup_readline

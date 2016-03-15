@@ -11,6 +11,7 @@ Plugin 'tpope/vim-commentary'
 Plugin 'Raimondi/delimitMate'
 Plugin 'jpalardy/vim-slime'
 Plugin 'majutsushi/tagbar'
+Plugin 'Yggdroot/indentLine'
 Plugin 'scrooloose/syntastic'
 if v:version >= 703
     Plugin 'Valloric/YouCompleteMe'

@@ -51,3 +51,7 @@ let g:ctrlp_cache_dir = $HOME . '/.vim/ctrlp/cache'
 let g:ctrlp_arg_map = 1
 let g:ctrlp_extensions = ['dir', 'mixed']
 let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU", "Dir", "Mixed"], v:count)'
+
+" indentLine
+let g:indentLine_enabled = 0
+nnoremap <silent> <Leader><F6> :IndentLinesToggle<CR>

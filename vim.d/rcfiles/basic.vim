@@ -49,7 +49,6 @@ set foldenable
 set foldmethod=indent
 set foldminlines=3
 set foldlevel=9999
-set foldcolumn=6
 
 " Format
 set autoindent

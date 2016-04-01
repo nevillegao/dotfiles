@@ -54,4 +54,4 @@ let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU", "Dir", "Mixed"], v:coun
 
 " indentLine
 let g:indentLine_enabled = 0
-nnoremap <silent> <Leader><F6> :IndentLinesToggle<CR>"
+nnoremap <silent> <Leader><F6> :IndentLinesToggle<CR>

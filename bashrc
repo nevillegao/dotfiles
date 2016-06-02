@@ -6,11 +6,11 @@ shopt -s checkwinsize
 [[ $- == *i* ]] && stty -ixon
 
 # Load various rc files
-test -f "${HOME}/.colors" && . "${HOME}/.colors"
-test -f "${HOME}/.alias" && . "${HOME}/.alias"
+test -r "${HOME}/.colors" && . "${HOME}/.colors"
+test -r "${HOME}/.alias" && . "${HOME}/.alias"
 
 # Enable programmable completion
-test -e /etc/bash_completion && . /etc/bash_completion
+test -r /etc/bash_completion && . /etc/bash_completion
 
 if [[ -e "${BIN_DIR}/bash-completion-pinyin/chs_completion" ]]; then
     . "${BIN_DIR}/bash-completion-pinyin/chs_completion"

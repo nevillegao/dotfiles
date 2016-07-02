@@ -1,5 +1,10 @@
 set t_vb=
-set guifont=Consolas\ 14
+
+if has("unix")
+    set guifont=Consolas\ 14
+else
+    set guifont=Consolas:h14
+endif
 
 nnoremap <F1> :h
 

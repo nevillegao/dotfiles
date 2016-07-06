@@ -1,6 +1,6 @@
 filetype off
 
-set rtp+=~/.vim.d/bundle/Vundle.vim
+set runtimepath+=~/.vim.d/bundle/Vundle.vim
 call vundle#begin('$HOME/.vim.d/bundle')
 
 Plugin 'VundleVim/Vundle.vim'
@@ -16,12 +16,7 @@ Plugin 'scrooloose/syntastic'
 if v:version >= 703 && !has("win32")
     Plugin 'Valloric/YouCompleteMe'
 endif
-" Plugin 'sirver/ultisnips'
-" Plugin 'honza/vim-snippets'
-
-" HTML/XML
-" Plugin 'mattn/emmet-vim'
-" Plugin 'sukima/xmledit'
+Plugin 'elzr/vim-json'
 
 " Utility
 Plugin 'CmdlineComplete'
@@ -32,7 +27,6 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-surround'
 Plugin 'sjl/gundo.vim'
-" Plugin 'mbbill/undotree'
 Plugin 'Mark--Karkat'
 Plugin 'FavEx'
 
@@ -42,9 +36,7 @@ Plugin 'itchyny/calendar.vim'
 Plugin 'DrawIt'
 
 " Color
-Plugin 'desert256.vim'
-Plugin 'ciaranm/inkpot'
-Plugin 'tpope/vim-vividchalk'
-Plugin 'tomasr/molokai'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'felixhummel/setcolors.vim'
 
 call vundle#end()

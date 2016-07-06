@@ -55,3 +55,14 @@ let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU", "Dir", "Mixed"], v:coun
 " indentLine
 let g:indentLine_enabled = 0
 nnoremap <silent> <Leader><F6> :IndentLinesToggle<CR>
+
+" vim-json
+let g:vim_json_syntax_conceal = 0
+
+" setcolors
+nnoremap <silent> <Leader><F8> :SetColors
+    \ desert256
+    \ inkpot
+    \ vividchalk
+    \ molokai
+    \ <CR>

@@ -58,6 +58,7 @@ nnoremap <silent> <Leader><F6> :IndentLinesToggle<CR>
 
 " vim-json
 let g:vim_json_syntax_conceal = 0
+autocmd FileType json set foldmethod=syntax
 
 " setcolors
 nnoremap <silent> <Leader><F8> :SetColors

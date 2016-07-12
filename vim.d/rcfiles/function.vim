@@ -1,9 +1,9 @@
 " Put current filename in register 'n'
 let @n=expand('%:p')
 
-autocmd BufNewFile,BufRead Makefile set noexpandtab
-
 autocmd FileType help resize
+
+autocmd BufNewFile,BufRead Makefile set noexpandtab
 
 " When editing a file, always jump to the last known cursor position and line
 " it at center of window

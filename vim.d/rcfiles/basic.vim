@@ -14,6 +14,7 @@ endif
 set wildmenu
 set wildmode=list:full
 set visualbell
+set hidden
 
 " Display
 syntax on

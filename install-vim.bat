@@ -1,7 +1,7 @@
 @ECHO off
 
 REM Clean up
-SET info_dir="%USERPROFILE%\.vim"
+SET info_dir=%USERPROFILE%\.vim
 IF EXIST "%info_dir%" (
     IF NOT EXIST "%info_dir%\" (
         DEL /F /Q "%info_dir%"
@@ -24,9 +24,9 @@ COPY /Y gvimrc "%USERPROFILE%\.gvimrc"
 XCOPY /E /I /Y vim.d "%USERPROFILE%\.vim.d"
 
 REM Install 'Vundle'
-SET bundle_dir="%USERPROFILE%\.vim.d\bundle"
+SET bundle_dir=%USERPROFILE%\.vim.d\bundle
 RMDIR /S /Q "%bundle_dir%"
-git clone https://github.com/VundleVim/Vundle.vim "%bundle_dir%\Vundle.vim"
+git clone https://github.com/VundleVim/Vundle.vim %bundle_dir%\Vundle.vim
 
 REM Install plugins
 vim +PluginInstall +qall

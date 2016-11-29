@@ -28,5 +28,10 @@ if [[ -n "${DISPLAY}" && -x /usr/bin/xinput ]] && /usr/bin/xinput list | grep "$
     /usr/bin/xinput --disable "${TOUCH_PAD_NAME}"
 fi
 
+# Enable 'Num Lock'
+if [[ -x /usr/bin/numlockx ]]; then
+    /usr/bin/numlockx on
+fi
+
 # Load .bashrc
 test -r "${HOME}/.bashrc" && . "${HOME}/.bashrc"

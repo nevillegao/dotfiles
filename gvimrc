@@ -18,8 +18,10 @@ noremap <M-9> :tabnext 9<CR>
 
 if has("unix")
     set guifont=Consolas\ 14
+    set guifontwide=Microsoft\ YaHei\ 14
 else
     set guifont=Consolas:h14
+    set guifontwide=Microsoft_YaHei:h14
 endif
 
 " Toggle horizontal scroll bar according to wrap status

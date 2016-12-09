@@ -18,3 +18,4 @@ set skip-completed-text On
 "\eh": dynamic-complete-history
 
 "\eq\ep": "exit\n"
+"\es": "reset\n"

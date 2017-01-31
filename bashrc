@@ -99,7 +99,8 @@ export IGNOREEOF=100
 test -x /usr/bin/dircolors && eval "$(dircolors -b)"
 
 # Utilities options
-export EDITOR="/usr/bin/vim"
+export VISUAL="/usr/bin/vim"
+export EDITOR="${VISUAL}"
 export PYTHONSTARTUP="${HOME}/.pythonrc"
 export LESS="-MiR"
 

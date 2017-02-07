@@ -5,7 +5,7 @@ alias ...='cd ../..'
 alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
 
-alias ls='ls --color=always'
+alias ls='ls --color=auto'
 alias l='ls -lF'
 alias ll='ls -lAF'
 alias la='ls -AF'
@@ -14,8 +14,7 @@ alias lh='ll -I "[^.]*"'  # list hidden files
 alias rm='echo "This is not the command you are looking for."; false'  # use \rm instead
 alias cp='cp -i'
 alias mv='mv -i'
-alias grep='grep --color=always -PnI'
-alias dmesg='dmesg --color=always'
+alias grep='grep --color=auto -PnI'
 
 alias screen='screen -xR'
 alias ttmux='tmux attach-session || tmux new-session -A'

@@ -14,7 +14,7 @@ alias lh='ll -I "[^.]*"'  # list hidden files
 alias rm='echo "This is not the command you are looking for."; false'  # use \rm instead
 alias cp='cp -i'
 alias mv='mv -i'
-alias grep='grep --color=auto -PnI'
+alias grep='grep --color=auto -PI'
 
 alias screen='screen -xR'
 alias ttmux='tmux attach-session || tmux new-session -A'

@@ -1,13 +1,14 @@
 # vim:ft=sshconfig:
 
-ServerAliveInterval 60
-Compression yes
-
-# Share connections
-ControlMaster auto
-ControlPath /tmp/ssh_%r@%h:%p
-ControlPersist yes
-
 Host tunnel-local
     HostName 0.0.0.0
     LocalForward 80 127.0.0.1:8080
+
+Host *
+    ServerAliveInterval 60
+    Compression yes
+
+    # Share connections
+    ControlMaster auto
+    ControlPath /tmp/ssh_%r@%h:%p
+    ControlPersist yes

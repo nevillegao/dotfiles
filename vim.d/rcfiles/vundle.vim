@@ -20,7 +20,7 @@ Plugin 'elzr/vim-json'
 
 " Utility
 Plugin 'CmdlineComplete'
-Plugin 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'thinca/vim-visualstar'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'easymotion/vim-easymotion'

@@ -1,6 +1,9 @@
 " :W invokes sudo
 command W w !sudo tee % > /dev/null
 
+nnoremap B ^
+nnoremap E $
+
 nnoremap <Up> gk
 nnoremap <Down> gj
 inoremap <Up> <C-O>gk

@@ -51,6 +51,7 @@ nnoremap <silent> <Leader><F4> :GundoToggle<CR>
 " nnoremap <silent> <Leader><F4> :UndotreeToggle<CR>
 
 " CtrlP
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_cache_dir = $HOME . '/.vim/ctrlp/cache'
 let g:ctrlp_arg_map = 1
 let g:ctrlp_extensions = ['dir', 'mixed']

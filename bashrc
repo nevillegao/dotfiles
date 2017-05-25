@@ -119,3 +119,11 @@ export LESS_TERMCAP_ue=$(echo -ne "\e[0m")         # end underlining
 # Turn on sandbox for Chromium, set CHROME_DEVEL_SANDBOX to an empty string to
 # disable it
 export CHROME_DEVEL_SANDBOX="${HOME}/bin/chrome-linux/chrome_sandbox"
+
+# Confirm before exit shell
+exit() {
+    read -p "${COLOR_ERED}Exit? ${COLOR_NO}" REPLY
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        command exit
+    fi
+}

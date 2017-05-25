@@ -17,5 +17,5 @@ set skip-completed-text On
 "\e[B": history-search-forward
 "\eh": dynamic-complete-history
 
-"\eq\ep": "exit\n"
+"\eq\ep": "command exit\n"
 "\es": "reset\n"

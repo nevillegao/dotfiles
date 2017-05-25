@@ -13,7 +13,7 @@ Plugin 'jpalardy/vim-slime'
 Plugin 'majutsushi/tagbar'
 Plugin 'Yggdroot/indentLine'
 Plugin 'vim-syntastic/syntastic'
-if v:version >= 703 && !has("win32")
+if !has("win32")
     Plugin 'Valloric/YouCompleteMe'
 endif
 Plugin 'elzr/vim-json'

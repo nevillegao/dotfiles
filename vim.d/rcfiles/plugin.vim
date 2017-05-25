@@ -39,6 +39,7 @@ let g:ackprg = 'ag --vimgrep'
 nnoremap <silent> <Leader><F3> :Ack! <C-R>=expand('<cword>')<CR><CR>
 
 " Gundo
+let g:gundo_prefer_python3 = 1
 let g:gundo_width = 30
 let g:gundo_preview_height = 25
 let g:gundo_preview_bottom = 1

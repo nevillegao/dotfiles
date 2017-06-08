@@ -1,10 +1,6 @@
 # vim:ft=sh:
 
-##########################################################
-# Colors
-# (http://wiki.archlinux.org/index.php/Color_Bash_Prompt)
 # {ESC}[{attr};{bg};{256colors};{fg}m
-##########################################################
 
 export COLOR_NO=$'\e[0m'
 

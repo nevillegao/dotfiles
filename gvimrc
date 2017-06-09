@@ -21,7 +21,7 @@ if has("unix")
     set guifontwide=Microsoft\ YaHei\ 14
 else
     set guifont=Consolas:h14
-    set guifontwide=Microsoft_YaHei:h14
+    set guifontwide=NSimSun:h14
 endif
 
 " Toggle horizontal scroll bar according to wrap status

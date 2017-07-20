@@ -121,7 +121,7 @@ export LESS_TERMCAP_ue=$(echo -ne "\e[0m")         # end underlining
 export CHROME_DEVEL_SANDBOX="${HOME}/bin/chrome-linux/chrome_sandbox"
 
 # Confirm before exit shell
-exit() {
+eexit() {
     read -p "${COLOR_ERED}Exit? ${COLOR_NO}" REPLY
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         command exit

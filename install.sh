@@ -2,17 +2,24 @@
 
 install() {
     for i in *; do
-        if [[ "${i}" == "install-vim.bat" ]]; then
+        if [[ "${i}" == $(basename $0) || "${i}" == "install-vim.bat" ]]; then
             continue
         fi
 
-        if [[ "${i}" == $(basename $0) ]]; then
-            continue
+        if [[ "${i}" == "ssh_config" ]]; then
+            if [[ ! -d "${HOME}/.ssh" ]]; then
+                rm -rf "${HOME}/.ssh"
+                mkdir "${HOME}/.ssh"
+            fi
+
+            chmod -R go-rwx "${HOME}/.ssh"
+            ln -sf "${PWD}/${i}" "${HOME}/.ssh/config"
+        else
+            rm -rf "${HOME}/.${i}"
+            ln -sf "${PWD}/${i}" "${HOME}/.${i}"
         fi
 
-        rm -rf "${HOME}/.${i}"
         chmod -R go-rwx "${i}"
-        ln -sf "${PWD}/${i}" "${HOME}/.${i}"
     done
 }
 

@@ -1,6 +1,3 @@
-ssh/*
-!ssh/config
-
 vim.d/bundle/
 
 weechat/*

@@ -12,7 +12,7 @@ install() {
                 mkdir "${HOME}/.ssh"
             fi
 
-            chmod -R go-rwx "${HOME}/.ssh"
+            rm -rf "${HOME}/.ssh/config"
             ln -sf "${PWD}/${i}" "${HOME}/.ssh/config"
         else
             rm -rf "${HOME}/.${i}"

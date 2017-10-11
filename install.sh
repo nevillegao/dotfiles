@@ -41,7 +41,7 @@ get_vim_plugins() {
     git clone https://github.com/VundleVim/Vundle.vim "${bundle_dir}/Vundle.vim"
 
     # Install plugins
-    vim +PluginInstall +qall
+    vim -i NONE +VundleInstall +qall
 
     # Compile 'YouCompleteMe'
     if [[ -d "${bundle_dir}/YouCompleteMe" ]]; then
@@ -83,5 +83,5 @@ get_irssi_plugins() {
 install
 git_prompt
 get_vim_plugins
-get_weechat_plugins
-get_irssi_plugins
+# get_weechat_plugins
+# get_irssi_plugins

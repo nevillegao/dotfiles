@@ -12,7 +12,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'jpalardy/vim-slime'
 Plugin 'majutsushi/tagbar'
 Plugin 'Yggdroot/indentLine'
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 " Plugin 'Valloric/YouCompleteMe'
 Plugin 'elzr/vim-json'
 

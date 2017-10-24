@@ -7,10 +7,8 @@ set helplang=cn
 set noswapfile
 set nobackup
 set viminfo+=n~/.vim/info
-if has('persistent_undo')
-    set undodir=~/.vim/undo
-    set undofile
-endif
+set undodir=~/.vim/undo
+set undofile
 set wildmenu
 set wildmode=list:full
 set visualbell
@@ -32,9 +30,7 @@ set showcmd
 set showmode
 set listchars+=trail:*,tab:>-
 set completeopt=longest,menu
-if v:version >= 703
-    set colorcolumn=+1
-endif
+set colorcolumn=+1
 set laststatus=2
 set statusline=%<[%n]\ %F\ %h%m%r%=%k[%{(&fenc==\'\')?&enc:&fenc}%{(&bomb?\',BOM\':\'\')}][%{&ff}][ASCII=\%04.4B]\ %-10.(%l,%c%V%)\ %P
 

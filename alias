@@ -16,6 +16,7 @@ alias rm='echo "This is not the command you are looking for."; false'  # use \rm
 alias cp='cp -i'
 alias mv='mv -i'
 alias grep='grep --color=auto -PI'
+alias diff='diff --color=auto'
 
 # Terminal
 alias screen='screen -xR'
@@ -24,9 +25,6 @@ alias tmtrw='tmate display-message -p "#{tmate_ssh}"'
 alias tmtro='tmate display-message -p "#{tmate_ssh_ro}"'
 alias rxvt='urxvtcd'
 alias emacs='emacs -nw'
-
-# Tool
-alias diff='colordiff'
 
 # virtualenv
 alias venv='source bin/activate'

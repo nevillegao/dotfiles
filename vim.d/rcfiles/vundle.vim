@@ -13,7 +13,9 @@ Plugin 'jpalardy/vim-slime'
 Plugin 'majutsushi/tagbar'
 Plugin 'Yggdroot/indentLine'
 " Plugin 'vim-syntastic/syntastic'
-" Plugin 'Valloric/YouCompleteMe'
+if !has("win32") && !has("win64")
+    Plugin 'Valloric/YouCompleteMe'
+endif
 Plugin 'elzr/vim-json'
 
 " Utility

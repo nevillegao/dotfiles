@@ -41,6 +41,7 @@ case "${TERM}" in
         ;;
     *)
         PROMPT_HOST_ENABLE=1
+        PROMPT_TIME_ENABLE=1
 
         export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\e]0;${PWD/${HOME}/\~}\a"'
         ;;

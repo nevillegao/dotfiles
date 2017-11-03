@@ -21,11 +21,6 @@ test -r /usr/share/autojump/autojump.sh && . /usr/share/autojump/autojump.sh
 
 # Terminal prompt string & title
 case "${TERM}" in
-    xterm*|rxvt*)
-        PROMPT_HOST_ENABLE=1
-
-        export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\e]0;${PWD/${HOME}/\~}\a"'
-        ;;
     screen*)
         update_title() {
             # Ignore git-prompt
@@ -45,14 +40,16 @@ case "${TERM}" in
         fi
         ;;
     *)
-        PROMPT_TIME_ENABLE=1
+        PROMPT_HOST_ENABLE=1
+
+        export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\e]0;${PWD/${HOME}/\~}\a"'
         ;;
 esac
 
 PROMPT_USER="\[${COLOR_ECYAN}\][\u\[${COLOR_NO}\]"
 PROMPT_HOST="${PROMPT_HOST_ENABLE:+\[${COLOR_NO}\]@\[${COLOR_EMAGENTA}\]${HOSTNAME%%.*}\[${COLOR_NO}\]}"
 PROMPT_PATH="\[${COLOR_NO}\]:\[${COLOR_EYELLOW}\]\W]\[${COLOR_NO}\]"
-PROMPT_TIME="${PROMPT_TIME_ENABLE:+\[${COLOR_EMAGENTA}\][\A]\[${COLOR_NO}\]}"
+PROMPT_TIME="${PROMPT_TIME_ENABLE:+\[${COLOR_EBLUE}\][\A]\[${COLOR_NO}\]}"
 PROMPT_STR="${PROMPT_TIME}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PATH}"
 
 export PS1="${PROMPT_STR}${PROMPT_GIT}\\\$ "

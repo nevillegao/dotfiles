@@ -6,10 +6,9 @@ alias ...='cd ../..'
 alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
 
-alias ls='ls --color=auto'
-alias l='ls -lF'
-alias ll='ls -lAF'
-alias la='ls -AF'
+alias ls='ls --color=auto -F'
+alias l='ls -l'
+alias la='ls -A'
 alias lh='ll -I "[^.]*"'  # list hidden files
 
 alias rm='echo "This is not the command you are looking for."; false'  # use \rm instead

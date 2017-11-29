@@ -8,7 +8,6 @@ Plugin 'VundleVim/Vundle.vim'
 " Programming
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-commentary'
-Plugin 'Raimondi/delimitMate'
 Plugin 'jpalardy/vim-slime'
 Plugin 'majutsushi/tagbar'
 Plugin 'Yggdroot/indentLine'
@@ -19,6 +18,8 @@ endif
 Plugin 'elzr/vim-json'
 
 " Utility
+Plugin 'tpope/vim-vinegar'
+Plugin 'Raimondi/delimitMate'
 Plugin 'CmdlineComplete'
 Plugin 'mileszs/ack.vim'
 Plugin 'thinca/vim-visualstar'

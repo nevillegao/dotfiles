@@ -1,6 +1,5 @@
 " netrw
 let g:netrw_home = $HOME . '/.vim/netrw'
-let g:netrw_liststyle = 3
 noremap <silent> <Leader><F2> :20Lexplore<CR>
 
 " SLIME

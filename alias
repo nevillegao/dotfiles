@@ -6,7 +6,7 @@ alias ...='cd ../..'
 alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
 
-alias ls='ls --color=auto -F'
+alias ls='ls -F --color=always'
 alias l='ls -l'
 alias la='ls -A'
 alias lh='la -l -I "[^.]*"'  # list hidden files
@@ -14,8 +14,8 @@ alias lh='la -l -I "[^.]*"'  # list hidden files
 alias rm='echo "This is not the command you are looking for."; false'  # use \rm instead
 alias cp='cp -i'
 alias mv='mv -i'
-alias grep='grep --color=auto -PI'
-alias diff='diff --color=auto'
+alias grep='grep -PI --color=always'
+alias diff='diff -u --color=always'
 
 # Terminal
 alias screen='screen -xR'

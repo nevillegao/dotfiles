@@ -121,7 +121,7 @@ export CHROME_DEVEL_SANDBOX="${HOME}/bin/chrome-linux/chrome_sandbox"
 # Confirm before exit shell
 eexit() {
     read -p "${COLOR_ERED}Exit? ${COLOR_NO}" REPLY
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
+    if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
         command exit
     fi
 }

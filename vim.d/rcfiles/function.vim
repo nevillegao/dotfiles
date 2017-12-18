@@ -1,10 +1,3 @@
-" Put current filename in register 'n'
-let @n=expand('%:p')
-
-autocmd FileType help resize
-
-autocmd BufNewFile,BufRead Makefile set noexpandtab
-
 " When editing a file, always jump to the last known cursor position and line
 " it at center of window
 autocmd BufEnter *
@@ -18,3 +11,11 @@ autocmd BufReadPre *
     \ if getfsize(expand('<afile>')) >= 100*1024*1024 |
     \     exit |
     \ endif
+
+" Put current filename in register 'n'
+let @n=expand('%:p')
+
+autocmd FileType help resize
+autocmd FileType json setlocal tabstop=2 shiftwidth=2
+autocmd FileType yaml setlocal tabstop=2 shiftwidth=2
+autocmd BufNewFile,BufRead Makefile set noexpandtab

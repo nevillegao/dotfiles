@@ -28,7 +28,7 @@ set ruler
 set number
 set showcmd
 set showmode
-set listchars+=trail:*,tab:>-
+set listchars=eol:$,tab:>-,space:.,trail:*,extends:@,precedes:#
 set completeopt=longest,menu
 set colorcolumn=+1
 set laststatus=2

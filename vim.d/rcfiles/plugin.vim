@@ -12,7 +12,9 @@ nnoremap <silent> <Leader><F5> :TagbarToggle<CR>
 
 " indentLine
 let g:indentLine_enabled = 0
-nnoremap <silent> <Leader><F6> :IndentLinesToggle<CR>
+let g:indentLine_char = '┊'
+let g:indentLine_leadingSpaceChar = '˰'
+nnoremap <silent> <Leader><F6> :IndentLinesToggle<CR>:LeadingSpaceToggle<CR>
 
 " syntastic
 let g:syntastic_mode_map = {'mode': 'passive'}

@@ -21,7 +21,7 @@ except ImportError:
             hist_path = os.path.expanduser("~/.pyhistory")
 
             if os.path.exists(hist_path):
-                readline.set_history_length(1000000)
+                readline.set_history_length(65535)
                 readline.read_history_file(hist_path)
 
             try:

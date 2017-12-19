@@ -2,7 +2,7 @@
 
 install() {
     for i in *; do
-        if [[ "${i}" == $(basename $0) || "${i}" == "install-vim.bat" ]]; then
+        if [[ "${i}" == $(basename $0) ]]; then
             continue
         fi
 

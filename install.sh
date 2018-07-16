@@ -24,10 +24,11 @@ install() {
 }
 
 git_prompt() {
-    git submodule update --init git-prompt
+    rm -rf "${HOME}/.bash-git-prompt"
+    git clone https://github.com/magicmonty/bash-git-prompt.git "${HOME}/.bash-git-prompt" --depth=1
 }
 
-get_vim_plugins() {
+vim_plugins() {
     # Clean up
     info_dir="${HOME}/.vim"
     if [[ ! -d "${info_dir}" ]]; then
@@ -50,7 +51,7 @@ get_vim_plugins() {
     fi
 }
 
-get_weechat_plugins() {
+weechat_plugins() {
     # Clean up
     declare -A dir=(["pl"]="perl")
     for i in ${!dir[@]}; do
@@ -68,7 +69,7 @@ get_weechat_plugins() {
     done
 }
 
-get_irssi_plugins() {
+irssi_plugins() {
     # Clean up
     script_dir="irssi/scripts"
     rm -rf "${script_dir}"
@@ -83,6 +84,6 @@ get_irssi_plugins() {
 
 install
 git_prompt
-get_vim_plugins
-# get_weechat_plugins
-# get_irssi_plugins
+vim_plugins
+# weechat_plugins
+# irssi_plugins

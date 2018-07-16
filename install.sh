@@ -33,19 +33,20 @@ get_vim_plugins() {
     if [[ ! -d "${info_dir}" ]]; then
         rm -rf "${info_dir}"
     fi
-    mkdir -p "${info_dir}/undo" "${info_dir}/netrw"
+    mkdir -p "${info_dir}/undo"
 
-    # Install 'Vundle'
+    # Install 'vim-plug'
     bundle_dir="vim.d/bundle"
     rm -rf "${bundle_dir}"
-    git clone https://github.com/VundleVim/Vundle.vim "${bundle_dir}/Vundle.vim"
+    curl -fLo "${info_dir}/autoload/plug.vim" --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     # Install plugins
-    vim -i NONE +VundleInstall +qall
+    vim -i NONE +PlugInstall +qall
 
     # Compile 'YouCompleteMe'
     if [[ -d "${bundle_dir}/YouCompleteMe" ]]; then
-        python "${bundle_dir}/YouCompleteMe/install.py"
+        "${bundle_dir}/YouCompleteMe/install.py"
     fi
 }
 
@@ -62,7 +63,7 @@ get_weechat_plugins() {
     for i in ${weechat_plugins[@]}; do
         ext=${i##*.}
         script_dir="weechat/${dir[${ext}]}"
-        curl -o "${script_dir}/${i}" "https://weechat.org/files/scripts/${i}"
+        curl -fLo "${script_dir}/${i}" "https://weechat.org/files/scripts/${i}"
         (cd "${script_dir}/autoload" && ln -sf "../${i}")
     done
 }

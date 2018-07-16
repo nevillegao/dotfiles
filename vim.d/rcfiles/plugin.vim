@@ -1,3 +1,42 @@
+call plug#begin('$HOME/.vim.d/bundle')
+
+" Programming
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
+Plug 'jpalardy/vim-slime', { 'for': ['sh', 'python'] }
+Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
+Plug 'Yggdroot/indentLine', { 'on':  ['IndentLinesToggle', 'LeadingSpaceToggle'] }
+" Plug 'vim-syntastic/syntastic'
+Plug 'Valloric/YouCompleteMe'
+Plug 'elzr/vim-json'
+
+" Utility
+Plug 'tpope/vim-vinegar'
+Plug 'Raimondi/delimitMate'
+Plug 'vim-scripts/CmdlineComplete'
+Plug 'mileszs/ack.vim', { 'on':  'Ack' }
+Plug 'thinca/vim-visualstar'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
+Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' }
+Plug 'inkarkat/vim-ingo-library' | Plug 'inkarkat/vim-mark'
+Plug 'vim-scripts/FavEx'
+
+Plug 'junegunn/vim-easy-align'
+Plug 'itchyny/calendar.vim', { 'on':  'Calendar' }
+" http://www.drchip.org/astronaut/vim/vbafiles/calutil.vba.gz
+" http://www.drchip.org/astronaut/vim/vbafiles/visincr.vba.gz
+" http://www.drchip.org/astronaut/vim/vbafiles/DrawIt.vba.gz
+
+" Color
+Plug 'flazz/vim-colorschemes'
+Plug 'felixhummel/setcolors.vim', { 'on':  'SetColors' }
+
+call plug#end()
+
+
 " netrw
 let g:netrw_home = $HOME . '/.vim/netrw'
 noremap <silent> <Leader><F2> :20Lexplore<CR>
@@ -28,7 +67,6 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 
 " vim-json
 let g:vim_json_syntax_conceal = 0
-autocmd FileType json set foldmethod=syntax
 
 " Cmdline Complete
 cmap <C-Y> <Plug>CmdlineCompleteBackward

@@ -7,15 +7,8 @@ Plug 'jpalardy/vim-slime', { 'for': ['sh', 'python', 'javascript'] }
 Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
 Plug 'Yggdroot/indentLine', { 'on':  ['IndentLinesToggle', 'LeadingSpaceToggle'] }
 Plug 'vim-syntastic/syntastic', { 'for': ['python', 'javascript'] }
-Plug 'elzr/vim-json'
-
-" YouCompleteMe
-function! BuildYCM(info)
-    if a:info.status == 'installed' || a:info.force
-        !./install.py
-    endif
-endfunction
-Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+Plug 'Valloric/YouCompleteMe', { 'do': '$HOME/.vim/bundle/YouCompleteMe/install.py' }
+Plug 'elzr/vim-json', { 'for': 'json' }
 
 " Utility
 Plug 'tpope/vim-vinegar'

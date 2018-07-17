@@ -37,18 +37,11 @@ vim_plugins() {
     mkdir -p "${info_dir}/undo"
 
     # Install 'vim-plug'
-    bundle_dir="vim.d/bundle"
-    rm -rf "${bundle_dir}"
     curl -fLo "${info_dir}/autoload/plug.vim" --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
     # Install plugins
     vim -i NONE +PlugInstall +qall
-
-    # Compile 'YouCompleteMe'
-    if [[ -d "${bundle_dir}/YouCompleteMe" ]]; then
-        "${bundle_dir}/YouCompleteMe/install.py"
-    fi
 }
 
 weechat_plugins() {

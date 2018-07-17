@@ -1,5 +1,3 @@
-vim.d/bundle/
-
 weechat/*
 !weechat/buffers.conf
 !weechat/logger.conf

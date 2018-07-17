@@ -1,14 +1,21 @@
-call plug#begin('$HOME/.vim.d/bundle')
+call plug#begin('$HOME/.vim/bundle')
 
 " Programming
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'jpalardy/vim-slime', { 'for': ['sh', 'python'] }
+Plug 'jpalardy/vim-slime', { 'for': ['sh', 'python', 'javascript'] }
 Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
 Plug 'Yggdroot/indentLine', { 'on':  ['IndentLinesToggle', 'LeadingSpaceToggle'] }
-" Plug 'vim-syntastic/syntastic'
-Plug 'Valloric/YouCompleteMe'
+Plug 'vim-syntastic/syntastic', { 'for': ['python', 'javascript'] }
 Plug 'elzr/vim-json'
+
+" YouCompleteMe
+function! BuildYCM(info)
+    if a:info.status == 'installed' || a:info.force
+        !./install.py
+    endif
+endfunction
+Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
 " Utility
 Plug 'tpope/vim-vinegar'

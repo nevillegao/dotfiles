@@ -15,13 +15,13 @@ Plug 'tpope/vim-vinegar'
 Plug 'Raimondi/delimitMate'
 Plug 'vim-scripts/CmdlineComplete'
 Plug 'mileszs/ack.vim', { 'on':  'Ack' }
+Plug 'inkarkat/vim-ingo-library' | Plug 'inkarkat/vim-mark'
 Plug 'thinca/vim-visualstar'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' }
-Plug 'inkarkat/vim-ingo-library' | Plug 'inkarkat/vim-mark'
 Plug 'vim-scripts/FavEx'
 
 Plug 'junegunn/vim-easy-align'
@@ -74,8 +74,9 @@ cmap <C-E> <Plug>CmdlineCompleteForward
 
 " ack
 let g:ackprg = 'ag --vimgrep'
-nnoremap <silent> <Leader><F3> :Ack! "<C-R>=fnameescape('<cWORD>')<CR>"<CR>
-vnoremap <silent> <Leader><Leader><F3> y:Ack! "<C-R>=fnameescape(@")<CR>"<CR>
+let g:ackhighlight = 1
+nnoremap <silent> <Leader><F3> :Ack! <C-R>=expand('<cword>')<CR><CR>
+vnoremap <silent> <Leader><F3> y:Ack! "<C-R>=fnameescape(@")<CR>"<CR>
 
 " Gundo
 let g:gundo_prefer_python3 = 1
@@ -108,3 +109,13 @@ nnoremap <silent> <Leader><F8> :SetColors
     \ vividchalk
     \ molokai
     \ <CR>
+
+" Calendar
+let g:calendar_first_day = 'sunday'
+let g:calendar_date_endian = 'big'
+let g:calendar_date_separator = '-'
+let g:calendar_week_number = 1
+let g:calendar_view = 'year'
+let g:calendar_views = ['year', 'month', 'clock']
+let g:calendar_cyclic_view = 1
+let g:calendar_cache_directory = $HOME . '/.vim/calendar/cache'

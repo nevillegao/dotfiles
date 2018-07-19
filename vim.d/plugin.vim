@@ -5,7 +5,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 Plug 'jpalardy/vim-slime', { 'for': ['sh', 'python', 'javascript'] }
 Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
-Plug 'Yggdroot/indentLine', { 'on':  ['IndentLinesToggle', 'LeadingSpaceToggle'] }
+Plug 'Yggdroot/indentLine'
 Plug 'vim-syntastic/syntastic', { 'for': ['python', 'javascript'] }
 Plug 'Valloric/YouCompleteMe', { 'do': '$HOME/.vim/bundle/YouCompleteMe/install.py' }
 Plug 'elzr/vim-json', { 'for': 'json' }
@@ -38,8 +38,8 @@ call plug#end()
 
 
 " netrw
-let g:netrw_home = $HOME . '/.vim/netrw'
-noremap <silent> <Leader><F2> :20Lexplore<CR>
+" let g:netrw_home = $HOME . '/.vim/netrw'
+" noremap <silent> <Leader><F2> :20Lexplore<CR>
 
 " SLIME
 let g:slime_target = "tmux"
@@ -74,7 +74,8 @@ cmap <C-E> <Plug>CmdlineCompleteForward
 
 " ack
 let g:ackprg = 'ag --vimgrep'
-nnoremap <silent> <Leader><F3> :Ack! <C-R>=expand('<cword>')<CR><CR>
+nnoremap <silent> <Leader><F3> :Ack! "<C-R>=fnameescape('<cWORD>')<CR>"<CR>
+vnoremap <silent> <Leader><Leader><F3> y:Ack! "<C-R>=fnameescape(@")<CR>"<CR>
 
 " Gundo
 let g:gundo_prefer_python3 = 1
@@ -93,8 +94,8 @@ nnoremap <silent> <Leader><F4> :GundoToggle<CR>
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 let g:ctrlp_cache_dir = $HOME . '/.vim/ctrlp/cache'
 let g:ctrlp_arg_map = 1
-let g:ctrlp_extensions = ['dir', 'mixed']
-let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU", "Dir", "Mixed"], v:count)'
+let g:ctrlp_extensions = ['dir', 'line']
+let g:ctrlp_cmd = 'exe "CtrlP".get(["Buffer", "", "MRU", "Dir", "Line"], v:count)'
 
 " EasyMotion
 let g:EasyMotion_startofline = 0

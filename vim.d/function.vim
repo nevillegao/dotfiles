@@ -13,7 +13,7 @@ autocmd BufReadPre *
     \ endif
 
 " Put current filename in register 'n'
-let @n=expand('%:p')
+let @n=fnameescape(expand('%:p'))
 
 autocmd FileType help resize
 autocmd FileType json setlocal tabstop=2 shiftwidth=2 foldmethod=syntax

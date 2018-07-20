@@ -35,6 +35,8 @@ set completeopt=longest,menu
 set colorcolumn=+1
 set laststatus=2
 set statusline=%<[%n]\ %F\ %h%m%r%=%k[%{(&fenc==\'\')?&enc:&fenc}%{(&bomb?\',BOM\':\'\')}][%{&ff}][ASCII=\%04.4B]\ %-10.(%l,%c%V%)\ %P
+set splitbelow
+set splitright
 
 " Search
 set magic

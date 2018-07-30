@@ -12,8 +12,8 @@ test -r "${HOME}/.alias" && . "${HOME}/.alias"
 # Enable programmable completion
 test -r /etc/bash_completion && . /etc/bash_completion
 
-if [[ -e "${BIN_DIR}/bash-completion-pinyin/chs_completion" ]]; then
-    . "${BIN_DIR}/bash-completion-pinyin/chs_completion"
+if [[ -e "${HOME}/.bash-completion-pinyin/chs_completion" ]]; then
+    . "${HOME}/.bash-completion-pinyin/chs_completion"
 fi
 
 # Enable 'autojump'
@@ -32,18 +32,18 @@ case "${TERM}" in
         }
 
         if [[ -n "${TMUX}" ]]; then
-            export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\ek${USER}@${HOSTNAME%%/*}:${PWD/${HOME}/\~}\e\\"; update_title ${PWD/${HOME}/\~}'
+            PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\ek${USER}@${HOSTNAME%%/*}:${PWD/${HOME}/\~}\e\\"; update_title ${PWD/${HOME}/\~}'
 
             trap 'update_title "${BASH_COMMAND}"' DEBUG
         else
-            export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\ek${PWD/${HOME}/\~}\e\\"'
+            PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\ek${PWD/${HOME}/\~}\e\\"'
         fi
         ;;
     *)
         PROMPT_HOST_ENABLE=1
         PROMPT_TIME_ENABLE=1
 
-        export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\e]0;${PWD/${HOME}/\~}\a"'
+        PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\e]0;${PWD/${HOME}/\~}\a"'
         ;;
 esac
 
@@ -53,7 +53,7 @@ PROMPT_PATH="\[${COLOR_NO}\]:\[${COLOR_EYELLOW}\]\W]\[${COLOR_NO}\]"
 PROMPT_TIME="${PROMPT_TIME_ENABLE:+\[${COLOR_EBLUE}\][\A]\[${COLOR_NO}\]}"
 PROMPT_STR="${PROMPT_TIME}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PATH}"
 
-export PS1="${PROMPT_STR}${PROMPT_GIT}\\\$ "
+PS1="${PROMPT_STR}${PROMPT_GIT}\\\$ "
 
 # Enable third party git prompt
 if [[ -e "${HOME}/.bash-git-prompt/gitprompt.sh" ]]; then
@@ -76,22 +76,22 @@ elif [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
     PROMPT_GIT="\[${COLOR_ERED}\]\$(__git_ps1 ' (%s)')\[${COLOR_NO}\]"
 
     if [[ -n "${GIT_PS1_SHOWCOLORHINTS}" ]]; then
-        export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'__git_ps1 "${PROMPT_STR}" "\\\$ "'
+        PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'__git_ps1 "${PROMPT_STR}" "\\\$ "'
     fi
 
     . /usr/lib/git-core/git-sh-prompt
 fi
 
 # History options
-export HISTCONTROL=ignoredups:erasedups
-export HISTSIZE=65535
-export HISTFILESIZE=1024000
-export HISTTIMEFORMAT="%F %T "
+HISTCONTROL=ignoredups:erasedups
+HISTSIZE=65535
+HISTFILESIZE=1024000
+HISTTIMEFORMAT="%F %T "
 shopt -s histappend
-export PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:+$PROMPT_COMMAND}"
+PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:+$PROMPT_COMMAND}"
 
 # Type Ctrl-d 100 times to exit shell to prevent accidental exiting
-export IGNOREEOF=100
+IGNOREEOF=100
 
 # Color setup for 'ls'
 test -x /usr/bin/dircolors && eval "$(dircolors -b)"

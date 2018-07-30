@@ -28,6 +28,11 @@ git_prompt() {
     git clone https://github.com/magicmonty/bash-git-prompt.git "${HOME}/.bash-git-prompt" --depth=1
 }
 
+completion-pinyin() {
+    rm -rf "${HOME}/.bash-completion-pinyin"
+    git clone https://github.com/nevillegao/bash-completion-pinyin.git "${HOME}/.bash-completion-pinyin"
+}
+
 vim_plugins() {
     # Clean up
     info_dir="${HOME}/.vim"
@@ -57,7 +62,7 @@ weechat_plugins() {
     for i in ${weechat_plugins[@]}; do
         ext=${i##*.}
         script_dir="weechat/${dir[${ext}]}"
-        curl -fLo "${script_dir}/${i}" "https://weechat.org/files/scripts/${i}"
+        curl -sSLo "${script_dir}/${i}" "https://weechat.org/files/scripts/${i}"
         (cd "${script_dir}/autoload" && ln -sf "../${i}")
     done
 }
@@ -77,6 +82,7 @@ irssi_plugins() {
 
 install
 git_prompt
+completion-pinyin
 vim_plugins
 # weechat_plugins
 # irssi_plugins

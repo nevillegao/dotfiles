@@ -23,16 +23,6 @@ install() {
     done
 }
 
-git_prompt() {
-    rm -rf "${HOME}/.bash-git-prompt"
-    git clone https://github.com/magicmonty/bash-git-prompt.git "${HOME}/.bash-git-prompt" --depth=1
-}
-
-completion-pinyin() {
-    rm -rf "${HOME}/.bash-completion-pinyin"
-    git clone https://github.com/nevillegao/bash-completion-pinyin.git "${HOME}/.bash-completion-pinyin"
-}
-
 vim_plugins() {
     # Clean up
     info_dir="${HOME}/.vim"
@@ -81,8 +71,6 @@ irssi_plugins() {
 }
 
 install
-git_prompt
-completion-pinyin
 vim_plugins
 # weechat_plugins
 # irssi_plugins

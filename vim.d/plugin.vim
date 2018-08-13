@@ -3,7 +3,7 @@ call plug#begin('$HOME/.vim/bundle')
 " Programming
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
-Plug 'jpalardy/vim-slime', { 'for': ['sh', 'python', 'javascript'] }
+Plug 'jpalardy/vim-slime'
 Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
 Plug 'Yggdroot/indentLine'
 Plug 'vim-syntastic/syntastic', { 'for': ['python', 'javascript'] }

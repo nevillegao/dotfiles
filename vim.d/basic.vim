@@ -30,7 +30,11 @@ set ruler
 set number
 set showcmd
 set showmode
-set listchars=eol:$,tab:>-,space:.,trail:*,extends:@,precedes:#
+set showbreak=↪  " Unicode
+" set showbreak=\\\  " ASCII
+set listchars=eol:¶,tab:\|→,space:␣,trail:•,extends:»,precedes:«,nbsp:¬  " Unicode
+" set listchars=eol:↲,tab:»-,space:␣,trail:•,extends:→,precedes:←,nbsp:¬  " Unicode
+" set listchars=eol:$,tab:\|_,space:.,trail:*,extends:>,precedes:<,nbsp:~  " ASCII
 set completeopt=longest,menu
 set colorcolumn=+1
 set laststatus=2

@@ -67,4 +67,6 @@ set formatoptions+=mB
 set expandtab
 set textwidth=78
 
+set tags=./.tags;,.tags
+
 filetype plugin indent on

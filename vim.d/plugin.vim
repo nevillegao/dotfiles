@@ -6,7 +6,7 @@ Plug 'tpope/vim-commentary'
 Plug 'jpalardy/vim-slime'
 Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
 Plug 'Yggdroot/indentLine'
-Plug 'vim-syntastic/syntastic', { 'for': ['python', 'javascript'] }
+Plug 'w0rp/ale'
 Plug 'Valloric/YouCompleteMe', { 'do': '$HOME/.vim/bundle/YouCompleteMe/install.py' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 
@@ -55,10 +55,24 @@ let g:indentLine_char = '┊'
 let g:indentLine_leadingSpaceChar = '˰'
 nnoremap <silent> <Leader><F6> :IndentLinesToggle<CR>:LeadingSpaceToggle<CR>
 
-" syntastic
-let g:syntastic_mode_map = {'mode': 'passive'}
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+" ALE
+" let g:ale_set_highlights = 0
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '!'
+" let g:ale_statusline_format = ['✗ %d', '! %d', '✔ OK']
+" let g:ale_echo_msg_error_str = 'E'
+" let g:ale_echo_msg_warning_str = 'W'
+" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_on_enter = 0
+let g:ale_linters = {
+\   'python': ['pylint']
+\}
+let g:ale_python_pylint_executable = 'pylint3'
+let g:ale_python_pylint_options = '--rcfile=' . $HOME . '/googlecl-pylint.rc'
+nmap sp <Plug>(ale_previous_wrap)
+nmap sn <Plug>(ale_next_wrap)
+nmap <Leader>s :ALEToggle<CR>
+nmap <Leader>d :ALEDetail<CR>
 
 " YouCompleteMe
 let g:ycm_register_as_syntastic_checker = 1

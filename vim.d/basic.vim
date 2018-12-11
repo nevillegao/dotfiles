@@ -18,7 +18,7 @@ set hidden
 
 " Display
 syntax on
-silent! colorscheme desert256
+silent! colorscheme inkpot
 if &term =~ 'screen'
     set t_ts=k
     set t_fs=\

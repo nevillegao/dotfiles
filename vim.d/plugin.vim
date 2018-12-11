@@ -104,11 +104,11 @@ let g:EasyMotion_smartcase = 1
 
 " setcolors
 nnoremap <silent> <Leader><F8> :SetColors
-    \ desert256
-    \ inkpot
-    \ vividchalk
-    \ molokai
-    \ <CR>
+\   inkpot
+\   desert256
+\   molokai
+\   vividchalk
+\<CR>
 
 " Calendar
 let g:calendar_first_day = 'sunday'

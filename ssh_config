@@ -1,6 +1,3 @@
-# vim:ft=sshconfig:
-
-
 # Bitbucket doesn't support multiplexing
 Host bitbucket.org
     ControlMaster no

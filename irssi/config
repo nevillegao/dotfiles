@@ -1,3 +1,5 @@
+# vim: ft=conf
+
 servers = (
   {
     address = "chat.freenode.net";

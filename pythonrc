@@ -1,4 +1,4 @@
-# vim:ft=python:
+# vim: ft=python
 
 try:
     from jedi.utils import setup_readline

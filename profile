@@ -1,4 +1,4 @@
-# vim:ft=sh:
+# vim: ft=sh
 
 # Recursively add directories from ${BIN_DIR}
 BIN_DIR="${HOME}/bin"

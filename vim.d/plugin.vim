@@ -23,6 +23,7 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' }
 Plug 'vim-scripts/FavEx'
+Plug 'nathangrigg/vim-beancount'
 
 Plug 'junegunn/vim-easy-align'
 Plug 'itchyny/calendar.vim', { 'on':  'Calendar' }
@@ -133,3 +134,6 @@ let g:calendar_view = 'year'
 let g:calendar_views = ['year', 'month', 'clock']
 let g:calendar_cyclic_view = 1
 let g:calendar_cache_directory = $HOME . '/.vim/calendar/cache'
+
+" vim-beancount
+let g:beancount_separator_col = 72

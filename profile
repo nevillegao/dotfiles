@@ -4,15 +4,16 @@
 BIN_DIR="${HOME}/bin"
 #test -d "${BIN_DIR}" && export PATH="$(find -L "${BIN_DIR}" -maxdepth 1 -type d -printf "%p:")${PATH}"
 if [[ -d "${BIN_DIR}" ]]; then
-    export PATH="${BIN_DIR}:${PATH}"
+    PATH="${BIN_DIR}:${PATH}"
     for i in "${BIN_DIR}"/*; do
         if [[ -d "${i}/bin" ]]; then
-            export PATH="${i}/bin:${PATH}"
+            PATH="${i}/bin:${PATH}"
         elif [[ -d "${i}" ]]; then
-            export PATH="${i}:${PATH}"
+            PATH="${i}:${PATH}"
         fi
     done
 fi
+export PATH
 
 # Enable ThinkPad TrackPoint
 TRACK_POINT_NAME="TPPS/2 IBM TrackPoint"

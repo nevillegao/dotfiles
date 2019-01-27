@@ -136,4 +136,4 @@ let g:calendar_cyclic_view = 1
 let g:calendar_cache_directory = $HOME . '/.vim/calendar/cache'
 
 " vim-beancount
-let g:beancount_separator_col = 72
+let g:beancount_separator_col = 57

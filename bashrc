@@ -12,8 +12,8 @@ test -r "${HOME}/.alias" && . "${HOME}/.alias"
 # Enable programmable completion
 test -r /etc/bash_completion && . /etc/bash_completion
 
-if [[ -e "${HOME}/.bash-completion-pinyin/chs_completion" ]]; then
-    . "${HOME}/.bash-completion-pinyin/chs_completion"
+if [[ -e "${HOME}/bin/bash-completion-pinyin/chs_completion" ]]; then
+    . "${HOME}/bin/bash-completion-pinyin/chs_completion"
 fi
 
 # Enable 'autojump'

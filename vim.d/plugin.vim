@@ -137,3 +137,5 @@ let g:calendar_cache_directory = $HOME . '/.vim/calendar/cache'
 
 " vim-beancount
 let g:beancount_separator_col = 57
+let b:beancount_root = expand('%:p:h') . '/accounts.beancount'
+autocmd FileType beancount inoremap . .<C-O>:AlignCommodity<CR>

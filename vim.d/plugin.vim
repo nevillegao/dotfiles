@@ -139,4 +139,4 @@ let g:calendar_cache_directory = $HOME . '/.vim/calendar/cache'
 let g:beancount_separator_col = 57
 let b:beancount_root = expand('%:p:h') . '/accounts.beancount'
 autocmd FileType beancount inoremap . .<C-O>:AlignCommodity<CR>
-autocmd FileType beancount normal zM
+autocmd FileType beancount setlocal foldnestmax=1 | normal zM

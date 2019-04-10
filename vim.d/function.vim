@@ -18,4 +18,4 @@ let @n=fnameescape(expand('%:p'))
 autocmd FileType help resize
 autocmd FileType json setlocal tabstop=2 shiftwidth=2 foldmethod=syntax
 autocmd FileType yaml setlocal tabstop=2 shiftwidth=2
-autocmd BufNewFile,BufRead Makefile set noexpandtab
+autocmd BufNewFile,BufRead Makefile setlocal noexpandtab

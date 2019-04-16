@@ -70,6 +70,7 @@ let g:ale_linters = {
 \}
 let g:ale_python_pylint_executable = 'pylint3'
 let g:ale_python_pylint_options = '--rcfile=' . $HOME . '/googlecl-pylint.rc'
+let g:ale_pattern_options = {'\.beancount$': {'ale_enabled': 0}}
 nmap sp <Plug>(ale_previous_wrap)
 nmap sn <Plug>(ale_next_wrap)
 nmap <Leader>s :ALEToggle<CR>

@@ -8,7 +8,7 @@ set helplang=cn
 " Misc
 set noswapfile
 set nobackup
-set viminfo+=n~/.vim/info
+set viminfo='100,<1000,s100,h,n~/.vim/info
 set undodir=~/.vim/undo
 set undofile
 set wildmenu

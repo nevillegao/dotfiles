@@ -32,7 +32,7 @@ set showcmd
 set showmode
 set showbreak=↪  " Unicode
 " set showbreak=\\\  " ASCII
-set listchars=eol:¶,tab:\|→,space:␣,trail:•,extends:»,precedes:«,nbsp:¬  " Unicode
+set listchars=eol:¶,tab:\|→,trail:•,extends:»,precedes:«,nbsp:¬  " Unicode
 " set listchars=eol:↲,tab:»-,space:␣,trail:•,extends:→,precedes:←,nbsp:¬  " Unicode
 " set listchars=eol:$,tab:\|_,space:.,trail:*,extends:>,precedes:<,nbsp:~  " ASCII
 set completeopt=longest,menu

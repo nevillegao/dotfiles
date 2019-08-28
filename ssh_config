@@ -1,3 +1,5 @@
+Include config.d/*
+
 # Bitbucket doesn't support multiplexing
 Host bitbucket.org
     ControlMaster no

@@ -21,6 +21,7 @@
     co = checkout
     st = status
     di = diff
+    df = icdiff
     bc = branch
     ss = stash
     so = show

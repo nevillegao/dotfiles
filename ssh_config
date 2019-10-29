@@ -14,5 +14,5 @@ Host *
 
     # Multiplexing
     ControlMaster auto
-    ControlPath /tmp/ssh_%r@%h:%p
+    ControlPath /tmp/ssh_%C
     ControlPersist 10m

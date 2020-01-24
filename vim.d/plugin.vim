@@ -7,17 +7,22 @@ Plug 'jpalardy/vim-slime'
 Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
 Plug 'Yggdroot/indentLine'
 Plug 'w0rp/ale'
-Plug 'Valloric/YouCompleteMe', { 'do': '$HOME/.vim/bundle/YouCompleteMe/install.py' }
+" Plug 'Valloric/YouCompleteMe', { 'do': '$HOME/.vim/bundle/YouCompleteMe/install.py' }
 Plug 'elzr/vim-json', { 'for': 'json' }
+" Plug 'hashivim/vim-terraform'
 
 " Utility
 Plug 'tpope/vim-vinegar'
+Plug 'Shougo/defx.nvim'
+Plug 'roxma/nvim-yarp'  " Required by defx
+Plug 'roxma/vim-hug-neovim-rpc'  " Required by defx
 Plug 'Raimondi/delimitMate'
 Plug 'vim-scripts/CmdlineComplete'
 Plug 'mileszs/ack.vim', { 'on':  'Ack' }
 Plug 'inkarkat/vim-ingo-library' | Plug 'inkarkat/vim-mark'
 Plug 'thinca/vim-visualstar'
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'Shougo/denite.nvim'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
@@ -42,19 +47,22 @@ call plug#end()
 " let g:netrw_home = $HOME . '/.vim/netrw'
 " noremap <silent> <Leader><F2> :20Lexplore<CR>
 
+
 " SLIME
-let g:slime_target = "tmux"
-let g:slime_paste_file = $HOME . '/.vim/slime_paste'
-let g:slime_python_ipython = 1
+let g:slime_target = "vimterminal"
+" let g:slime_vimterminal_cmd = {"term_finish": "close"}
+
 
 " Tagbar
 nnoremap <silent> <Leader><F5> :TagbarToggle<CR>
+
 
 " indentLine
 let g:indentLine_enabled = 0
 let g:indentLine_char = '┊'
 let g:indentLine_leadingSpaceChar = '˰'
 nnoremap <silent> <Leader><F6> :IndentLinesToggle<CR>:LeadingSpaceToggle<CR>
+
 
 " ALE
 " let g:ale_set_highlights = 0
@@ -76,23 +84,62 @@ nmap sn <Plug>(ale_next_wrap)
 nmap <Leader>s :ALEToggle<CR>
 nmap <Leader>d :ALEDetail<CR>
 
+
 " YouCompleteMe
 let g:ycm_register_as_syntastic_checker = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 " let g:ycm_collect_identifiers_from_tags_files = 1
 
+
 " vim-json
 let g:vim_json_syntax_conceal = 0
+
+
+" defx
+" 使用 ;e 切换显示文件浏览，使用 ;a 查找到当前文件位置
+" let g:maplocalleader=';'
+nnoremap <silent> <LocalLeader>e
+\ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()`<CR>
+nnoremap <silent> <LocalLeader>a
+\ :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
+
+call defx#custom#option('_', {
+\   'winwidth': 30,
+\   'split': 'vertical',
+\   'direction': 'topleft',
+\   'show_ignored_files': 0,
+\   'buffer_name': '',
+\   'toggle': 1,
+\   'resume': 1,
+    \ 'columns': 'indent:git:icons:filename',
+    \ 'listed': 1,
+    \ 'root_marker': '≡ ',
+    \ 'ignored_files':
+    \     '.mypy_cache,.pytest_cache,.git,.hg,.svn,.stversions'
+    \   . ',__pycache__,.sass-cache,*.egg-info,.DS_Store,*.pyc,*.swp'
+\})
+
+function! s:defx_mappings() abort
+    " Defx window keyboard mappings
+    setlocal signcolumn=no
+    " 使用回车打开文件
+    nnoremap <silent><buffer><expr> <CR> defx#do_action('multi', ['drop'])
+endfunction
+
+autocmd FileType defx call s:defx_mappings()
+
 
 " Cmdline Complete
 cmap <C-Y> <Plug>CmdlineCompleteBackward
 cmap <C-E> <Plug>CmdlineCompleteForward
+
 
 " ack
 let g:ackprg = 'ag --vimgrep'
 let g:ackhighlight = 1
 nnoremap <silent> <Leader><F3> :Ack! <C-R>=expand('<cword>')<CR><CR>
 vnoremap <silent> <Leader><F3> y:Ack! "<C-R>=fnameescape(@")<CR>"<CR>
+
 
 " Gundo
 let g:gundo_prefer_python3 = 1
@@ -101,11 +148,13 @@ let g:gundo_preview_height = 25
 let g:gundo_preview_bottom = 1
 nnoremap <silent> <Leader><F4> :GundoToggle<CR>
 
+
 " undotree
 " let g:undotree_WindowLayout = 2
 " let g:undotree_DiffpanelHeight = 25
 " let g:undotree_SetFocusWhenToggle = 1
 " nnoremap <silent> <Leader><F4> :UndotreeToggle<CR>
+
 
 " CtrlP
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
@@ -114,9 +163,11 @@ let g:ctrlp_arg_map = 1
 let g:ctrlp_extensions = ['dir', 'line']
 let g:ctrlp_cmd = 'exe "CtrlP".get(["Buffer", "", "MRU", "Dir", "Line"], v:count)'
 
+
 " EasyMotion
 let g:EasyMotion_startofline = 0
 let g:EasyMotion_smartcase = 1
+
 
 " setcolors
 nnoremap <silent> <Leader><F8> :SetColors
@@ -125,6 +176,7 @@ nnoremap <silent> <Leader><F8> :SetColors
 \   molokai
 \   vividchalk
 \<CR>
+
 
 " Calendar
 let g:calendar_first_day = 'sunday'
@@ -135,6 +187,7 @@ let g:calendar_view = 'year'
 let g:calendar_views = ['year', 'month', 'clock']
 let g:calendar_cyclic_view = 1
 let g:calendar_cache_directory = $HOME . '/.vim/calendar/cache'
+
 
 " vim-beancount
 let g:beancount_separator_col = 65

@@ -97,7 +97,7 @@ IGNOREEOF=100
 test -x /usr/bin/dircolors && eval "$(dircolors -b)"
 
 # Utilities options
-export VISUAL="/usr/bin/vim"
+export VISUAL="$(which vim)"
 export EDITOR="${VISUAL}"
 export PYTHONSTARTUP="${HOME}/.pythonrc"
 export LESS="-MiR"
@@ -124,4 +124,10 @@ eexit() {
     if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
         command exit
     fi
+}
+
+venv() {
+    VENV_DIR="${HOME}/venv"
+
+    source "${VENV_DIR}/$1/bin/activate"
 }

@@ -29,9 +29,6 @@ alias tmtro='tmate display-message -p "#{tmate_ssh_ro}"'
 alias rxvt='urxvtcd'
 alias emacs='emacs -nw'
 
-# virtualenv
-alias venv='source bin/activate'
-
 # Docker
 alias drun='docker run --rm -i -t'
 alias rmdc='docker ps -f status=exited -q | xargs -i docker rm {}'

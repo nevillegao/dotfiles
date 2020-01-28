@@ -7,30 +7,32 @@ Plug 'jpalardy/vim-slime'
 Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
 Plug 'Yggdroot/indentLine'
 Plug 'w0rp/ale'
-" Plug 'Valloric/YouCompleteMe', { 'do': '$HOME/.vim/bundle/YouCompleteMe/install.py' }
 Plug 'elzr/vim-json', { 'for': 'json' }
 " Plug 'hashivim/vim-terraform'
 
-" Utility
+" File
 Plug 'tpope/vim-vinegar'
 Plug 'Shougo/defx.nvim'
 Plug 'roxma/nvim-yarp'  " Required by defx
 Plug 'roxma/vim-hug-neovim-rpc'  " Required by defx
-Plug 'Raimondi/delimitMate'
-Plug 'vim-scripts/CmdlineComplete'
-Plug 'mileszs/ack.vim', { 'on':  'Ack' }
-Plug 'inkarkat/vim-ingo-library' | Plug 'inkarkat/vim-mark'
-Plug 'thinca/vim-visualstar'
-" Plug 'ctrlpvim/ctrlp.vim'
-Plug 'Shougo/denite.nvim'
-Plug 'easymotion/vim-easymotion'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-surround'
 Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' }
 Plug 'vim-scripts/FavEx'
-Plug 'nathangrigg/vim-beancount'
 
+" Search
+Plug 'mileszs/ack.vim', { 'on':  'Ack' }
+" Plug 'inkarkat/vim-ingo-library' | Plug 'inkarkat/vim-mark'
+Plug 'thinca/vim-visualstar'
+Plug 'Shougo/denite.nvim'
+Plug 'easymotion/vim-easymotion'
+Plug 'vim-scripts/CmdlineComplete'
+Plug 'Raimondi/delimitMate'
+
+" Format
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
+
+" Utility
 Plug 'itchyny/calendar.vim', { 'on':  'Calendar' }
 " http://www.drchip.org/astronaut/vim/vbafiles/calutil.vba.gz
 " http://www.drchip.org/astronaut/vim/vbafiles/visincr.vba.gz
@@ -39,6 +41,9 @@ Plug 'itchyny/calendar.vim', { 'on':  'Calendar' }
 " Color
 Plug 'flazz/vim-colorschemes'
 Plug 'felixhummel/setcolors.vim', { 'on':  'SetColors' }
+
+" Support
+Plug 'nathangrigg/vim-beancount'
 
 call plug#end()
 
@@ -83,12 +88,6 @@ nmap sp <Plug>(ale_previous_wrap)
 nmap sn <Plug>(ale_next_wrap)
 nmap <Leader>s :ALEToggle<CR>
 nmap <Leader>d :ALEDetail<CR>
-
-
-" YouCompleteMe
-let g:ycm_register_as_syntastic_checker = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-" let g:ycm_collect_identifiers_from_tags_files = 1
 
 
 " vim-json
@@ -154,14 +153,6 @@ nnoremap <silent> <Leader><F4> :GundoToggle<CR>
 " let g:undotree_DiffpanelHeight = 25
 " let g:undotree_SetFocusWhenToggle = 1
 " nnoremap <silent> <Leader><F4> :UndotreeToggle<CR>
-
-
-" CtrlP
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
-let g:ctrlp_cache_dir = $HOME . '/.vim/ctrlp/cache'
-let g:ctrlp_arg_map = 1
-let g:ctrlp_extensions = ['dir', 'line']
-let g:ctrlp_cmd = 'exe "CtrlP".get(["Buffer", "", "MRU", "Dir", "Line"], v:count)'
 
 
 " EasyMotion

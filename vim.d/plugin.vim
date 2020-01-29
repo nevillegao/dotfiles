@@ -13,10 +13,9 @@ Plug 'elzr/vim-json', { 'for': 'json' }
 " File
 Plug 'tpope/vim-vinegar'
 Plug 'Shougo/defx.nvim'
-Plug 'roxma/nvim-yarp'  " Required by defx
-Plug 'roxma/vim-hug-neovim-rpc'  " Required by defx
 Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' }
 Plug 'vim-scripts/FavEx'
+Plug 'Shougo/deoplete.nvim'
 
 " Search
 Plug 'mileszs/ack.vim', { 'on':  'Ack' }
@@ -44,6 +43,10 @@ Plug 'felixhummel/setcolors.vim', { 'on':  'SetColors' }
 
 " Support
 Plug 'nathangrigg/vim-beancount'
+
+" Dependency
+Plug 'roxma/nvim-yarp'  " Required by defx
+Plug 'roxma/vim-hug-neovim-rpc'  " Required by defx
 
 call plug#end()
 
@@ -185,3 +188,25 @@ let g:beancount_separator_col = 65
 let b:beancount_root = expand('%:p:h') . '/accounts.beancount'
 autocmd FileType beancount inoremap . .<C-\><C-O>:AlignCommodity<CR>
 autocmd FileType beancount setlocal foldnestmax=1 | normal zM
+
+" denite
+nnoremap <silent> <C-P> :Denite buffer file<CR>
+
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
+
+" deoplete
+let g:deoplete#enable_at_startup = 1

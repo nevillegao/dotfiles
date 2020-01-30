@@ -190,6 +190,18 @@ autocmd FileType beancount inoremap . .<C-\><C-O>:AlignCommodity<CR>
 autocmd FileType beancount setlocal foldnestmax=1 | normal zM
 
 " denite
+call denite#custom#option('_', {
+    \ 'prompt': '❯',
+    \ 'auto_resume': 1,
+    \ 'start_filter': 1,
+    \ 'statusline': 1,
+    \ 'smartcase': 1,
+    \ 'vertical_preview': 1,
+    \ 'max_dynamic_update_candidates': 50000,
+    \ })
+call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+
 nnoremap <silent> <C-P> :Denite buffer file<CR>
 
 autocmd FileType denite call s:denite_my_settings()

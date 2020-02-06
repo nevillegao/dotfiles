@@ -1,0 +1,16 @@
+# vim: ft=sh
+
+# Confirm before exit shell
+eexit() {
+    read -p "${COLOR_ERED}Exit? ${COLOR_NO}" REPLY
+    if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
+        command exit
+    fi
+}
+
+venv() {
+    VENV_DIR="${HOME}/venv"
+
+    source "${VENV_DIR}/$1/bin/activate"
+}
+

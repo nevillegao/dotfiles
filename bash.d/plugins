@@ -1,0 +1,13 @@
+# vim: ft=sh
+
+PLUGINS=(
+    "/etc/bash_completion"
+    "${HOME}/.bash-completion-pinyin/chs_completion"
+    "${HOME}/.fzf/completion.bash"
+    "${HOME}/.fzf/key-bindings.bash"
+    "/usr/share/autojump/autojump.sh"
+)
+
+for i in "${PLUGINS[@]}"; do
+    test -r "${i}" && . "${i}"
+done

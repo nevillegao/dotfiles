@@ -6,18 +6,19 @@ shopt -s checkwinsize
 [[ $- == *i* ]] && stty -ixon
 
 # Load various rc files
-test -r "${HOME}/.colors" && . "${HOME}/.colors"
-test -r "${HOME}/.alias" && . "${HOME}/.alias"
+RC_FILES=(
+    "${HOME}/.bash.d/colors"
+    "${HOME}/.bash.d/functions"
+    "${HOME}/.bash.d/alias"
+    "${HOME}/.bash.d/plugins"
+)
+
+for i in "${RC_FILES[@]}"; do
+    test -r "${i}" && . "${i}"
+done
 
 # Enable programmable completion
 test -r /etc/bash_completion && . /etc/bash_completion
-
-if [[ -e "${HOME}/.bash-completion-pinyin/chs_completion" ]]; then
-    . "${HOME}/.bash-completion-pinyin/chs_completion"
-fi
-
-# Enable 'autojump'
-test -r /usr/share/autojump/autojump.sh && . /usr/share/autojump/autojump.sh
 
 # Terminal prompt string & title
 case "${TERM}" in
@@ -55,6 +56,38 @@ PROMPT_STR="${PROMPT_TIME}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PATH}"
 
 PS1="${PROMPT_STR}${PROMPT_GIT}\\\$ "
 
+# History options
+HISTCONTROL=ignoredups:erasedups
+HISTSIZE=65535
+HISTFILESIZE=1024000
+HISTTIMEFORMAT="%F %T "
+shopt -s histappend
+PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:+$PROMPT_COMMAND}"
+
+# Type Ctrl-d 100 times to exit shell to prevent accidental exiting
+IGNOREEOF=100
+
+# Color setup for 'ls'
+test -x /usr/bin/dircolors && eval "$(dircolors -b)"
+
+# Utilities options
+export VISUAL="$(which vim)"
+export EDITOR="${VISUAL}"
+export LESS="-MiR"
+export PYTHONSTARTUP="${HOME}/.pythonrc"
+
+# Make 'less' more friendly for non-text input files
+test -x /usr/bin/lesspipe && eval "$(SHELL=/bin/sh lesspipe)"
+
+# 'less' colors for man pages
+export LESS_TERMCAP_mb=$(echo -ne "\e[01;31m")     # start blinking
+export LESS_TERMCAP_md=$(echo -ne "\e[01;31m")     # start bold mode
+export LESS_TERMCAP_me=$(echo -ne "\e[0m")         # end all mode like so, us, mb, md, and mr
+export LESS_TERMCAP_so=$(echo -ne "\e[01;44;33m")  # start standout mode
+export LESS_TERMCAP_se=$(echo -ne "\e[0m")         # end standout mode
+export LESS_TERMCAP_us=$(echo -ne "\e[04;32m")     # start underlining
+export LESS_TERMCAP_ue=$(echo -ne "\e[0m")         # end underlining
+
 # Enable third party git prompt
 if [[ -e "${HOME}/.bash-git-prompt/gitprompt.sh" ]]; then
     GIT_PROMPT_ONLY_IN_REPO=1
@@ -82,52 +115,6 @@ elif [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
     . /usr/lib/git-core/git-sh-prompt
 fi
 
-# History options
-HISTCONTROL=ignoredups:erasedups
-HISTSIZE=65535
-HISTFILESIZE=1024000
-HISTTIMEFORMAT="%F %T "
-shopt -s histappend
-PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:+$PROMPT_COMMAND}"
-
-# Type Ctrl-d 100 times to exit shell to prevent accidental exiting
-IGNOREEOF=100
-
-# Color setup for 'ls'
-test -x /usr/bin/dircolors && eval "$(dircolors -b)"
-
-# Utilities options
-export VISUAL="$(which vim)"
-export EDITOR="${VISUAL}"
-export PYTHONSTARTUP="${HOME}/.pythonrc"
-export LESS="-MiR"
-
-# Make 'less' more friendly for non-text input files
-test -x /usr/bin/lesspipe && eval "$(SHELL=/bin/sh lesspipe)"
-
-# 'less' colors for man pages
-export LESS_TERMCAP_mb=$(echo -ne "\e[01;31m")     # start blinking
-export LESS_TERMCAP_md=$(echo -ne "\e[01;31m")     # start bold mode
-export LESS_TERMCAP_me=$(echo -ne "\e[0m")         # end all mode like so, us, mb, md, and mr
-export LESS_TERMCAP_so=$(echo -ne "\e[01;44;33m")  # start standout mode
-export LESS_TERMCAP_se=$(echo -ne "\e[0m")         # end standout mode
-export LESS_TERMCAP_us=$(echo -ne "\e[04;32m")     # start underlining
-export LESS_TERMCAP_ue=$(echo -ne "\e[0m")         # end underlining
-
 # Turn on sandbox for Chromium, set CHROME_DEVEL_SANDBOX to an empty string to
 # disable it
 export CHROME_DEVEL_SANDBOX="${HOME}/bin/chrome-linux/chrome_sandbox"
-
-# Confirm before exit shell
-eexit() {
-    read -p "${COLOR_ERED}Exit? ${COLOR_NO}" REPLY
-    if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
-        command exit
-    fi
-}
-
-venv() {
-    VENV_DIR="${HOME}/venv"
-
-    source "${VENV_DIR}/$1/bin/activate"
-}

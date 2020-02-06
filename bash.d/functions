@@ -1,16 +1,22 @@
 # vim: ft=sh
 
-# Confirm before exit shell
-eexit() {
-    read -p "${COLOR_ERED}Exit? ${COLOR_NO}" REPLY
-    if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
-        command exit
-    fi
-}
-
+# Python virtual environment
 venv() {
     VENV_DIR="${HOME}/venv"
 
     source "${VENV_DIR}/$1/bin/activate"
 }
 
+# fzf
+fe() {
+  local files
+  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+
+fd() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
+}

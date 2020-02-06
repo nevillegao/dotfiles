@@ -18,5 +18,5 @@ set menu-complete-display-prefix On
 "\ee": menu-complete
 "\ey": menu-complete-backward
 
-"\eq\ep": "eexit\n"
 "\es": "reset\n"
+"\eq\ep": "eexit\n"

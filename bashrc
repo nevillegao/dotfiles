@@ -8,17 +8,32 @@ shopt -s checkwinsize
 # Load various rc files
 RC_FILES=(
     "${HOME}/.bash.d/colors"
-    "${HOME}/.bash.d/functions"
     "${HOME}/.bash.d/alias"
-    "${HOME}/.bash.d/plugins"
+    "${HOME}/.bash.d/functions"
 )
 
-for i in "${RC_FILES[@]}"; do
-    test -r "${i}" && . "${i}"
+for rc_file in "${RC_FILES[@]}"; do
+    test -r "${rc_file}" && . "${rc_file}"
 done
 
-# Enable programmable completion
-test -r /etc/bash_completion && . /etc/bash_completion
+# Enable Bash completion
+BASH_COMPLETION=/etc/bash_completion
+test -r "${BASH_COMPLETION}" && . "${BASH_COMPLETION}"
+
+# Enable Pinyin completion
+PINYIN_COMPLETION="${HOME}/.bash-completion-pinyin/chs_completion"
+test -r "${PINYIN_COMPLETION}" && . "${PINYIN_COMPLETION}"
+
+# Load third party scripts
+PLUGINS=(
+    "${HOME}/.fzf/completion.bash"
+    "${HOME}/.fzf/key-bindings.bash"
+    "/usr/share/autojump/autojump.sh"
+)
+
+for plugin in "${PLUGINS[@]}"; do
+    test -r "${plugin}" && . "${plugin}"
+done
 
 # Terminal prompt string & title
 case "${TERM}" in
@@ -64,9 +79,6 @@ HISTTIMEFORMAT="%F %T "
 shopt -s histappend
 PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:+$PROMPT_COMMAND}"
 
-# Type Ctrl-d 100 times to exit shell to prevent accidental exiting
-IGNOREEOF=100
-
 # Color setup for 'ls'
 test -x /usr/bin/dircolors && eval "$(dircolors -b)"
 
@@ -74,7 +86,6 @@ test -x /usr/bin/dircolors && eval "$(dircolors -b)"
 export VISUAL="$(which vim)"
 export EDITOR="${VISUAL}"
 export LESS="-MiR"
-export PYTHONSTARTUP="${HOME}/.pythonrc"
 
 # Make 'less' more friendly for non-text input files
 test -x /usr/bin/lesspipe && eval "$(SHELL=/bin/sh lesspipe)"
@@ -87,6 +98,20 @@ export LESS_TERMCAP_so=$(echo -ne "\e[01;44;33m")  # start standout mode
 export LESS_TERMCAP_se=$(echo -ne "\e[0m")         # end standout mode
 export LESS_TERMCAP_us=$(echo -ne "\e[04;32m")     # start underlining
 export LESS_TERMCAP_ue=$(echo -ne "\e[0m")         # end underlining
+
+# Type Ctrl-D 100 times to exit shell to prevent accidental exiting
+IGNOREEOF=100
+
+# Confirm before exit shell
+eexit() {
+    read -p "${COLOR_ERED}Exit? ${COLOR_NO}" REPLY
+    if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
+        command exit
+    fi
+}
+
+# Python startup script
+export PYTHONSTARTUP="${HOME}/.pythonrc"
 
 # Enable third party git prompt
 if [[ -e "${HOME}/.bash-git-prompt/gitprompt.sh" ]]; then

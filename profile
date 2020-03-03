@@ -2,7 +2,7 @@
 
 # Recursively add directories from ${BIN_DIR}
 BIN_DIR="${HOME}/bin"
-#test -d "${BIN_DIR}" && export PATH="$(find -L "${BIN_DIR}" -maxdepth 1 -type d -printf "%p:")${PATH}"
+#[[ -d "${BIN_DIR}" ]] && export PATH="$(find -L "${BIN_DIR}" -maxdepth 1 -type d -printf "%p:")${PATH}"
 if [[ -d "${BIN_DIR}" ]]; then
     PATH="${BIN_DIR}:${PATH}"
     for i in "${BIN_DIR}"/*; do
@@ -35,4 +35,4 @@ if [[ -x /usr/bin/numlockx ]]; then
 fi
 
 # Load .bashrc
-test -r "${HOME}/.bashrc" && . "${HOME}/.bashrc"
+[[ -r "${HOME}/.bashrc" ]] && . "${HOME}/.bashrc"

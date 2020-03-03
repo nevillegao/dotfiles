@@ -1,9 +1,12 @@
-# Check the window size after each command and, if necessary, update the
-# values of LINES and COLUMNS
-shopt -s checkwinsize
+# # Check if not in an interactive shell and don't do anything
+# [[ $- != *i* ]] && return
 
 # Check if in an interactive shell and disable XON/XOFF flow control
 [[ $- == *i* ]] && stty -ixon
+
+# Check the window size after each command and, if necessary, update the
+# values of LINES and COLUMNS
+shopt -s checkwinsize
 
 # Load various rc files
 RC_FILES=(
@@ -13,16 +16,16 @@ RC_FILES=(
 )
 
 for rc_file in "${RC_FILES[@]}"; do
-    test -r "${rc_file}" && . "${rc_file}"
+    [[ -r "${rc_file}" ]] && . "${rc_file}"
 done
 
 # Enable Bash completion
 BASH_COMPLETION=/etc/bash_completion
-test -r "${BASH_COMPLETION}" && . "${BASH_COMPLETION}"
+[[ -r "${BASH_COMPLETION}" ]] && . "${BASH_COMPLETION}"
 
 # Enable Pinyin completion
 PINYIN_COMPLETION="${HOME}/.bash-completion-pinyin/chs_completion"
-test -r "${PINYIN_COMPLETION}" && . "${PINYIN_COMPLETION}"
+[[ -r "${PINYIN_COMPLETION}" ]] && . "${PINYIN_COMPLETION}"
 
 # Load third party scripts
 PLUGINS=(
@@ -32,7 +35,7 @@ PLUGINS=(
 )
 
 for plugin in "${PLUGINS[@]}"; do
-    test -r "${plugin}" && . "${plugin}"
+    [[ -r "${plugin}" ]] && . "${plugin}"
 done
 
 # Terminal prompt string & title
@@ -69,18 +72,19 @@ PROMPT_PATH="\[${COLOR_NO}\]:\[${COLOR_EYELLOW}\]\W]\[${COLOR_NO}\]"
 PROMPT_TIME="${PROMPT_TIME_ENABLE:+\[${COLOR_EBLUE}\][\A]\[${COLOR_NO}\]}"
 PROMPT_STR="${PROMPT_TIME}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PATH}"
 
-PS1="${PROMPT_STR}${PROMPT_GIT}\\\$ "
+PS1="${PROMPT_STR}\\\$ "
 
 # History options
+shopt -s histappend
 HISTCONTROL=ignoredups:erasedups
-HISTSIZE=65535
+HISTSIZE=65536
+# HISTFILE="${HOME}/.bash_eternal_history"
 HISTFILESIZE=1024000
 HISTTIMEFORMAT="%F %T "
-shopt -s histappend
 PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:+$PROMPT_COMMAND}"
 
 # Color setup for 'ls'
-test -x /usr/bin/dircolors && eval "$(dircolors -b)"
+[[ -x /usr/bin/dircolors ]] && eval "$(dircolors -b)"
 
 # Utilities options
 export VISUAL="$(which vim)"
@@ -88,7 +92,7 @@ export EDITOR="${VISUAL}"
 export LESS="-MiR"
 
 # Make 'less' more friendly for non-text input files
-test -x /usr/bin/lesspipe && eval "$(SHELL=/bin/sh lesspipe)"
+[[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # 'less' colors for man pages
 export LESS_TERMCAP_mb=$(echo -ne "\e[01;31m")     # start blinking
@@ -104,7 +108,7 @@ IGNOREEOF=100
 
 # Confirm before exit shell
 eexit() {
-    read -p "${COLOR_ERED}Exit? ${COLOR_NO}" REPLY
+    read -p "${COLOR_ERED}Exit? [y/N] ${COLOR_NO}" REPLY
     if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
         command exit
     fi
@@ -112,6 +116,13 @@ eexit() {
 
 # Python startup script
 export PYTHONSTARTUP="${HOME}/.pythonrc"
+
+# Python virtual environment prompt
+virtualenv_info() {
+    [[ -n "${VIRTUAL_ENV}" ]] && echo "(venv:${VIRTUAL_ENV##*/}) "
+}
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+PS1="\$(virtualenv_info)${PS1}"
 
 # Enable third party git prompt
 if [[ -e "${HOME}/.bash-git-prompt/gitprompt.sh" ]]; then
@@ -132,10 +143,11 @@ elif [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
     GIT_PS1_HIDE_IF_PWD_IGNORED=1
 
     PROMPT_GIT="\[${COLOR_ERED}\]\$(__git_ps1 ' (%s)')\[${COLOR_NO}\]"
+    # PS1="${PS1}${PROMPT_GIT}\\\$ "
 
-    if [[ -n "${GIT_PS1_SHOWCOLORHINTS}" ]]; then
-        PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'__git_ps1 "${PROMPT_STR}" "\\\$ "'
-    fi
+    # if [[ -n "${GIT_PS1_SHOWCOLORHINTS}" ]]; then
+    #     PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'__git_ps1 "${PROMPT_STR}" "\\\$ "'
+    # fi
 
     . /usr/lib/git-core/git-sh-prompt
 fi

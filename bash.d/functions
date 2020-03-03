@@ -2,7 +2,7 @@
 
 # Python virtual environment
 venv() {
-    VENV_DIR="${HOME}/venv"
+    VENV_DIR="${HOME}/.venv"
 
     source "${VENV_DIR}/$1/bin/activate"
 }

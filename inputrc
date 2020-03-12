@@ -3,7 +3,8 @@ set match-hidden-files Off
 set colored-stats On
 set visible-stats On
 set show-all-if-unmodified On
-set mark-symlinked-directories On
+set show-all-if-ambiguous On
+set menu-complete-display-prefix On
 set completion-ignore-case On
 set completion-prefix-display-length 1
 
@@ -11,12 +12,12 @@ set completion-prefix-display-length 1
 "\e[A": history-search-backward
 # Down
 "\e[B": history-search-forward
-"\er": dynamic-complete-history
 
 # Menu completion
-set menu-complete-display-prefix On
 "\ee": menu-complete
 "\ey": menu-complete-backward
 
-"\es": "reset\n"
-"\eq\ep": "eexit\n"
+"\eR": dynamic-complete-history
+
+"\es": "\C-e\C-ureset\C-m"
+"\eq\ep": "\C-e\C-ueexit\C-m"

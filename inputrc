@@ -15,7 +15,7 @@ set completion-prefix-display-length 1
 
 # Menu completion
 "\ee": menu-complete
-"\ey": menu-complete-backward
+"\eE": menu-complete-backward
 
 "\eR": dynamic-complete-history
 

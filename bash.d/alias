@@ -28,8 +28,3 @@ alias tmtrw='tmate display-message -p "#{tmate_ssh}"'
 alias tmtro='tmate display-message -p "#{tmate_ssh_ro}"'
 alias rxvt='urxvtcd'
 alias emacs='emacs -nw'
-
-# Docker
-alias drun='docker run --rm -i -t'
-alias rmdc='docker ps -f status=exited -q | xargs -i docker rm {}'
-alias rmdi='docker images | awk '"'"'{if ($1 == "<none>") print $3}'"'"' | xargs -i docker rmi {}'

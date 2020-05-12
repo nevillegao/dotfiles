@@ -43,7 +43,7 @@ case "${TERM}" in
     screen*)
         update_title() {
             # Ignore git-prompt
-            if [[ $1 =~ "__git_ps1" || $1 =~ "setGitPrompt" ]]; then
+            if [[ $1 =~ "setGitPrompt" || $1 =~ "__git_ps1" ]]; then
                 return
             fi
 
@@ -59,27 +59,30 @@ case "${TERM}" in
         fi
         ;;
     *)
-        PROMPT_HOST_ENABLE=1
-        PROMPT_TIME_ENABLE=1
+        PROMPT_TIME_ENABLED=1
+        PROMPT_HOST_ENABLED=1
 
         PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\e]0;${PWD/${HOME}/\~}\a"'
         ;;
 esac
 
-PROMPT_USER="\[${COLOR_ECYAN}\][\u\[${COLOR_NO}\]"
-PROMPT_HOST="${PROMPT_HOST_ENABLE:+\[${COLOR_NO}\]@\[${COLOR_EMAGENTA}\]${HOSTNAME%%.*}\[${COLOR_NO}\]}"
-PROMPT_PATH="\[${COLOR_NO}\]:\[${COLOR_EYELLOW}\]\W]\[${COLOR_NO}\]"
-PROMPT_TIME="${PROMPT_TIME_ENABLE:+\[${COLOR_EBLUE}\][\A]\[${COLOR_NO}\]}"
-PROMPT_STR="${PROMPT_TIME}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PATH}"
+PROMPT_USER_ENABLED=1
+PROMPT_PATH_ENABLED=1
 
+PROMPT_TIME="${PROMPT_TIME_ENABLED:+\[${COLOR_EBLUE}\][\A]\[${COLOR_NO}\]}"
+PROMPT_USER="${PROMPT_USER_ENABLED:+\[${COLOR_ECYAN}\][\u\[${COLOR_NO}\]}"
+PROMPT_HOST="${PROMPT_HOST_ENABLED:+\[${COLOR_NO}\]@\[${COLOR_EMAGENTA}\]${HOSTNAME%%.*}\[${COLOR_NO}\]}"
+PROMPT_PATH="${PROMPT_PATH_ENABLED:+\[${COLOR_NO}\]:\[${COLOR_EYELLOW}\]\W]\[${COLOR_NO}\]}"
+
+PROMPT_STR="${PROMPT_TIME}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PATH}"
 PS1="${PROMPT_STR}\\\$ "
 
 # History options
 shopt -s histappend
 HISTCONTROL=ignoredups:erasedups
-HISTSIZE=65536
+HISTSIZE=100000
 # HISTFILE="${HOME}/.bash_eternal_history"
-HISTFILESIZE=1024000
+HISTFILESIZE=1000000
 HISTTIMEFORMAT="%F %T "
 PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:+$PROMPT_COMMAND}"
 
@@ -124,7 +127,7 @@ virtualenv_info() {
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 PS1="\$(virtualenv_info)${PS1}"
 
-# Enable third party git prompt
+# Third party git prompt
 if [[ -e "${HOME}/.bash-git-prompt/gitprompt.sh" ]]; then
     GIT_PROMPT_ONLY_IN_REPO=1
     GIT_PROMPT_FETCH_REMOTE_STATUS=0
@@ -132,22 +135,17 @@ if [[ -e "${HOME}/.bash-git-prompt/gitprompt.sh" ]]; then
 
     . "${HOME}/.bash-git-prompt/gitprompt.sh"
 
-# Enable built-in git prompt
+# Built-in git prompt
 elif [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
     GIT_PS1_SHOWDIRTYSTATE=1
     GIT_PS1_SHOWSTASHSTATE=1
     GIT_PS1_SHOWUNTRACKEDFILES=1
-    GIT_PS1_SHOWUPSTREAM="verbose"
-    GIT_PS1_DESCRIBE_STYLE="branch"
+    GIT_PS1_SHOWUPSTREAM="auto"
+    GIT_PS1_DESCRIBE_STYLE="default"
     GIT_PS1_SHOWCOLORHINTS=1
     GIT_PS1_HIDE_IF_PWD_IGNORED=1
 
-    PROMPT_GIT="\[${COLOR_ERED}\]\$(__git_ps1 ' (%s)')\[${COLOR_NO}\]"
-    # PS1="${PS1}${PROMPT_GIT}\\\$ "
-
-    # if [[ -n "${GIT_PS1_SHOWCOLORHINTS}" ]]; then
-    #     PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'__git_ps1 "${PROMPT_STR}" "\\\$ "'
-    # fi
+    PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'__git_ps1 "${PROMPT_STR}" "\\\$ "'
 
     . /usr/lib/git-core/git-sh-prompt
 fi

@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 install() {
+    eval 'EXCLUDE=($(cat install.exclude))'
+
     for i in *; do
-        if [[ "${i}" == $(basename $0) ]]; then
+        if [[ "${EXCLUDE[@]}" =~ "${i}" ]]; then
             continue
         fi
 

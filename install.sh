@@ -16,6 +16,14 @@ install() {
 
             rm -rf "${HOME}/.ssh/config"
             ln -sf "${PWD}/${i}" "${HOME}/.ssh/config"
+        elif [[ "${i}" == "config_user-dirs.conf" ]]; then
+            if [[ ! -d "${HOME}/.config" ]]; then
+                rm -rf "${HOME}/.config"
+                mkdir "${HOME}/.config"
+            fi
+
+            rm -rf "${HOME}/.config/user-dirs.conf"
+            ln -sf "${PWD}/${i}" "${HOME}/.config/user-dirs.conf"
         else
             rm -rf "${HOME}/.${i}"
             ln -sf "${PWD}/${i}" "${HOME}/.${i}"

@@ -75,7 +75,7 @@ irssi_plugins() {
 
     declare -a irssi_plugins=(nickcolor.pl)
     for i in ${irssi_plugins[@]}; do
-        svn export "https://github.com/irssi/scripts.irssi.org.git/trunk/scripts/${i}" "${script_dir}/${i}"
+        curl -sSLo "${script_dir}/${i}" "https://raw.githubusercontent.com/irssi/scripts.irssi.org/master/scripts/${i}"
         (cd "${script_dir}/autorun" && ln -sf "../${i}")
     done
 }

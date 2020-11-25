@@ -11,6 +11,7 @@ Host tunnel-local
 Host *
     ServerAliveInterval 60
     Compression yes
+    ForwardAgent no
 
     # Multiplexing
     ControlMaster auto

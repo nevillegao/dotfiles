@@ -1,13 +1,5 @@
 Include config.d/*
 
-# Bitbucket doesn't support multiplexing
-Host bitbucket.org
-    ControlMaster no
-
-Host tunnel-local
-    HostName 0.0.0.0
-    LocalForward 80 127.0.0.1:8080
-
 Host *
     ServerAliveInterval 60
     Compression yes

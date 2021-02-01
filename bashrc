@@ -1,12 +1,15 @@
 # # Check if not in an interactive shell and don't do anything
 # [[ $- != *i* ]] && return
 
+
 # Check if in an interactive shell and disable XON/XOFF flow control
 [[ $- == *i* ]] && stty -ixon
+
 
 # Check the window size after each command and, if necessary, update the
 # values of LINES and COLUMNS
 shopt -s checkwinsize
+
 
 # Load various rc files
 RC_FILES=(
@@ -19,13 +22,69 @@ for rc_file in "${RC_FILES[@]}"; do
     [[ -r "${rc_file}" ]] && . "${rc_file}"
 done
 
+
+# Type Ctrl-D 100 times to exit shell to prevent accidental exiting
+IGNOREEOF=100
+
+
+# Confirm before exit shell
+eexit() {
+    read -p "${COLOR_ERED}Exit? [y/N] ${COLOR_NO}" REPLY
+    if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
+        command exit
+    fi
+}
+
+
+# History options
+shopt -s histappend
+HISTCONTROL=ignoredups:erasedups
+HISTSIZE=100000
+# HISTFILE="${HOME}/.bash_eternal_history"
+HISTFILESIZE=1000000
+HISTTIMEFORMAT="%F %T "
+PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:+$PROMPT_COMMAND}"
+
+
+# Utilities options
+export MANPAGER='less -s -M +Gg'
+export VISUAL="$(which vim)"
+export EDITOR="${VISUAL}"
+
+
+# Color setup for 'ls'
+[[ -x /usr/bin/dircolors ]] && eval "$(dircolors -b)"
+
+
+# 'less' options
+export LESS="-MiR"
+
+# Make 'less' more friendly for non-text input files
+[[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# 'less' colors for man pages
+export LESS_TERMCAP_mb=$(echo -ne "\e[01;31m")     # start blinking
+export LESS_TERMCAP_md=$(echo -ne "\e[01;31m")     # start bold mode
+export LESS_TERMCAP_me=$(echo -ne "\e[0m")         # end all mode like so, us, mb, md, and mr
+export LESS_TERMCAP_so=$(echo -ne "\e[01;44;33m")  # start standout mode
+export LESS_TERMCAP_se=$(echo -ne "\e[0m")         # end standout mode
+export LESS_TERMCAP_us=$(echo -ne "\e[04;32m")     # start underlining
+export LESS_TERMCAP_ue=$(echo -ne "\e[0m")         # end underlining
+
+
 # Enable Bash completion
 BASH_COMPLETION=/etc/bash_completion
 [[ -r "${BASH_COMPLETION}" ]] && . "${BASH_COMPLETION}"
 
+
 # Enable Pinyin completion
 PINYIN_COMPLETION="${HOME}/.bash-completion-pinyin/chs_completion"
 [[ -r "${PINYIN_COMPLETION}" ]] && . "${PINYIN_COMPLETION}"
+
+
+# Python startup script
+export PYTHONSTARTUP="${HOME}/.pythonrc"
+
 
 # Load third party scripts
 PLUGINS=(
@@ -37,6 +96,7 @@ PLUGINS=(
 for plugin in "${PLUGINS[@]}"; do
     [[ -r "${plugin}" ]] && . "${plugin}"
 done
+
 
 # Terminal prompt string & title
 case "${TERM}" in
@@ -77,55 +137,15 @@ PROMPT_PATH="${PROMPT_PATH_ENABLED:+\[${COLOR_NO}\]:\[${COLOR_EYELLOW}\]\W]\[${C
 PROMPT_STR="${PROMPT_TIME}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PATH}"
 PS1="${PROMPT_STR}\\\$ "
 
-# History options
-shopt -s histappend
-HISTCONTROL=ignoredups:erasedups
-HISTSIZE=100000
-# HISTFILE="${HOME}/.bash_eternal_history"
-HISTFILESIZE=1000000
-HISTTIMEFORMAT="%F %T "
-PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:+$PROMPT_COMMAND}"
-
-# Color setup for 'ls'
-[[ -x /usr/bin/dircolors ]] && eval "$(dircolors -b)"
-
-# Utilities options
-export VISUAL="$(which vim)"
-export EDITOR="${VISUAL}"
-export LESS="-MiR"
-
-# Make 'less' more friendly for non-text input files
-[[ -x /usr/bin/lesspipe ]] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# 'less' colors for man pages
-export LESS_TERMCAP_mb=$(echo -ne "\e[01;31m")     # start blinking
-export LESS_TERMCAP_md=$(echo -ne "\e[01;31m")     # start bold mode
-export LESS_TERMCAP_me=$(echo -ne "\e[0m")         # end all mode like so, us, mb, md, and mr
-export LESS_TERMCAP_so=$(echo -ne "\e[01;44;33m")  # start standout mode
-export LESS_TERMCAP_se=$(echo -ne "\e[0m")         # end standout mode
-export LESS_TERMCAP_us=$(echo -ne "\e[04;32m")     # start underlining
-export LESS_TERMCAP_ue=$(echo -ne "\e[0m")         # end underlining
-
-# Type Ctrl-D 100 times to exit shell to prevent accidental exiting
-IGNOREEOF=100
-
-# Confirm before exit shell
-eexit() {
-    read -p "${COLOR_ERED}Exit? [y/N] ${COLOR_NO}" REPLY
-    if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
-        command exit
-    fi
-}
-
-# Python startup script
-export PYTHONSTARTUP="${HOME}/.pythonrc"
 
 # Python virtual environment prompt
 virtualenv_info() {
     [[ -n "${VIRTUAL_ENV}" ]] && echo "(venv:${VIRTUAL_ENV##*/}) "
 }
+
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 PS1="\$(virtualenv_info)${PS1}"
+
 
 # Third party git prompt
 if [[ -e "${HOME}/.bash-git-prompt/gitprompt.sh" ]]; then
@@ -149,6 +169,7 @@ elif [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
 
     . /usr/lib/git-core/git-sh-prompt
 fi
+
 
 # Turn on sandbox for Chromium, set CHROME_DEVEL_SANDBOX to an empty string to
 # disable it

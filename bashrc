@@ -169,8 +169,3 @@ elif [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
 
     . /usr/lib/git-core/git-sh-prompt
 fi
-
-
-# Turn on sandbox for Chromium, set CHROME_DEVEL_SANDBOX to an empty string to
-# disable it
-export CHROME_DEVEL_SANDBOX="${HOME}/bin/chrome-linux/chrome_sandbox"

@@ -7,8 +7,7 @@ Plug 'jpalardy/vim-slime'
 Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
 Plug 'Yggdroot/indentLine'
 Plug 'w0rp/ale'
-Plug 'elzr/vim-json', { 'for': 'json' }
-" Plug 'hashivim/vim-terraform'
+Plug 'sheerun/vim-polyglot'
 
 " File
 Plug 'tpope/vim-vinegar'

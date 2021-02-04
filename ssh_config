@@ -1,5 +1,9 @@
 Include config.d/*
 
+# Bitbucket doesn't support multiplexing
+Host bitbucket.org
+    ControlMaster no
+
 Host *
     ServerAliveInterval 60
     Compression yes

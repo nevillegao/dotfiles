@@ -18,8 +18,8 @@ set hidden
 
 " Display
 syntax on
-silent! colorscheme inkpot
-if exists('+termguicolors')
+silent! colorscheme ayu
+if exists('+termguicolors')  "Enable true color (24-bit)
   let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
   let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
   set termguicolors

@@ -172,3 +172,11 @@ elif [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
 
     . /usr/lib/git-core/git-sh-prompt
 fi
+
+# WSL
+if grep -q Microsoft /proc/version; then
+    umask 022
+
+    # Access Docker daemon
+    export DOCKER_HOST=tcp://localhost:2375
+fi

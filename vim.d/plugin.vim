@@ -56,8 +56,7 @@ call plug#end()
 
 
 " SLIME
-let g:slime_target = "vimterminal"
-" let g:slime_vimterminal_cmd = {"term_finish": "close"}
+let g:slime_target = "tmux"
 
 
 " Tagbar

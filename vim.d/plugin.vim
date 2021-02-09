@@ -1,5 +1,10 @@
 call plug#begin('$HOME/.vim/bundle')
 
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
+
 " Programming
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
@@ -163,20 +168,20 @@ let g:EasyMotion_smartcase = 1
 
 " setcolors
 nnoremap <silent> <Leader><F8> :SetColors
-\   ayu
-\   jellybeans
 \   spacegray
+\   hybrid
+\   jellybeans
 \   inkpot
 \   molokai
 \   vividchalk
 \   solarized
 \   gruvbox
 \   onedark
-\   hybrid
+\   lucius
 \   iceberg
 \   OceanicNext
 \   solarized8_dark
-\   lucius
+\   ayu
 \   desert256
 \<CR>
 

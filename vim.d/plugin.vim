@@ -164,10 +164,21 @@ let g:EasyMotion_smartcase = 1
 
 " setcolors
 nnoremap <silent> <Leader><F8> :SetColors
+\   ayu
+\   jellybeans
+\   spacegray
 \   inkpot
-\   desert256
 \   molokai
 \   vividchalk
+\   solarized
+\   gruvbox
+\   onedark
+\   hybrid
+\   iceberg
+\   OceanicNext
+\   solarized8_dark
+\   lucius
+\   desert256
 \<CR>
 
 

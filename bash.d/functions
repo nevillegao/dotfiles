@@ -19,6 +19,7 @@ venvd() {
     rm -rf "${VENV_DIR}/$1"
 }
 
+
 # fzf
 fe() {
     local files

@@ -1,17 +1,19 @@
 call plug#begin('$HOME/.vim/bundle')
 
+Plug 'itchyny/lightline.vim'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
+" let g:airline_powerline_fonts = 1
 
 " Programming
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
+" Plug 'benmills/vimux'
 Plug 'jpalardy/vim-slime'
 Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
 Plug 'Yggdroot/indentLine'
 Plug 'w0rp/ale'
+Plug 'Chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
 
 " File
@@ -22,6 +24,8 @@ Plug 'vim-scripts/FavEx'
 Plug 'Shougo/deoplete.nvim'
 
 " Search
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim', { 'on':  'Ack' }
 " Plug 'inkarkat/vim-ingo-library' | Plug 'inkarkat/vim-mark'
 Plug 'thinca/vim-visualstar'
@@ -137,6 +141,11 @@ autocmd FileType defx call s:defx_mappings()
 " Cmdline Complete
 cmap <C-Y> <Plug>CmdlineCompleteBackward
 cmap <C-E> <Plug>CmdlineCompleteForward
+
+
+" fzf
+let g:fzf_command_prefix = 'Fzf'
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 
 " ack

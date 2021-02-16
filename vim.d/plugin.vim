@@ -3,7 +3,6 @@ call plug#begin('$HOME/.vim/bundle')
 " Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-let g:airline_powerline_fonts = 1
 
 " Programming
 Plug 'tpope/vim-fugitive'
@@ -81,24 +80,24 @@ nnoremap <silent> <Leader><F6> :IndentLinesToggle<CR>:LeadingSpaceToggle<CR>
 
 
 " ALE
-" let g:ale_set_highlights = 0
-let g:ale_sign_error = '✗'
-let g:ale_sign_warning = '!'
-" let g:ale_statusline_format = ['✗ %d', '! %d', '✔ OK']
-" let g:ale_echo_msg_error_str = 'E'
-" let g:ale_echo_msg_warning_str = 'W'
-" let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-let g:ale_lint_on_enter = 0
-let g:ale_linters = {
-\   'python': ['pylint']
-\}
-let g:ale_python_pylint_executable = 'pylint3'
-let g:ale_python_pylint_options = '--rcfile=' . $HOME . '/googlecl-pylint.rc'
-let g:ale_pattern_options = {'\.beancount$': {'ale_enabled': 0}}
-nmap sp <Plug>(ale_previous_wrap)
-nmap sn <Plug>(ale_next_wrap)
-nmap <Leader>s :ALEToggle<CR>
-nmap <Leader>d :ALEDetail<CR>
+" " let g:ale_set_highlights = 0
+" let g:ale_sign_error = '✗'
+" let g:ale_sign_warning = '!'
+" " let g:ale_statusline_format = ['✗ %d', '! %d', '✔ OK']
+" " let g:ale_echo_msg_error_str = 'E'
+" " let g:ale_echo_msg_warning_str = 'W'
+" " let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" let g:ale_lint_on_enter = 0
+" let g:ale_linters = {
+" \   'python': ['pylint']
+" \}
+" let g:ale_python_pylint_executable = 'pylint3'
+" let g:ale_python_pylint_options = '--rcfile=' . $HOME . '/googlecl-pylint.rc'
+" let g:ale_pattern_options = {'\.beancount$': {'ale_enabled': 0}}
+" nmap sp <Plug>(ale_previous_wrap)
+" nmap sn <Plug>(ale_next_wrap)
+" nmap <Leader>s :ALEToggle<CR>
+" nmap <Leader>d :ALEDetail<CR>
 
 
 " defx
@@ -146,7 +145,6 @@ let g:deoplete#enable_at_startup = 1
 
 " fzf
 let g:fzf_command_prefix = 'Fzf'
-" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 
 " ack

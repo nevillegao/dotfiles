@@ -1,9 +1,9 @@
 call plug#begin('$HOME/.vim/bundle')
 
-Plug 'itchyny/lightline.vim'
-" Plug 'vim-airline/vim-airline'
-" Plug 'vim-airline/vim-airline-themes'
-" let g:airline_powerline_fonts = 1
+" Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+let g:airline_powerline_fonts = 1
 
 " Programming
 Plug 'tpope/vim-fugitive'
@@ -12,14 +12,15 @@ Plug 'tpope/vim-commentary'
 Plug 'jpalardy/vim-slime'
 Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
 Plug 'Yggdroot/indentLine'
-Plug 'w0rp/ale'
-Plug 'Chiel92/vim-autoformat'
+" Plug 'w0rp/ale'
+" Plug 'Chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
 
 " File
 Plug 'tpope/vim-vinegar'
 Plug 'Shougo/defx.nvim'
 Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' }
+" Plug 'mbbill/undotree'
 Plug 'vim-scripts/FavEx'
 Plug 'Shougo/deoplete.nvim'
 
@@ -100,10 +101,6 @@ nmap <Leader>s :ALEToggle<CR>
 nmap <Leader>d :ALEDetail<CR>
 
 
-" vim-json
-let g:vim_json_syntax_conceal = 0
-
-
 " defx
 " 使用 ;e 切换显示文件浏览，使用 ;a 查找到当前文件位置
 " let g:maplocalleader=';'
@@ -143,9 +140,13 @@ cmap <C-Y> <Plug>CmdlineCompleteBackward
 cmap <C-E> <Plug>CmdlineCompleteForward
 
 
+" deoplete
+let g:deoplete#enable_at_startup = 1
+
+
 " fzf
 let g:fzf_command_prefix = 'Fzf'
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+" let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 
 " ack
@@ -168,6 +169,38 @@ nnoremap <silent> <Leader><F4> :GundoToggle<CR>
 " let g:undotree_DiffpanelHeight = 25
 " let g:undotree_SetFocusWhenToggle = 1
 " nnoremap <silent> <Leader><F4> :UndotreeToggle<CR>
+
+
+" denite
+call denite#custom#option('_', {
+    \ 'prompt': '❯',
+    \ 'auto_resume': 1,
+    \ 'start_filter': 1,
+    \ 'statusline': 1,
+    \ 'smartcase': 1,
+    \ 'vertical_preview': 1,
+    \ 'max_dynamic_update_candidates': 50000,
+    \ })
+call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+
+nnoremap <silent> <C-P> :Denite buffer file<CR>
+
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> d
+  \ denite#do_map('do_action', 'delete')
+  nnoremap <silent><buffer><expr> p
+  \ denite#do_map('do_action', 'preview')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+  nnoremap <silent><buffer><expr> <Space>
+  \ denite#do_map('toggle_select').'j'
+endfunction
 
 
 " EasyMotion
@@ -211,37 +244,3 @@ let g:beancount_separator_col = 68
 let b:beancount_root = expand('%:p:h') . '/accounts.beancount'
 autocmd FileType beancount inoremap . .<C-\><C-O>:AlignCommodity<CR>
 autocmd FileType beancount setlocal foldnestmax=1 | normal zM
-
-" denite
-call denite#custom#option('_', {
-    \ 'prompt': '❯',
-    \ 'auto_resume': 1,
-    \ 'start_filter': 1,
-    \ 'statusline': 1,
-    \ 'smartcase': 1,
-    \ 'vertical_preview': 1,
-    \ 'max_dynamic_update_candidates': 50000,
-    \ })
-call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
-
-nnoremap <silent> <C-P> :Denite buffer file<CR>
-
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-  \ denite#do_map('toggle_select').'j'
-endfunction
-
-" deoplete
-let g:deoplete#enable_at_startup = 1

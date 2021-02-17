@@ -20,14 +20,12 @@ Plug 'tpope/vim-vinegar'
 Plug 'Shougo/defx.nvim'
 Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' }
 " Plug 'mbbill/undotree'
-Plug 'vim-scripts/FavEx'
 Plug 'Shougo/deoplete.nvim'
 
 " Search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim', { 'on':  'Ack' }
-" Plug 'inkarkat/vim-ingo-library' | Plug 'inkarkat/vim-mark'
 Plug 'thinca/vim-visualstar'
 Plug 'Shougo/denite.nvim'
 Plug 'easymotion/vim-easymotion'

@@ -36,6 +36,16 @@ eexit() {
 }
 
 
+# History options
+shopt -s histappend
+HISTCONTROL=ignoredups:erasedups
+HISTSIZE=100000
+# HISTFILE="${HOME}/.bash_eternal_history"
+HISTFILESIZE=1000000
+HISTTIMEFORMAT="%F %T "
+PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:+$PROMPT_COMMAND}"
+
+
 # Utilities options
 export MANPAGER='less -s -M +Gg'
 export VISUAL="$(which vim)"
@@ -129,16 +139,6 @@ PROMPT_END="\[${COLOR_NO}\]]\[${COLOR_NO}\]"
 
 PROMPT_STR="${PROMPT_TIME}${PROMPT_BEGIN}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PATH}${PROMPT_END}"
 PS1="${PROMPT_STR}\\\$ "
-
-
-# History options
-shopt -s histappend
-HISTCONTROL=ignoredups:erasedups
-HISTSIZE=100000
-# HISTFILE="${HOME}/.bash_eternal_history"
-HISTFILESIZE=1000000
-HISTTIMEFORMAT="%F %T "
-PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; } history -a; history -c; history -r"
 
 
 # Python virtual environment prompt

@@ -27,6 +27,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim', { 'on':  'Ack' }
 Plug 'thinca/vim-visualstar'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/denite.nvim'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/CmdlineComplete'
@@ -167,37 +168,118 @@ nnoremap <silent> <Leader><F4> :GundoToggle<CR>
 " nnoremap <silent> <Leader><F4> :UndotreeToggle<CR>
 
 
+" CtrlP
+let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_cache_dir = $HOME . '/.vim/ctrlp/cache'
+let g:ctrlp_arg_map = 1
+let g:ctrlp_extensions = ['dir', 'mixed']
+let g:ctrlp_cmd = 'exe "CtrlP".get(["", "Buffer", "MRU", "Dir", "Mixed"], v:count)'
+
+
 " denite
-call denite#custom#option('_', {
-    \ 'prompt': '❯',
-    \ 'auto_resume': 1,
-    \ 'start_filter': 1,
-    \ 'statusline': 1,
-    \ 'smartcase': 1,
-    \ 'vertical_preview': 1,
-    \ 'max_dynamic_update_candidates': 50000,
-    \ })
-call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
 
-nnoremap <silent> <C-P> :Denite buffer file<CR>
+"" 1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"call denite#custom#option('_', {
+"    \ 'prompt': '❯',
+"    \ 'auto_resume': 1,
+"    \ 'start_filter': 1,
+"    \ 'statusline': 1,
+"    \ 'smartcase': 1,
+"    \ 'vertical_preview': 1,
+"    \ 'max_dynamic_update_candidates': 50000,
+"    \ })
+"call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+"call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
 
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-  \ denite#do_map('toggle_select').'j'
-endfunction
+"nnoremap <silent> <C-P> :Denite buffer file<CR>
 
+"autocmd FileType denite call s:denite_my_settings()
+"function! s:denite_my_settings() abort
+"  nnoremap <silent><buffer><expr> <CR>
+"  \ denite#do_map('do_action')
+"  nnoremap <silent><buffer><expr> d
+"  \ denite#do_map('do_action', 'delete')
+"  nnoremap <silent><buffer><expr> p
+"  \ denite#do_map('do_action', 'preview')
+"  nnoremap <silent><buffer><expr> q
+"  \ denite#do_map('quit')
+"  nnoremap <silent><buffer><expr> i
+"  \ denite#do_map('open_filter_buffer')
+"  nnoremap <silent><buffer><expr> <Space>
+"  \ denite#do_map('toggle_select').'j'
+"endfunction
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"" 2
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"if executable('rg')
+"  call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
+"  call denite#custom#var('grep', 'command', ['rg'])
+"  call denite#custom#var('grep', 'recursive_opts', [])
+"  call denite#custom#var('grep', 'final_opts', [])
+"  call denite#custom#var('grep', 'separator', ['--'])
+"  call denite#custom#var('grep', 'default_opts', ['--vimgrep', '--no-heading', '--ignore-case'])
+"else
+"  call denite#custom#var('file_rec', 'command',
+"      \ ['grep', '--follow', '--nocolor', '--nogroup', '-g', ''])
+"endif
+
+"" allow grep source filtering on either path or text
+"call denite#custom#source('grep', 'converters', ['converter_abbr_word'])
+
+"call denite#custom#map('insert', '<C-h>', '<denite:move_to_first_line>', 'noremap')
+"call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+"call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+"call denite#custom#map('insert', '<C-l>', '<denite:move_to_last_line>', 'noremap')
+
+"call denite#custom#option('default', 'prompt', '>')
+"call denite#custom#option('default', 'cursor_wrap', v:true)
+
+"nnoremap <C-p> :Denite -direction=topleft file_rec<CR>
+"nnoremap <space>/ :Denite -direction=topleft grep<CR>
+"nnoremap <space>f :Denite -direction=topleft -no-quit -mode=normal grep:.<CR>
+"nnoremap <space>s :Denite -direction=topleft buffer<CR>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"" 3
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Change file_rec command.
+"call denite#custom#var('file_rec', 'command',
+"      \ ['ag', '--follow', '--nocolor', '--nogroup', '--ignore=*.pyc', '-g', ''])
+
+"" Change mappings.
+"call denite#custom#map(
+"      \ 'insert',
+"      \ 'K',
+"      \ '<denite:move_to_next_line>',
+"      \ 'noremap'
+"      \)
+"call denite#custom#map(
+"      \ 'insert',
+"      \ 'L',
+"      \ '<denite:move_to_previous_line>',
+"      \ 'noremap'
+"      \)
+
+"" Change sorters.
+"call denite#custom#source(
+"      \ 'file_rec', 'sorters', ['sorter_sublime'])
+
+"" Change default prompt
+"call denite#custom#option('default', 'prompt', '➤ ')
+
+"" " Change ignore_globs
+"" call denite#custom#filter('matcher_ignore_globs', 'ignore_globs',
+""       \ [ '.git/', '.ropeproject/', '__pycache__/*', '*.pyc',
+""       \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', '*.png'])
+
+"nnoremap <space>v :Denite file_rec -default-action=vsplit<cr>
+"nnoremap <space>s :Denite file_rec -default-action=split<cr>
+"nnoremap <space>e :Denite file_rec -winheight=10 <cr>
+"nnoremap <space>m :Denite file_mru -winheight=10 -vertical-preview -auto-preview <cr>
+"nnoremap <space>l :Denite line -auto-preview<cr>
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " EasyMotion
 let g:EasyMotion_startofline = 0

@@ -9,7 +9,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-commentary'
 " Plug 'benmills/vimux'
 Plug 'jpalardy/vim-slime'
-Plug 'majutsushi/tagbar', { 'on':  'TagbarToggle' }
+Plug 'preservim/tagbar'
 Plug 'Yggdroot/indentLine'
 " Plug 'w0rp/ale'
 " Plug 'Chiel92/vim-autoformat'
@@ -17,6 +17,9 @@ Plug 'sheerun/vim-polyglot'
 
 " File
 Plug 'tpope/vim-vinegar'
+Plug 'preservim/nerdtree' |
+    \ Plug 'Xuyuanp/nerdtree-git-plugin' |
+    \ Plug 'ryanoasis/vim-devicons'
 Plug 'Shougo/defx.nvim'
 Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' }
 " Plug 'mbbill/undotree'
@@ -65,6 +68,7 @@ call plug#end()
 
 " SLIME
 let g:slime_target = "tmux"
+let g:slime_paste_file = $HOME . '/.vim/slime_paste'
 
 
 " Tagbar
@@ -97,6 +101,24 @@ nnoremap <silent> <Leader><F6> :IndentLinesToggle<CR>:LeadingSpaceToggle<CR>
 " nmap sn <Plug>(ale_next_wrap)
 " nmap <Leader>s :ALEToggle<CR>
 " nmap <Leader>d :ALEDetail<CR>
+
+
+" NERDTree
+nnoremap <Leader>n :NERDTreeFocus<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+" Exit Vim if NERDTree is the only window left.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
+
+" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
+autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+
+
+" nerdtree-git-plugin
+let g:NERDTreeGitStatusUseNerdFonts = 1
 
 
 " defx

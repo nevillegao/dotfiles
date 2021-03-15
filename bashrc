@@ -36,6 +36,49 @@ eexit() {
 }
 
 
+# Terminal prompt string & title
+case "${TERM}" in
+    screen*)
+        update_title() {
+            # Ignore git-prompt
+            if [[ $1 =~ "setGitPrompt" || $1 =~ "__git_ps1" ]]; then
+                return
+            fi
+
+            printf "\e]0;%s\e\\" "$1";
+        }
+
+        if [[ -n "${TMUX}" ]]; then
+            PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\ek${USER}@${HOSTNAME%%/*}:${PWD/${HOME}/\~}\e\\"; update_title ${PWD/${HOME}/\~}'
+
+            trap 'update_title "${BASH_COMMAND}"' DEBUG
+        else
+            PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\ek${PWD/${HOME}/\~}\e\\"'
+        fi
+        ;;
+    *)
+        PROMPT_TIME_ENABLED=1
+        PROMPT_HOST_ENABLED=1
+
+        PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\e]0;${PWD/${HOME}/\~}\a"'
+        ;;
+esac
+
+PROMPT_USER_ENABLED=1
+PROMPT_PATH_ENABLED=1
+
+PROMPT_TIME="${PROMPT_TIME_ENABLED:+\[${COLOR_EBLUE}\][\A]\[${COLOR_NO}\]}"
+PROMPT_USER="${PROMPT_USER_ENABLED:+\[${COLOR_ECYAN}\]\u\[${COLOR_NO}\]}"
+PROMPT_HOST="${PROMPT_HOST_ENABLED:+\[${COLOR_EMAGENTA}\]@${HOSTNAME%%.*}\[${COLOR_NO}\]}"
+PROMPT_PATH="${PROMPT_PATH_ENABLED:+\[${COLOR_EYELLOW}\]:\W\[${COLOR_NO}\]}"
+
+PROMPT_BEGIN="\[${COLOR_NO}\][\[${COLOR_NO}\]"
+PROMPT_END="\[${COLOR_NO}\]]\[${COLOR_NO}\]"
+
+PROMPT_STR="${PROMPT_TIME}${PROMPT_BEGIN}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PATH}${PROMPT_END}"
+PS1="${PROMPT_STR}\\\$ "
+
+
 # Third party git prompt
 if [[ -e "${HOME}/.bash-git-prompt/gitprompt.sh" ]]; then
     GIT_PROMPT_ONLY_IN_REPO=1
@@ -120,49 +163,6 @@ PLUGINS=(
 for plugin in "${PLUGINS[@]}"; do
     [[ -r "${plugin}" ]] && . "${plugin}"
 done
-
-
-# Terminal prompt string & title
-case "${TERM}" in
-    screen*)
-        update_title() {
-            # Ignore git-prompt
-            if [[ $1 =~ "setGitPrompt" || $1 =~ "__git_ps1" ]]; then
-                return
-            fi
-
-            printf "\e]0;%s\e\\" "$1";
-        }
-
-        if [[ -n "${TMUX}" ]]; then
-            PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\ek${USER}@${HOSTNAME%%/*}:${PWD/${HOME}/\~}\e\\"; update_title ${PWD/${HOME}/\~}'
-
-            trap 'update_title "${BASH_COMMAND}"' DEBUG
-        else
-            PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\ek${PWD/${HOME}/\~}\e\\"'
-        fi
-        ;;
-    *)
-        PROMPT_TIME_ENABLED=1
-        PROMPT_HOST_ENABLED=1
-
-        PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'echo -ne "\e]0;${PWD/${HOME}/\~}\a"'
-        ;;
-esac
-
-PROMPT_USER_ENABLED=1
-PROMPT_PATH_ENABLED=1
-
-PROMPT_TIME="${PROMPT_TIME_ENABLED:+\[${COLOR_EBLUE}\][\A]\[${COLOR_NO}\]}"
-PROMPT_USER="${PROMPT_USER_ENABLED:+\[${COLOR_ECYAN}\]\u\[${COLOR_NO}\]}"
-PROMPT_HOST="${PROMPT_HOST_ENABLED:+\[${COLOR_EMAGENTA}\]@${HOSTNAME%%.*}\[${COLOR_NO}\]}"
-PROMPT_PATH="${PROMPT_PATH_ENABLED:+\[${COLOR_EYELLOW}\]:\W\[${COLOR_NO}\]}"
-
-PROMPT_BEGIN="\[${COLOR_NO}\][\[${COLOR_NO}\]"
-PROMPT_END="\[${COLOR_NO}\]]\[${COLOR_NO}\]"
-
-PROMPT_STR="${PROMPT_TIME}${PROMPT_BEGIN}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PATH}${PROMPT_END}"
-PS1="${PROMPT_STR}\\\$ "
 
 
 # Python virtual environment prompt

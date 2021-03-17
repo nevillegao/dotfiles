@@ -45,6 +45,11 @@ case "${TERM}" in
                 return
             fi
 
+            # Ignore autojump
+            if [[ $1 =~ "autojump_add_to_database" ]]; then
+                return
+            fi
+
             printf "\e]0;%s\e\\" "$1";
         }
 
@@ -79,30 +84,6 @@ PROMPT_STR="${PROMPT_TIME}${PROMPT_BEGIN}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PA
 PS1="${PROMPT_STR}\\\$ "
 
 
-# Third party git prompt
-if [[ -e "${HOME}/.bash-git-prompt/gitprompt.sh" ]]; then
-    GIT_PROMPT_ONLY_IN_REPO=1
-    GIT_PROMPT_FETCH_REMOTE_STATUS=0
-    GIT_PROMPT_THEME=Custom
-
-    . "${HOME}/.bash-git-prompt/gitprompt.sh"
-
-# Built-in git prompt
-elif [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
-    GIT_PS1_SHOWDIRTYSTATE=1
-    GIT_PS1_SHOWSTASHSTATE=1
-    GIT_PS1_SHOWUNTRACKEDFILES=1
-    GIT_PS1_SHOWUPSTREAM="auto"
-    GIT_PS1_DESCRIBE_STYLE="default"
-    GIT_PS1_SHOWCOLORHINTS=1
-    GIT_PS1_HIDE_IF_PWD_IGNORED=1
-
-    PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND; }"'__git_ps1 "${PROMPT_STR}" "\\\$ "'
-
-    . /usr/lib/git-core/git-sh-prompt
-fi
-
-
 # History options
 shopt -s histappend
 HISTCONTROL=ignoredups:erasedups
@@ -113,14 +94,14 @@ HISTTIMEFORMAT="%F %T "
 PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:+$PROMPT_COMMAND}"
 
 
+# Color setup for 'ls'
+[[ -x /usr/bin/dircolors ]] && eval "$(dircolors -b)"
+
+
 # Utilities options
 export MANPAGER='less -s -M +Gg'
 export VISUAL="$(which vim)"
 export EDITOR="${VISUAL}"
-
-
-# Color setup for 'ls'
-[[ -x /usr/bin/dircolors ]] && eval "$(dircolors -b)"
 
 
 # 'less' options
@@ -139,6 +120,10 @@ export LESS_TERMCAP_us=$(echo -ne "\e[04;32m")     # start underlining
 export LESS_TERMCAP_ue=$(echo -ne "\e[0m")         # end underlining
 
 
+# Python startup script
+export PYTHONSTARTUP="${HOME}/.pythonrc"
+
+
 # Enable Bash completion
 BASH_COMPLETION=/etc/bash_completion
 [[ -r "${BASH_COMPLETION}" ]] && . "${BASH_COMPLETION}"
@@ -147,10 +132,6 @@ BASH_COMPLETION=/etc/bash_completion
 # Enable Pinyin completion
 PINYIN_COMPLETION="${HOME}/.bash-completion-pinyin/chs_completion"
 [[ -r "${PINYIN_COMPLETION}" ]] && . "${PINYIN_COMPLETION}"
-
-
-# Python startup script
-export PYTHONSTARTUP="${HOME}/.pythonrc"
 
 
 # Load third party scripts
@@ -163,6 +144,30 @@ PLUGINS=(
 for plugin in "${PLUGINS[@]}"; do
     [[ -r "${plugin}" ]] && . "${plugin}"
 done
+
+
+# Third party git prompt
+if [[ -e "${HOME}/.bash-git-prompt/gitprompt.sh" ]]; then
+    GIT_PROMPT_ONLY_IN_REPO=1
+    GIT_PROMPT_FETCH_REMOTE_STATUS=0
+    GIT_PROMPT_THEME=Custom
+
+    . "${HOME}/.bash-git-prompt/gitprompt.sh"
+
+# Built-in git prompt
+elif [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
+    GIT_PS1_SHOWDIRTYSTATE=1
+    GIT_PS1_SHOWSTASHSTATE=1
+    GIT_PS1_SHOWUNTRACKEDFILES=1
+    GIT_PS1_SHOWUPSTREAM="auto"
+    GIT_PS1_DESCRIBE_STYLE="default"
+    GIT_PS1_SHOWCOLORHINTS=1
+    GIT_PS1_HIDE_IF_PWD_IGNORED=1
+
+    PROMPT_COMMAND='__git_ps1 "${PROMPT_STR}" "\\\$ "; '"${PROMPT_COMMAND:+$PROMPT_COMMAND}"
+
+    . /usr/lib/git-core/git-sh-prompt
+fi
 
 
 # Python virtual environment prompt

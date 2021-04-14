@@ -98,12 +98,6 @@ PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:+$PROMPT_CO
 [[ -x /usr/bin/dircolors ]] && eval "$(dircolors -b)"
 
 
-# Utilities options
-export MANPAGER='less -s -M +Gg'
-export VISUAL="$(which vim)"
-export EDITOR="${VISUAL}"
-
-
 # 'less' options
 export LESS="-MiR"
 
@@ -118,6 +112,12 @@ export LESS_TERMCAP_so=$(echo -ne "\e[01;44;33m")  # start standout mode
 export LESS_TERMCAP_se=$(echo -ne "\e[0m")         # end standout mode
 export LESS_TERMCAP_us=$(echo -ne "\e[04;32m")     # start underlining
 export LESS_TERMCAP_ue=$(echo -ne "\e[0m")         # end underlining
+
+
+# Utilities options
+export MANPAGER='less -s -M +Gg'
+export VISUAL="$(which vim)"
+export EDITOR="${VISUAL}"
 
 
 # Python startup script

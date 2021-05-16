@@ -11,7 +11,7 @@ Plug 'tpope/vim-commentary'
 Plug 'jpalardy/vim-slime'
 Plug 'preservim/tagbar'
 Plug 'Yggdroot/indentLine'
-" Plug 'w0rp/ale'
+" Plug 'dense-analysis/ale'
 " Plug 'Chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
 

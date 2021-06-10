@@ -146,6 +146,15 @@ for plugin in "${PLUGINS[@]}"; do
 done
 
 
+# Python virtual environment prompt
+virtualenv_info() {
+    [[ -n "${VIRTUAL_ENV}" ]] && echo "(venv:${VIRTUAL_ENV##*/}) "
+}
+
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+PS1="\$(virtualenv_info)${PS1}"
+
+
 # Third party git prompt
 if [[ -e "${HOME}/.bash-git-prompt/gitprompt.sh" ]]; then
     GIT_PROMPT_ONLY_IN_REPO=1
@@ -168,12 +177,3 @@ elif [[ -e /usr/lib/git-core/git-sh-prompt ]]; then
 
     . /usr/lib/git-core/git-sh-prompt
 fi
-
-
-# Python virtual environment prompt
-virtualenv_info() {
-    [[ -n "${VIRTUAL_ENV}" ]] && echo "(venv:${VIRTUAL_ENV##*/}) "
-}
-
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-PS1="\$(virtualenv_info)${PS1}"

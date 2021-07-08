@@ -66,6 +66,13 @@ call plug#end()
 " noremap <silent> <Leader><F2> :20Lexplore<CR>
 
 
+" airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+
 " SLIME
 let g:slime_target = "tmux"
 let g:slime_paste_file = $HOME . '/.vim/slime_paste'
@@ -338,7 +345,7 @@ let g:calendar_cyclic_view = 1
 let g:calendar_cache_directory = $HOME . '/.vim/calendar/cache'
 
 
-" vim-beancount
+" beancount
 let g:beancount_separator_col = 68
 let b:beancount_root = expand('%:p:h') . '/accounts.beancount'
 autocmd FileType beancount inoremap . .<C-\><C-O>:AlignCommodity<CR>

@@ -18,8 +18,7 @@ Plug 'sheerun/vim-polyglot'
 " File
 Plug 'tpope/vim-vinegar'
 Plug 'preservim/nerdtree' |
-    \ Plug 'Xuyuanp/nerdtree-git-plugin' |
-    \ Plug 'ryanoasis/vim-devicons'
+    \ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'Shougo/defx.nvim'
 Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' }
 " Plug 'mbbill/undotree'
@@ -153,7 +152,20 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
 
 
 " nerdtree-git-plugin
-let g:NERDTreeGitStatusUseNerdFonts = 1
+let g:NERDTreeGitStatusIndicatorMapCustom = {
+    \ 'Modified'  :'✹',
+    \ 'Staged'    :'✚',
+    \ 'Untracked' :'✭',
+    \ 'Renamed'   :'➜',
+    \ 'Unmerged'  :'═',
+    \ 'Deleted'   :'✖',
+    \ 'Dirty'     :'✗',
+    \ 'Ignored'   :'☒',
+    \ 'Clean'     :'✔︎',
+    \ 'Unknown'   :'?',
+\}
+let g:NERDTreeGitStatusShowClean = 1
+let g:NERDTreeGitStatusConcealBrackets = 1
 
 
 " defx

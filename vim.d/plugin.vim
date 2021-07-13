@@ -165,13 +165,13 @@ nnoremap <silent> <LocalLeader>a
 \ :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
 
 call defx#custom#option('_', {
-\   'winwidth': 30,
-\   'split': 'vertical',
-\   'direction': 'topleft',
-\   'show_ignored_files': 0,
-\   'buffer_name': '',
-\   'toggle': 1,
-\   'resume': 1,
+    \ 'winwidth': 30,
+    \ 'split': 'vertical',
+    \ 'direction': 'topleft',
+    \ 'show_ignored_files': 0,
+    \ 'buffer_name': '',
+    \ 'toggle': 1,
+    \ 'resume': 1,
     \ 'columns': 'indent:git:icons:filename',
     \ 'listed': 1,
     \ 'root_marker': '≡ ',
@@ -345,21 +345,21 @@ let g:EasyMotion_smartcase = 1
 
 " setcolors
 nnoremap <silent> <Leader><F8> :SetColors
-\   spacegray
-\   hybrid
-\   jellybeans
-\   inkpot
-\   molokai
-\   vividchalk
-\   solarized
-\   gruvbox
-\   onedark
-\   lucius
-\   iceberg
-\   OceanicNext
-\   solarized8_dark
-\   ayu
-\   desert256
+    \ spacegray
+    \ hybrid
+    \ jellybeans
+    \ inkpot
+    \ molokai
+    \ vividchalk
+    \ solarized
+    \ gruvbox
+    \ onedark
+    \ lucius
+    \ iceberg
+    \ OceanicNext
+    \ solarized8_dark
+    \ ayu
+    \ desert256
 \<CR>
 
 

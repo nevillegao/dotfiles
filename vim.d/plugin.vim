@@ -1,35 +1,43 @@
+" Polyglot
+let g:polyglot_disabled = ['calendar']
+
+
 call plug#begin('$HOME/.vim/bundle')
 
-" Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" Plug 'itchyny/lightline.vim'
 
 " Programming
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-commentary'
-" Plug 'benmills/vimux'
+" Plug 'preservim/nerdcommenter'
 Plug 'jpalardy/vim-slime'
+" Plug 'preservim/vimux'
 Plug 'preservim/tagbar'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'Yggdroot/indentLine'
 " Plug 'dense-analysis/ale'
-" Plug 'Chiel92/vim-autoformat'
 Plug 'sheerun/vim-polyglot'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+" Plug 'davidhalter/jedi-vim'
 
 " File
-Plug 'tpope/vim-vinegar'
 Plug 'preservim/nerdtree' |
     \ Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'Shougo/defx.nvim'
+" Plug 'tpope/vim-vinegar'
+" Plug 'Shougo/defx.nvim'
 Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' }
 " Plug 'mbbill/undotree'
 Plug 'Shougo/deoplete.nvim'
+" Plug 'Shougo/ddc.vim'
 
 " Search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'mileszs/ack.vim', { 'on':  'Ack' }
-Plug 'thinca/vim-visualstar'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/denite.nvim'
 Plug 'easymotion/vim-easymotion'
@@ -55,8 +63,9 @@ Plug 'felixhummel/setcolors.vim', { 'on':  'SetColors' }
 Plug 'nathangrigg/vim-beancount'
 
 " Dependency
-Plug 'roxma/nvim-yarp'  " Required by defx
-Plug 'roxma/vim-hug-neovim-rpc'  " Required by defx
+" Plug 'roxma/nvim-yarp'  " Required by defx
+" Plug 'roxma/vim-hug-neovim-rpc'  " Required by defx
+" Plug 'vim-denops/denops.vim'  " Required by DDC
 
 call plug#end()
 
@@ -70,6 +79,19 @@ call plug#end()
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
+
+
+" gitgutter
+let g:gitgutter_preview_win_floating = 1
+
+function! GitGutterNextHunkCycle()
+  let line = line('.')
+  silent! GitGutterNextHunk
+  if line('.') == line
+    1
+    GitGutterNextHunk
+  endif
+endfunction
 
 
 " SLIME
@@ -110,8 +132,8 @@ nnoremap <silent> <Leader><F6> :IndentLinesToggle<CR>:LeadingSpaceToggle<CR>
 
 
 " NERDTree
-nnoremap <Leader>n :NERDTreeFind<CR>
-nnoremap <Leader>t :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>n :NERDTreeFind<CR>
+nnoremap <silent> <Leader>t :NERDTreeToggle<CR>
 
 " Exit Vim if NERDTree is the only window left.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
@@ -122,53 +144,38 @@ autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_
     \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 
-" nerdtree-git-plugin
-let g:NERDTreeGitStatusIndicatorMapCustom = {
-    \ 'Modified'  :'✹',
-    \ 'Staged'    :'✚',
-    \ 'Untracked' :'✭',
-    \ 'Renamed'   :'➜',
-    \ 'Unmerged'  :'═',
-    \ 'Deleted'   :'✖',
-    \ 'Dirty'     :'✗',
-    \ 'Ignored'   :'☒',
-    \ 'Clean'     :'✔︎',
-    \ 'Unknown'   :'?',
-\}
+" " defx
+" " 使用 ;e 切换显示文件浏览，使用 ;a 查找到当前文件位置
+" " let g:maplocalleader=';'
+" nnoremap <silent> <LocalLeader>e
+" \ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()`<CR>
+" nnoremap <silent> <LocalLeader>a
+" \ :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
 
+" call defx#custom#option('_', {
+"     \ 'winwidth': 30,
+"     \ 'split': 'vertical',
+"     \ 'direction': 'topleft',
+"     \ 'show_ignored_files': 0,
+"     \ 'buffer_name': '',
+"     \ 'toggle': 1,
+"     \ 'resume': 1,
+"     \ 'columns': 'indent:git:icons:filename',
+"     \ 'listed': 1,
+"     \ 'root_marker': '≡ ',
+"     \ 'ignored_files':
+"     \     '.mypy_cache,.pytest_cache,.git,.hg,.svn,.stversions'
+"     \   . ',__pycache__,.sass-cache,*.egg-info,.DS_Store,*.pyc,*.swp'
+" \})
 
-" defx
-" 使用 ;e 切换显示文件浏览，使用 ;a 查找到当前文件位置
-" let g:maplocalleader=';'
-nnoremap <silent> <LocalLeader>e
-\ :<C-u>Defx -resume -toggle -buffer-name=tab`tabpagenr()`<CR>
-nnoremap <silent> <LocalLeader>a
-\ :<C-u>Defx -resume -buffer-name=tab`tabpagenr()` -search=`expand('%:p')`<CR>
+" function! s:defx_mappings() abort
+"     " Defx window keyboard mappings
+"     setlocal signcolumn=no
+"     " 使用回车打开文件
+"     nnoremap <silent><buffer><expr> <CR> defx#do_action('multi', ['drop'])
+" endfunction
 
-call defx#custom#option('_', {
-    \ 'winwidth': 30,
-    \ 'split': 'vertical',
-    \ 'direction': 'topleft',
-    \ 'show_ignored_files': 0,
-    \ 'buffer_name': '',
-    \ 'toggle': 1,
-    \ 'resume': 1,
-    \ 'columns': 'indent:git:icons:filename',
-    \ 'listed': 1,
-    \ 'root_marker': '≡ ',
-    \ 'ignored_files':
-    \     '.mypy_cache,.pytest_cache,.git,.hg,.svn,.stversions'
-    \   . ',__pycache__,.sass-cache,*.egg-info,.DS_Store,*.pyc,*.swp'
-\})
-
-function! s:defx_mappings() abort
-    " Defx window keyboard mappings
-    setlocal signcolumn=no
-    " 使用回车打开文件
-    nnoremap <silent><buffer><expr> <CR> defx#do_action('multi', ['drop'])
-endfunction
-
-autocmd FileType defx call s:defx_mappings()
+" autocmd FileType defx call s:defx_mappings()
 
 
 " Cmdline Complete
@@ -353,6 +360,9 @@ let g:calendar_view = 'year'
 let g:calendar_views = ['year', 'month', 'clock']
 let g:calendar_cyclic_view = 1
 let g:calendar_cache_directory = $HOME . '/.vim/calendar/cache'
+nnoremap <silent> <Leader>cl :Calendar<CR>
+nnoremap <silent> <Leader>ee <Plug>(calendar_view_left)
+nnoremap <Leader>ii <Plug>(calendar_view_right)
 
 
 " beancount

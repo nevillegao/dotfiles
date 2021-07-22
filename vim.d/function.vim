@@ -1,9 +1,7 @@
-" When editing a file, always jump to the last known cursor position and line
-" it at center of window
-autocmd BufEnter *
-    \ let last_cur_pos = line("'\"") |
-    \ if last_cur_pos >= 1 && last_cur_pos <= line("$") |
-    \     exe "normal! " . last_cur_pos . "zz" |
+" Jump to the last known position when opening a file
+autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit' |
+    \     exe "normal! g`\"" |
     \ endif
 
 " Only open the file smaller than 10MB

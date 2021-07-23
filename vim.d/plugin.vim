@@ -32,7 +32,7 @@ Plug 'sheerun/vim-polyglot'
 " File
 Plug 'preservim/nerdtree' |
     \ Plug 'Xuyuanp/nerdtree-git-plugin'
-" Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-vinegar'
 Plug 'sjl/gundo.vim', { 'on':  'GundoToggle' }
 " Plug 'mbbill/undotree'
 

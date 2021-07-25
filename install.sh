@@ -1,4 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/bash
+
+create_link() {
+    rm -rf "${HOME}/.${1}"
+    ln -sf "${PWD}/${1}" "${HOME}/.${1}"
+
+    chmod -R go-rwx "${1}"
+}
 
 install() {
     eval 'EXCLUDE=($(cat install.exclude))'
@@ -8,28 +15,18 @@ install() {
             continue
         fi
 
-        if [[ "${i}" == "ssh_config" ]]; then
-            if [[ ! -d "${HOME}/.ssh" ]]; then
-                rm -rf "${HOME}/.ssh"
-                mkdir "${HOME}/.ssh"
+        if [[ "${i}" == "ssh" || "${i}" == "config" ]]; then
+            if [[ ! -d "${HOME}/.${i}" ]]; then
+                rm -rf "${HOME}/.${i}"
+                mkdir "${HOME}/.${i}"
             fi
 
-            rm -rf "${HOME}/.ssh/config"
-            ln -sf "${PWD}/${i}" "${HOME}/.ssh/config"
-        elif [[ "${i}" == "config_user-dirs.conf" ]]; then
-            if [[ ! -d "${HOME}/.config" ]]; then
-                rm -rf "${HOME}/.config"
-                mkdir "${HOME}/.config"
-            fi
-
-            rm -rf "${HOME}/.config/user-dirs.conf"
-            ln -sf "${PWD}/${i}" "${HOME}/.config/user-dirs.conf"
+            for j in ${i}/*; do
+                create_link "${j}"
+            done
         else
-            rm -rf "${HOME}/.${i}"
-            ln -sf "${PWD}/${i}" "${HOME}/.${i}"
+            create_link "${i}"
         fi
-
-        chmod -R go-rwx "${i}"
     done
 }
 

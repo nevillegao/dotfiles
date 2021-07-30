@@ -151,7 +151,6 @@ nnoremap <silent> <Leader><F5> :TagbarToggle<CR>
 
 " CoC
 let g:coc_config_home = $HOME . '/.vim.d'
-let g:coc_disable_startup_warning = 1
 
 
 " NERDTree

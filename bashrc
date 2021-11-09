@@ -12,13 +12,7 @@ shopt -s checkwinsize
 
 
 # Load various rc files
-RC_FILES=(
-    "${HOME}/.bash.d/colors"
-    "${HOME}/.bash.d/alias"
-    "${HOME}/.bash.d/functions"
-)
-
-for rc_file in "${RC_FILES[@]}"; do
+for rc_file in "${HOME}/.bash.d"/*; do
     [[ -r "${rc_file}" ]] && . "${rc_file}"
 done
 

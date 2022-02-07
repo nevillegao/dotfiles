@@ -1,17 +1,52 @@
 #!/bin/bash
 
 create_link() {
-    rm -rf "${HOME}/.${1}"
-    ln -sf "${PWD}/${1}" "${HOME}/.${1}"
+    SRC_ITEM=$1
+    DEST_ITEM=${2:-.$SRC_ITEM}
+    DEST_DIR=${3:-$HOME}
 
-    chmod -R go-rwx "${1}"
+    rm -rf "${DEST_DIR}/${DEST_ITEM}"
+    ln -sf "${PWD}/${SRC_ITEM}" "${DEST_DIR}/${DEST_ITEM}"
+
+    chmod -R go-rwx "${SRC_ITEM}"
 }
 
 install() {
-    eval 'EXCLUDE=($(cat install.exclude))'
+    if [[ "${SHELL}" =~ "bash" ]]; then
+        SHELL_EXCLUDE=(
+            "zsh.d"
+        )
+    elif [[ "${SHELL}" =~ "zsh" ]]; then
+        SHELL_EXCLUDE=(
+            "bash.d"
+            "bashrc"
+            "bash_logout"
+            "profile"
+            "inputrc"
+            "git-prompt-colors.sh"
+        )
+
+        OMZ_HOME="${HOME}/.oh-my-zsh"
+    fi
+
+    eval 'EXCLUDE=($(cat install.exclude) ${SHELL_EXCLUDE[@]})'
 
     for i in *; do
         if [[ "${EXCLUDE[@]}" =~ "${i}" ]]; then
+            continue
+        fi
+
+        if [[ "${i}" == "zsh.d" && -d "${OMZ_HOME}" ]]; then
+            OMZ_CUSTOM="${OMZ_HOME}/custom"
+            if [[ ! -d "${OMZ_CUSTOM}" ]]; then
+                rm -rf "${OMZ_CUSTOM}"
+                mkdir "${OMZ_CUSTOM}"
+            fi
+
+            for j in "${i}"/*; do
+                create_link "${j}" ${j#*/} "${HOME}/.oh-my-zsh/custom"
+            done
+
             continue
         fi
 
@@ -21,7 +56,7 @@ install() {
                 mkdir "${HOME}/.${i}"
             fi
 
-            for j in ${i}/*; do
+            for j in "${i}"/*; do
                 create_link "${j}"
             done
         else
@@ -77,7 +112,8 @@ irssi_plugins() {
     done
 }
 
+
 install
-vim_plugins
+# vim_plugins
 # weechat_plugins
 # irssi_plugins

@@ -4,5 +4,6 @@ install.exclude
 irssi
 weechat
 znc
-irbrc
 screenrc
+Xresources
+irbrc

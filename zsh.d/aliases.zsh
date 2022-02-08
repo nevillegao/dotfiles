@@ -7,7 +7,8 @@ alias ..4='cd ../../../..'
 alias ls='ls -F -G'
 alias l='ls -l'
 alias la='ls -A'
-# alias lh='la -I "[^.]*"'  # list hidden files
+alias lh='la -d .*'  # list hidden files
+alias llh='la -ld .*'
 
 alias rm='echo "This is not the command you are looking for."; false'  # use \rm instead
 alias cp='cp -i'

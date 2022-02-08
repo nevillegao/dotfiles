@@ -17,14 +17,14 @@ for rc_file in "${HOME}/.bash.d"/*; do
 done
 
 
-# Type Ctrl-D 100 times to exit shell to prevent accidental exiting
+# Type Ctrl-D 101 times to exit shell to prevent accidental exiting
 IGNOREEOF=100
 
 
 # Confirm before exit shell
 eexit() {
     read -p "${COLOR_ERED}Exit? [y/N] ${COLOR_NO}" REPLY
-    if [[ "${REPLY}" =~ ^[Yy]$ ]]; then
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
         command exit
     fi
 }

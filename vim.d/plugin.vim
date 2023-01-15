@@ -238,6 +238,6 @@ augroup END
 
 " beancount
 let g:beancount_separator_col = 92
-let b:beancount_root = expand('%:p:h') . '/accounts.beancount'
+let b:beancount_root = expand('%:p:h') . '/../accounts.beancount'
 autocmd FileType beancount inoremap . .<C-\><C-O>:AlignCommodity<CR>
 autocmd FileType beancount setlocal textwidth=0

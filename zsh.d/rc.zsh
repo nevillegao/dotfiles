@@ -34,3 +34,7 @@ _update_title__precmd() {
 }
 
 add-zsh-hook precmd _update_title__precmd
+
+
+# Disable *-magic plugins in Oh My Zsh
+DISABLE_MAGIC_FUNCTIONS="true"

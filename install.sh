@@ -15,6 +15,7 @@ install() {
     if [[ "${SHELL}" =~ "bash" ]]; then
         SHELL_EXCLUDE=(
             "zsh.d"
+            "zprofile"
         )
     elif [[ "${SHELL}" =~ "zsh" ]]; then
         SHELL_EXCLUDE=(
@@ -114,6 +115,6 @@ irssi_plugins() {
 
 
 install
-# vim_plugins
+vim_plugins
 # weechat_plugins
 # irssi_plugins

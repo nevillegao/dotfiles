@@ -24,3 +24,6 @@ autocmd FileType qf nnoremap <silent> <buffer> <Leader>lq :lclose<CR>
 
 " Toggle 'Fold'
 nnoremap <silent> <SPACE> @=((foldclosed(line('.')) < 0) ? 'zc' : 'zo')<CR>
+
+" Close a buffer without closing a window
+nnoremap <Leader>d :bp \| bd #<CR>

@@ -9,9 +9,6 @@ nnoremap <Down> gj
 inoremap <Up> <C-O>gk
 inoremap <Down> <C-O>gj
 
-" Inverse Tab
-nnoremap <S-Tab> <<
-
 nnoremap <Leader><F1> :help 
 
 " Quickfix List

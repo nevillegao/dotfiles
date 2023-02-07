@@ -65,7 +65,7 @@ set autoindent
 set smartindent
 set cindent
 set cinoptions=g0,:N
-set backspace=2
+set backspace=indent,eol,start
 set tabstop=4
 set shiftwidth=4
 set formatoptions+=mB

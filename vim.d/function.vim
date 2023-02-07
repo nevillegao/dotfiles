@@ -13,7 +13,7 @@ autocmd BufReadPre *
 " Put current filename in register 'n'
 let @n=fnameescape(expand('%:p'))
 
-autocmd FileType help resize
+autocmd BufEnter * if &filetype ==# 'help' | resize | endif
+autocmd BufNewFile,BufRead Makefile setlocal noexpandtab
 autocmd FileType json setlocal tabstop=2 shiftwidth=2 foldmethod=syntax
 autocmd FileType yaml setlocal tabstop=2 shiftwidth=2
-autocmd BufNewFile,BufRead Makefile setlocal noexpandtab

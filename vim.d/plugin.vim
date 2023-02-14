@@ -2,6 +2,15 @@
 let g:polyglot_disabled = ['calendar']
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Enable plugins
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Helper function to conditional activate plugins
+function! Cond(cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
 call plug#begin('$HOME/.vim/bundle')
 
 " Status
@@ -27,7 +36,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'sheerun/vim-polyglot'
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
-" Plug 'davidhalter/jedi-vim'
+Plug 'jmcantrell/vim-virtualenv', Cond(has('mac'))
 
 " File
 Plug 'preservim/nerdtree' |
@@ -63,6 +72,9 @@ Plug 'nathangrigg/vim-beancount'
 call plug#end()
 
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Plugin configurations
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " netrw
 let g:netrw_home = $HOME . '/.vim/netrw'
 noremap <silent> <Leader><F2> :20Lexplore<CR>
@@ -150,7 +162,30 @@ nnoremap <silent> <Leader><F5> :TagbarToggle<CR>
 
 
 " CoC
-let g:coc_config_home = $HOME . '/.vim.d'
+let g:coc_config_home = $HOME . '/.vim.d/CoC'
+
+" Use <C-N>, <C-P> to navigate completion list
+inoremap <silent><expr> <C-N> coc#pum#visible() ? coc#pum#next(0) : "\<C-N>"
+inoremap <silent><expr> <C-P> coc#pum#visible() ? coc#pum#prev(0) : "\<C-P>"
+
+" Map <Tab> for trigger completion, completion confirm, snippet expand and jump
+" like VSCode
+inoremap <silent><expr> <Tab>
+	\ coc#pum#visible() ? coc#_select_confirm() :
+	\ coc#expandableOrJumpable() ?
+	\ "\<C-R>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+	\ <SID>check_back_space() ? "\<Tab>" :
+	\ coc#refresh()
+
+function! s:check_back_space() abort
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<Tab>'
+
+" Trigger completion
+inoremap <silent><expr> <C-@> coc#refresh()
 
 
 " NERDTree
@@ -230,14 +265,21 @@ nnoremap <silent> <Leader><F9> :Calendar<CR>
 
 augroup calendar-mappings
     autocmd!
-
     autocmd FileType calendar nmap <buffer> h <Plug>(calendar_view_left)
     autocmd FileType calendar nmap <buffer> l <Plug>(calendar_view_right)
 augroup END
 
 
 " beancount
-let g:beancount_separator_col = 92
+" let g:beancount_separator_col = 92
+let g:beancount_separator_col = 95
+let g:beancount_align = 'commodity'
 let b:beancount_root = expand('%:p:h') . '/../accounts.beancount'
-autocmd FileType beancount inoremap . .<C-\><C-O>:AlignCommodity<CR>
-autocmd FileType beancount setlocal textwidth=0
+" autocmd FileType beancount inoremap . .<C-\><C-O>:AlignCommodity<CR>
+autocmd FileType beancount inoremap <Space> <Space><C-\><C-O>:AlignCommodity<CR>
+autocmd FileType beancount setlocal tabstop=2 shiftwidth=2 textwidth=0
+
+" wrong here
+" autocmd FileType beancount setlocal shiftwidth=2 textwidth=0
+" autocmd FileType beancount setlocal shiftwidth=2 textwidth=0
+" autocmd FileType beancount setlocal shiftwidth=2 textwidth=0

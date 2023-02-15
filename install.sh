@@ -82,6 +82,10 @@ vim_plugins() {
     vim -i NONE +PlugInstall +qall
 }
 
+vim_coc_extensions() {
+    vim -i NONE +'CocInstall -sync coc-pyright|q' +qall
+}
+
 weechat_plugins() {
     # Clean up
     declare -A dir=(["pl"]="perl")
@@ -116,5 +120,4 @@ irssi_plugins() {
 
 install
 vim_plugins
-# weechat_plugins
-# irssi_plugins
+vim_coc_extensions

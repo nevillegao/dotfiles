@@ -1,10 +1,9 @@
 install.sh
 install.exclude
 
-irssi
+pythonrc
+irbrc
 weechat
 znc
+irssi
 screenrc
-Xresources
-irbrc
-pythonrc

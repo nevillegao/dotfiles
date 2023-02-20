@@ -19,11 +19,14 @@ install() {
         )
     elif [[ "${SHELL}" =~ "zsh" ]]; then
         SHELL_EXCLUDE=(
-            "bash.d"
             "bashrc"
             "bash_logout"
+            "bash.d"
             "profile"
             "inputrc"
+            "config"
+            "Xresources"
+            "xinitrc"
             "git-prompt-colors.sh"
         )
 

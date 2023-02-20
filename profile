@@ -15,24 +15,28 @@ if [[ -d "${BIN_DIR}" ]]; then
 fi
 export PATH
 
-# Enable ThinkPad TrackPoint
-TRACK_POINT_NAME="TPPS/2 IBM TrackPoint"
-if [[ -n "${DISPLAY}" && -x /usr/bin/xinput ]] && /usr/bin/xinput list | grep "${TRACK_POINT_NAME}" &> /dev/null; then
-    /usr/bin/xinput set-prop --type=int --format=8 "${TRACK_POINT_NAME}" "Evdev Wheel Emulation" 1
-    /usr/bin/xinput set-prop --type=int --format=8 "${TRACK_POINT_NAME}" "Evdev Wheel Emulation Button" 2
-    /usr/bin/xinput set-prop --type=int --format=8 "${TRACK_POINT_NAME}" "Evdev Wheel Emulation Axes" 6 7 4 5
-fi
-
-# Disable ThinkPad TouchPad
-TOUCH_PAD_NAME="SynPS/2 Synaptics TouchPad"
-if [[ -n "${DISPLAY}" && -x /usr/bin/xinput ]] && /usr/bin/xinput list | grep "${TOUCH_PAD_NAME}" &> /dev/null; then
-    /usr/bin/xinput --disable "${TOUCH_PAD_NAME}"
-fi
-
 # Enable 'Num Lock'
 if [[ -x /usr/bin/numlockx ]]; then
     /usr/bin/numlockx on
 fi
+
+##############################################################################
+# Legacy
+##############################################################################
+# # Enable ThinkPad TrackPoint
+# TRACK_POINT_NAME="TPPS/2 IBM TrackPoint"
+# if [[ -n "${DISPLAY}" && -x /usr/bin/xinput ]] && /usr/bin/xinput list | grep "${TRACK_POINT_NAME}" &> /dev/null; then
+#     /usr/bin/xinput set-prop --type=int --format=8 "${TRACK_POINT_NAME}" "Evdev Wheel Emulation" 1
+#     /usr/bin/xinput set-prop --type=int --format=8 "${TRACK_POINT_NAME}" "Evdev Wheel Emulation Button" 2
+#     /usr/bin/xinput set-prop --type=int --format=8 "${TRACK_POINT_NAME}" "Evdev Wheel Emulation Axes" 6 7 4 5
+# fi
+
+# # Disable ThinkPad TouchPad
+# TOUCH_PAD_NAME="SynPS/2 Synaptics TouchPad"
+# if [[ -n "${DISPLAY}" && -x /usr/bin/xinput ]] && /usr/bin/xinput list | grep "${TOUCH_PAD_NAME}" &> /dev/null; then
+#     /usr/bin/xinput --disable "${TOUCH_PAD_NAME}"
+# fi
+##############################################################################
 
 # Load .bashrc
 [[ -r "${HOME}/.bashrc" ]] && . "${HOME}/.bashrc"

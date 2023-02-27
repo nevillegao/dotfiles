@@ -4,6 +4,9 @@
 	name = Neville Gao
 	email = nevillegao@users.noreply.github.com
 
+[url "git@github-user:nevillegao"]
+	insteadOf = git@github.com:nevillegao
+
 [color]
 	ui = auto
 

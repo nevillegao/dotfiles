@@ -163,6 +163,7 @@ nnoremap <silent> <Leader><F5> :TagbarToggle<CR>
 
 " CoC
 let g:coc_config_home = $HOME . '/.vim.d/CoC'
+let g:coc_global_extensions = ['coc-pyright']
 
 " Use <C-N>, <C-P> to navigate completion list
 inoremap <silent><expr> <C-N> coc#pum#visible() ? coc#pum#next(0) : "\<C-N>"

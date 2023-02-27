@@ -3,7 +3,6 @@ set nocompatible
 " Encoding
 set encoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
-set helplang=cn
 
 " Misc
 set noswapfile
@@ -40,7 +39,6 @@ set showbreak=↪  " Unicode
 set listchars=eol:¶,tab:\|→,trail:•,extends:»,precedes:«,nbsp:¬  " Unicode
 " set listchars=eol:↲,tab:»-,space:␣,trail:•,extends:→,precedes:←,nbsp:¬  " Unicode
 " set listchars=eol:$,tab:\|_,space:.,trail:*,extends:>,precedes:<,nbsp:~  " ASCII
-set completeopt=longest,menu
 set colorcolumn=+1
 set laststatus=2
 set statusline=%<[%n]\ %F\ %h%m%r%=%k[%{(&fenc==\'\')?&enc:&fenc}%{(&bomb?\',BOM\':\'\')}][%{&ff}][ASCII=\%04.4B]\ %-10.(%l,%c%V%)\ %P

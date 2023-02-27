@@ -1,28 +1,28 @@
 # vim: ft=gitconfig
 
 [user]
-    name = Neville Gao
-    email = nevillegao@users.noreply.github.com
+	name = Neville Gao
+	email = nevillegao@users.noreply.github.com
 
 [color]
-    ui = auto
+	ui = auto
 
 [rerere]
-    enabled = true
-    autoupdate = true
+	enabled = true
+	autoupdate = true
 
 [push]
-    default = tracking
+	default = tracking
 
 [alias]
-    ps = push
-    pl = pull
-    ci = commit
-    co = checkout
-    st = status
-    di = diff
-    df = icdiff
-    bc = branch
-    ss = stash
-    so = show
-    lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	ps = push
+	pl = pull
+	ci = commit
+	co = checkout
+	st = status
+	di = diff
+	df = icdiff
+	bc = branch
+	ss = stash
+	so = show
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --

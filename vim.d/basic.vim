@@ -49,7 +49,6 @@ set splitright
 set magic
 set incsearch
 set ignorecase
-set smartcase
 set hlsearch
 
 " Fold

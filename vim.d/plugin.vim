@@ -6,6 +6,7 @@ let g:polyglot_disabled = ['calendar']
 " Enable plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Helper function to conditional activate plugins
+" It only disables plugins, not removing them when condition doesn't meet
 function! Cond(cond, ...)
   let opts = get(a:000, 0, {})
   return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
@@ -36,7 +37,10 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'sheerun/vim-polyglot'
 " Plug 'SirVer/ultisnips'
 " Plug 'honza/vim-snippets'
-Plug 'jmcantrell/vim-virtualenv', Cond(has('mac'))
+if has('mac')
+    Plug 'jmcantrell/vim-virtualenv'
+endif
+" Plug 'jmcantrell/vim-virtualenv', Cond(has('mac'))
 
 " File
 Plug 'preservim/nerdtree' |

@@ -123,4 +123,4 @@ irssi_plugins() {
 
 install
 vim_plugins
-vim_coc_extensions
+# vim_coc_extensions

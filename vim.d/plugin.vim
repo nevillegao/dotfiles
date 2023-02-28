@@ -61,6 +61,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'junegunn/vim-easy-align'
 
 " Utility
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 Plug 'itchyny/calendar.vim', { 'on':  'Calendar' }
 " http://www.drchip.org/astronaut/vim/vbafiles/calutil.vba.gz
 " http://www.drchip.org/astronaut/vim/vbafiles/visincr.vba.gz
@@ -251,6 +252,12 @@ let g:indentLine_enabled = 0
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_leadingSpaceChar = '˰'
 nnoremap <silent> <Leader><F6> :IndentLinesToggle<CR>:LeadingSpaceToggle<CR>
+
+
+" Markdown Preview
+let g:mkdp_refresh_slow = 1
+let g:mkdp_echo_preview_url = 1
+let g:mkdp_filetypes = ['markdown']
 
 
 " Calendar

@@ -7,15 +7,18 @@
 [url "git@github-user:nevillegao"]
 	insteadOf = git@github.com:nevillegao
 
-[color]
-	ui = auto
+; [push]
+; 	default = upstream
+
+[diff]
+	colorMoved = default
+
+[merge]
+	conflictStyle = diff3
 
 [rerere]
 	enabled = true
 	autoupdate = true
-
-[push]
-	default = tracking
 
 [alias]
 	ps = push
@@ -29,3 +32,15 @@
 	ss = stash
 	so = show
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+
+# Enable delta
+[core]
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	side-by-side = true
+	navigate = true
+	light = false

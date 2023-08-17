@@ -86,7 +86,7 @@ vim_plugins() {
 }
 
 vim_coc_extensions() {
-    vim -i NONE +'CocInstall -sync coc-pyright|q' +qall
+    vim -i NONE +'CocInstall -sync coc-snippets coc-pyright|q'
 }
 
 weechat_plugins() {

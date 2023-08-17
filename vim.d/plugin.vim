@@ -282,7 +282,6 @@ augroup END
 
 
 " beancount
-" let g:beancount_separator_col = 92
 let g:beancount_separator_col = 95
 let g:beancount_align = 'commodity'
 let b:beancount_root = expand('%:p:h') . '/../accounts.beancount'

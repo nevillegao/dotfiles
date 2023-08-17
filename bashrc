@@ -81,9 +81,9 @@ PS1="${PROMPT_STR}\\\$ "
 # History options
 shopt -s histappend
 HISTCONTROL=ignoredups:erasedups
-HISTSIZE=100000
+HISTSIZE=1000000000
 # HISTFILE="${HOME}/.bash_eternal_history"
-HISTFILESIZE=1000000
+HISTFILESIZE=$HISTSIZE
 HISTTIMEFORMAT="%F %T "
 PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:+$PROMPT_COMMAND}"
 

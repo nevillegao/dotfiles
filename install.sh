@@ -12,13 +12,15 @@ create_link() {
 }
 
 install() {
+    local shell_exclude
+
     if [[ "${SHELL}" =~ "bash" ]]; then
-        SHELL_EXCLUDE=(
+        shell_exclude=(
             "zsh.d"
             "zprofile"
         )
     elif [[ "${SHELL}" =~ "zsh" ]]; then
-        SHELL_EXCLUDE=(
+        shell_exclude=(
             "bashrc"
             "bash_logout"
             "bash.d"
@@ -33,7 +35,7 @@ install() {
         OMZ_HOME="${HOME}/.oh-my-zsh"
     fi
 
-    eval 'EXCLUDE=($(cat install.exclude) ${SHELL_EXCLUDE[@]})'
+    eval 'EXCLUDE=($(cat install.exclude) ${shell_exclude[@]})'
 
     for i in *; do
         if [[ "${EXCLUDE[@]}" =~ "${i}" ]]; then
@@ -48,7 +50,7 @@ install() {
             fi
 
             for j in "${i}"/*; do
-                create_link "${j}" ${j#*/} "${HOME}/.oh-my-zsh/custom"
+                create_link "${j}" "${j#*/}" "${HOME}/.oh-my-zsh/custom"
             done
 
             continue
@@ -86,24 +88,31 @@ vim_plugins() {
 }
 
 vim_coc_extensions() {
-    vim -i NONE +'CocInstall -sync coc-snippets coc-pyright|q'
+    local coc_extensions
+
+    coc_extensions=(
+        "coc-snippets"
+        "coc-pyright"
+    )
+
+    vim -i NONE +'CocInstall -sync '"${coc_extensions[*]}"'|q'
 }
 
 weechat_plugins() {
     # Clean up
     declare -A dir=(["pl"]="perl")
-    for i in ${!dir[@]}; do
+    for i in "${!dir[@]}"; do
         script_dir="weechat/${dir[$i]}"
         rm -rf "${script_dir}"
         mkdir -p "${script_dir}/autoload"
     done
 
     declare -a weechat_plugins=(buffers.pl beep.pl)
-    for i in ${weechat_plugins[@]}; do
+    for i in "${weechat_plugins[@]}"; do
         ext=${i##*.}
         script_dir="weechat/${dir[${ext}]}"
         curl -sSLo "${script_dir}/${i}" "https://weechat.org/files/scripts/${i}"
-        (cd "${script_dir}/autoload" && ln -sf "../${i}")
+        (cd "${script_dir}/autoload" && ln -sf "../${i}" .)
     done
 }
 
@@ -114,13 +123,13 @@ irssi_plugins() {
     mkdir -p "${script_dir}/autorun"
 
     declare -a irssi_plugins=(nickcolor.pl)
-    for i in ${irssi_plugins[@]}; do
+    for i in "${irssi_plugins[@]}"; do
         curl -sSLo "${script_dir}/${i}" "https://raw.githubusercontent.com/irssi/scripts.irssi.org/master/scripts/${i}"
-        (cd "${script_dir}/autorun" && ln -sf "../${i}")
+        (cd "${script_dir}/autorun" && ln -sf "../${i}" .)
     done
 }
 
 
 install
 vim_plugins
-# vim_coc_extensions
+vim_coc_extensions

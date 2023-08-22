@@ -31,7 +31,7 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 
 [core]
-	sshCommand = ssh -i ~/id_ed25519-personal -F /dev/null
+	sshCommand = ssh -i ~/.ssh/id_ed25519-personal -F /dev/null
 	pager = delta
 
 [interactive]

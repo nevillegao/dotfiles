@@ -2,10 +2,10 @@
 
 [user]
 	name = Neville Gao
-	email = nevillegao@users.noreply.github.com
+	email = 309871+nevillegao@users.noreply.github.com
 
-[url "git@github-user:nevillegao"]
-	insteadOf = git@github.com:nevillegao
+; [url "git@github-user:nevillegao"]
+; 	insteadOf = git@github.com:nevillegao
 
 [diff]
 	colorMoved = default
@@ -30,8 +30,8 @@
 	so = show
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 
-# Enable delta
 [core]
+	sshCommand = ssh -i ~/id_ed25519-personal -F /dev/null
 	pager = delta
 
 [interactive]
@@ -41,3 +41,7 @@
 	side-by-side = true
 	navigate = true
 	paging = always
+
+; Use different config for repos in ~/work/
+[includeIf "gitdir:~/work/"]
+	path = ~/.gitconfig-corp

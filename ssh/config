@@ -6,12 +6,12 @@ Include config.d/*
 Host bitbucket.org
     ControlMaster no
 
-# Work with 'url.<base>.insteadOf' in git-config to specify identity key for a
-# specific user's repo on GitHub
-Host github-user
-    HostName github.com
-    IdentityFile ~/.ssh/id_ed25519-personal
-    IdentitiesOnly yes
+# # Work with 'url.<base>.insteadOf' in git-config to specify identity key for a
+# # specific user's repo on GitHub
+# Host github-user
+#     HostName github.com
+#     IdentityFile ~/.ssh/id_ed25519-personal
+#     IdentitiesOnly yes
 
 Host *
     ServerAliveInterval 60

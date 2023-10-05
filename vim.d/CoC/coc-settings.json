@@ -1,3 +1,8 @@
 {
-    "suggest.noselect": true
+    // CoC
+    "suggest.noselect": true,
+
+    // Pyright
+    // "pyright.inlayHints.functionReturnTypes": false,
+    "pyright.inlayHints.variableTypes": false
 }

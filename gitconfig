@@ -1,5 +1,3 @@
-# vim: ft=gitconfig
-
 [user]
 	name = Neville Gao
 	email = 309871+nevillegao@users.noreply.github.com
@@ -31,6 +29,7 @@
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 
 [core]
+	quotePath = false
 	sshCommand = ssh -i ~/.ssh/id_ed25519-personal -F /dev/null
 	pager = delta
 
@@ -44,4 +43,4 @@
 
 ; Use different config for repos in ~/work/
 [includeIf "gitdir:~/work/"]
-	path = ~/.gitconfig-corp
+	path = ~/.corp.gitconfig

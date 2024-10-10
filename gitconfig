@@ -17,16 +17,21 @@
 
 [alias]
 	ps = push
-	pl = pull
+	pr = pull -r
 	ci = commit
-	co = checkout
+	ca = commit -a --amend --no-edit
+	sw = switch
+	rs = restore
 	st = status
 	di = diff
 	df = icdiff
 	bc = branch
 	ss = stash
+	sp = stash pop
 	so = show
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	undo = reset --soft HEAD^
+	cancel = reset --hard HEAD^
 
 [core]
 	quotePath = false

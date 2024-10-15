@@ -24,6 +24,7 @@
 	rs = restore
 	st = status
 	di = diff
+	dc = diff --cached
 	df = icdiff
 	bc = branch
 	ss = stash

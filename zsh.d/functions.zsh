@@ -1,20 +1,20 @@
 # Python virtual environment
-venvc() {
+pyve() {
     VENV_DIR="${HOME}/.venv"
 
-    python3 -m venv --system-site-packages "${VENV_DIR}/$1"
-}
-
-venvs() {
-    VENV_DIR="${HOME}/.venv"
-
-    source "${VENV_DIR}/$1/bin/activate"
-}
-
-venvd() {
-    VENV_DIR="${HOME}/.venv"
-
-    rm -rf "${VENV_DIR}/$1"
+    while getopts "c:d:s:" opt; do
+        case "$opt" in
+        c)
+            python3 -m venv --system-site-packages "${VENV_DIR}/$OPTARG"
+            ;;
+        d)
+            rm -rf "${VENV_DIR}/$OPTARG"
+            ;;
+        s)
+            source "${VENV_DIR}/$OPTARG/bin/activate"
+            ;;
+        esac
+    done
 }
 
 

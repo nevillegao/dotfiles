@@ -1,5 +1,3 @@
-# vim: ft=python
-
 try:
     from jedi.utils import setup_readline
 except ImportError:

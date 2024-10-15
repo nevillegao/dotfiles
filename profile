@@ -1,5 +1,3 @@
-# vim: ft=sh
-
 # Recursively add directories from ${BIN_DIR}
 BIN_DIR="${HOME}/bin"
 #[[ -d "${BIN_DIR}" ]] && export PATH="$(find -L "${BIN_DIR}" -maxdepth 1 -type d -printf "%p:")${PATH}"

@@ -1,5 +1,3 @@
-# vim: ft=sh
-
 # Python virtual environment
 venvc() {
     VENV_DIR="${HOME}/.venv"

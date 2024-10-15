@@ -1,5 +1,3 @@
-# vim: ft=sh
-
 # Built-in
 alias ..='cd ..'
 alias ...='cd ../..'

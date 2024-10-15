@@ -1,5 +1,3 @@
-# vim: ft=sh
-
 # {ESC}[{attr};{bg};{256colors};{fg}m
 
 COLOR_NO=$'\e[0m'

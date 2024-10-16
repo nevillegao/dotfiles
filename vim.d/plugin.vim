@@ -137,7 +137,7 @@ nnoremap <silent> [c :call GitGutterPrevHunkCycle()<CR>
 
 
 " SLIME
-let g:slime_target = "tmux"
+let g:slime_target = 'tmux'
 let g:slime_paste_file = $HOME . '/.vim/slime_paste'
 
 
@@ -173,18 +173,18 @@ let g:coc_config_home = $HOME . '/.vim.d/CoC'
 inoremap <silent><expr> <C-N> coc#pum#visible() ? coc#pum#next(0) : "\<C-N>"
 inoremap <silent><expr> <C-P> coc#pum#visible() ? coc#pum#prev(0) : "\<C-P>"
 
-" Map <Tab> for trigger completion, completion confirm, snippet expand and jump
-" like VSCode
+" Map <Tab> for trigger completion, completion confirm, snippet expand and
+" jump like VSCode
 inoremap <silent><expr> <Tab>
 	\ coc#pum#visible() ? coc#_select_confirm() :
-	\ coc#expandableOrJumpable() ?
-	\ "\<C-R>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-	\ <SID>check_back_space() ? "\<Tab>" :
-	\ coc#refresh()
+        \ coc#expandableOrJumpable() ? "\<C-R>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+            \ <SID>check_back_space() ? "\<Tab>" : coc#refresh()
+
+cnoremap <C-O> <C-\>eescape(getcmdline(), ' \')<CR>
 
 function! s:check_back_space() abort
-let col = col('.') - 1
-return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 let g:coc_snippet_next = '<Tab>'
@@ -198,12 +198,10 @@ nnoremap <silent> <Leader>n :NERDTreeFind<CR>
 nnoremap <silent> <Leader>t :NERDTreeToggle<CR>
 
 " Exit Vim if NERDTree is the only window left.
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
-
-" If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
-autocmd BufEnter * if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+autocmd BufEnter *
+    \ if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+        \ quit |
+    \ endif
 
 
 " Cmdline Complete
@@ -228,6 +226,11 @@ nnoremap <silent> <Leader><F4> :GundoToggle<CR>
 
 " fzf
 let g:fzf_command_prefix = 'Fzf'
+inoremap <expr> <C-K>
+    \ fzf#vim#complete(fzf#wrap({
+        \ 'source': uniq(sort(split(join(getline(1, '$'), "\n"), '\W\+')))
+    \ }))
+inoremap <silent> <expr> <C-L> fzf#vim#complete({'source': map(complete_info().items, "v:val.word")})
 
 
 " ack
@@ -288,8 +291,3 @@ let b:beancount_root = expand('%:p:h') . '/../accounts.beancount'
 " autocmd FileType beancount inoremap . .<C-\><C-O>:AlignCommodity<CR>
 autocmd FileType beancount inoremap <Space> <Space><C-\><C-O>:AlignCommodity<CR>
 autocmd FileType beancount setlocal tabstop=2 shiftwidth=2 textwidth=0
-
-" wrong here
-" autocmd FileType beancount setlocal shiftwidth=2 textwidth=0
-" autocmd FileType beancount setlocal shiftwidth=2 textwidth=0
-" autocmd FileType beancount setlocal shiftwidth=2 textwidth=0

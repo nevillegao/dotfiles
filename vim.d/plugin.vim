@@ -226,11 +226,11 @@ nnoremap <silent> <Leader><F4> :GundoToggle<CR>
 
 " fzf
 let g:fzf_command_prefix = 'Fzf'
-inoremap <expr> <C-K>
+cnoremap <silent><expr> <C-K>
     \ fzf#vim#complete(fzf#wrap({
         \ 'source': uniq(sort(split(join(getline(1, '$'), "\n"), '\W\+')))
     \ }))
-inoremap <silent> <expr> <C-L> fzf#vim#complete({'source': map(complete_info().items, "v:val.word")})
+cnoremap <silent><expr> <C-L> fzf#vim#complete({'source': map(complete_info().items, "v:val.word")})
 
 
 " ack

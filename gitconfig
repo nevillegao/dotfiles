@@ -21,6 +21,7 @@
 	ci = commit
 	ca = commit -a --amend --no-edit
 	sw = switch
+	sm = switch master
 	rs = restore
 	st = status
 	di = diff
@@ -30,6 +31,7 @@
 	ss = stash
 	sp = stash pop
 	so = show
+	pn = remote prune origin
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 	undo = reset --soft HEAD^
 	cancel = reset --hard HEAD^
@@ -47,6 +49,6 @@
 	navigate = true
 	paging = always
 
-; Use different config for repos in ~/work/
-[includeIf "gitdir:~/work/"]
+; Use different config for repos in specific directories
+[includeIf "gitdir:~/Work/"]
 	path = ~/.corp.gitconfig

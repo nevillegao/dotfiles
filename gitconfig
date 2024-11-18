@@ -22,6 +22,7 @@
 	ca = commit -a --amend --no-edit
 	sw = switch
 	sm = switch master
+	sc = switch -c
 	rs = restore
 	st = status
 	di = diff

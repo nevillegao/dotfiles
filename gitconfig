@@ -28,7 +28,8 @@
 	di = diff
 	dc = diff --cached
 	df = icdiff
-	bc = branch
+	br = branch
+	bd = branch -d
 	ss = stash
 	sp = stash pop
 	so = show

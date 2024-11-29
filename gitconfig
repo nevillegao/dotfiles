@@ -20,7 +20,6 @@
 	pr = pull -r
 	ci = commit
 	ca = commit -a --amend --no-edit
-	sw = switch
 	sm = switch master
 	sc = switch -c
 	rs = restore
@@ -28,7 +27,6 @@
 	di = diff
 	dc = diff --cached
 	df = icdiff
-	br = branch
 	bd = branch -d
 	ss = stash
 	sp = stash pop

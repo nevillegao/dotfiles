@@ -18,6 +18,7 @@ install() {
         shell_exclude=(
             "zsh.d"
             "zprofile"
+            "starship.toml"
         )
     elif [[ "${SHELL}" =~ "zsh" ]]; then
         shell_exclude=(

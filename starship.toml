@@ -1,5 +1,5 @@
 # Get editor completions based on the config schema
-"$schema" = 'https://starship.rs/config-schema.json'
+"$schema" = "https://starship.rs/config-schema.json"
 
 # format = """\
 # [](bg:#030B16 fg:#7DF9AA)\
@@ -16,14 +16,15 @@
 # $character\
 # """
 
-# [directory]
-# format = "[ ﱮ $path ]($style)"
+[directory]
+truncate_to_repo = false
+format = "[$path ]($style)"
 # style = "fg:#E4E4E4 bg:#3B76F0"
 
 [git_branch]
-format = '[ $symbol$branch(:$remote_branch) ]($style)'
-symbol = "  "
-style = "fg:#1C3A5E bg:#FCF392"
+format = "[$symbol$branch(:$remote_branch) ]($style)"
+symbol = " "
+# style = "fg:#1C3A5E bg:#FCF392"
 
 # [git_metrics]
 # format = "([+$added]($added_style))[]($added_style)"
@@ -32,8 +33,8 @@ style = "fg:#1C3A5E bg:#FCF392"
 # disabled = false
 
 [git_status]
-format = '[$all_status]($style)'
-style = "fg:#1C3A5E bg:#FCF392"
+format = "[$all_status ]($style)"
+# style = "fg:#1C3A5E bg:#FCF392"
 
 [cmd_duration]
 disabled = true
@@ -47,8 +48,8 @@ disabled = true
 # disabled = false
 # time_format = "%R" # Hour:Minute Format
 # style = "bg:#1d2230"
-# format = '[[ 󱑍 $time ](bg:#1C3A5E fg:#8DFBD2)]($style)'
+# format = "[[ 󱑍 $time ](bg:#1C3A5E fg:#8DFBD2)]($style)"
 
 # [character]
-# success_symbol = '[ ➜](bold green) '
-# error_symbol = '[ ✗](#E84D44) '
+# success_symbol = "[ ➜](bold green) "
+# error_symbol = "[ ✗](#E84D44) "

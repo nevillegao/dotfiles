@@ -31,7 +31,7 @@ repo_root_style = 'bold #00AFFF'
 
 [git_branch]
 # format = '[$symbol$branch(:$remote_branch) ](green)'
-format = '[$symbol$branch(:$remote_branch)](bright-green) '
+format = '[$symbol$branch(:$remote_branch)](green) '
 # symbol = ' '
 # style = 'fg:#1C3A5E bg:#FCF392'
 
@@ -48,6 +48,7 @@ staged = '+$count'
 renamed = '»$count'
 deleted = '✘$count'
 # style = 'fg:#1C3A5E bg:#FCF392'
+style = 'red'
 
 [cmd_duration]
 disabled = true

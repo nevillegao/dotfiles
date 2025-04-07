@@ -13,10 +13,10 @@ alias llh='la -ld .*'
 alias rm='echo "This is not the command you are looking for."; false'  # use \rm instead
 alias cp='cp -i'
 alias mv='mv -i'
-alias grep='grep -PI --color=always'
+alias grep='grep -EI --color=always'
+alias diff='diff -u --color=always'
 
-alias exa='exa -F --color=always --color-scale'
-alias e='exa -l -g --time-style long-iso'
+alias rg='rg -S'
 
 # WAN IP
 alias myip1='dig @resolver1.opendns.com myip.opendns.com +short'

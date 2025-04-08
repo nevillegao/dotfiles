@@ -20,14 +20,11 @@ HIST_STAMPS="yyyy-mm-dd"
 ZSH_CUSTOM="$HOME/.zsh.d"
 
 plugins=(
+    brew
     fzf
     autojump
     z
     starship
-    brew
-    aws
-    kubectl
-    kops
 )
 
 DISABLE_AUTO_TITLE="true"
@@ -87,7 +84,6 @@ add-zsh-hook precmd _update_title__precmd
 
 # Starship
 export STARSHIP_CONFIG=~/.starship.toml
-# eval "$(starship init zsh)"
 
 
 # Powerlevel10k

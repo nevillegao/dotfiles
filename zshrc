@@ -23,11 +23,15 @@ plugins=(
     fzf
     autojump
     z
+    starship
+    brew
     aws
     kubectl
     kops
-    # docker
 )
+
+DISABLE_AUTO_TITLE="true"
+
 
 source $ZSH/oh-my-zsh.sh
 
@@ -81,15 +85,9 @@ _update_title__precmd() {
 add-zsh-hook precmd _update_title__precmd
 
 
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-
-
-[ -f /opt/homebrew/etc/profile.d/z.sh ] && . /opt/homebrew/etc/profile.d/z.sh
-
-
 # Starship
 export STARSHIP_CONFIG=~/.starship.toml
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 
 
 # Powerlevel10k

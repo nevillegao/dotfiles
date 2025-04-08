@@ -1,22 +1,32 @@
-# Oh My Zsh
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+
 export ZSH="$HOME/.oh-my-zsh"
+
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 DISABLE_MAGIC_FUNCTIONS="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-COMPLETION_WAITING_DOTS="%F{red}…%f"
+COMPLETION_WAITING_DOTS="true"
+# COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 
 HIST_STAMPS="yyyy-mm-dd"
 
 ZSH_CUSTOM="$HOME/.zsh.d"
 
 plugins=(
-    git
     fzf
+    autojump
+    z
+    aws
+    kubectl
+    kops
+    # docker
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -71,12 +81,17 @@ _update_title__precmd() {
 add-zsh-hook precmd _update_title__precmd
 
 
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
+
+[ -f /opt/homebrew/etc/profile.d/z.sh ] && . /opt/homebrew/etc/profile.d/z.sh
+
+
 # Starship
 export STARSHIP_CONFIG=~/.starship.toml
 eval "$(starship init zsh)"
 
 
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-
-
-[ -f /opt/homebrew/etc/profile.d/z.sh ] && . /opt/homebrew/etc/profile.d/z.sh
+# Powerlevel10k
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -1,12 +1,11 @@
+#Oh My Zsh
 export ZSH="$HOME/.oh-my-zsh"
 
 DISABLE_MAGIC_FUNCTIONS="true"
-
+DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
 # COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-
 HIST_STAMPS="yyyy-mm-dd"
-
 ZSH_CUSTOM="$HOME/.zsh.d"
 
 plugins=(
@@ -17,13 +16,8 @@ plugins=(
     starship
 )
 
-DISABLE_AUTO_TITLE="true"
-
-
 source $ZSH/oh-my-zsh.sh
 
-
-# Shell
 
 # History options
 HISTSIZE=1000000000

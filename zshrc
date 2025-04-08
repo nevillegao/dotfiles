@@ -1,3 +1,29 @@
+# Oh My Zsh
+export ZSH="$HOME/.oh-my-zsh"
+
+DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="%F{red}…%f"
+
+HIST_STAMPS="yyyy-mm-dd"
+
+ZSH_CUSTOM="$HOME/.zsh.d"
+
+plugins=(
+    git
+    fzf
+)
+
+source $ZSH/oh-my-zsh.sh
+
+
+# Shell
+
 # History options
 HISTSIZE=1000000000
 SAVEHIST=$HISTSIZE
@@ -37,15 +63,6 @@ IGNOREEOF=100
 setopt ignore_eof
 
 
-# Confirm before exit shell
-eexit() {
-    read "reply?${COLOR_ERED}Exit? [y/N] ${COLOR_NO}"
-    if [[ $reply =~ ^[Yy]$ ]]; then
-        exit
-    fi
-}
-
-
 # Terminal title
 _update_title__precmd() {
     printf "\e]0;%s\e\\" "${PWD/${HOME}/~}"
@@ -54,9 +71,12 @@ _update_title__precmd() {
 add-zsh-hook precmd _update_title__precmd
 
 
-# Disable *-magic plugins in Oh My Zsh
-DISABLE_MAGIC_FUNCTIONS="true"
-
-
 # Starship
 export STARSHIP_CONFIG=~/.starship.toml
+eval "$(starship init zsh)"
+
+
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
+
+[ -f /opt/homebrew/etc/profile.d/z.sh ] && . /opt/homebrew/etc/profile.d/z.sh

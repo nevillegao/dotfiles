@@ -1,3 +1,12 @@
+# Confirm before exit shell
+eexit() {
+    read "reply?${COLOR_ERED}Exit? [y/N] ${COLOR_NO}"
+    if [[ $reply =~ ^[Yy]$ ]]; then
+        exit
+    fi
+}
+
+
 # Python virtual environment
 pyve() {
     VENV_DIR="${HOME}/.venv"

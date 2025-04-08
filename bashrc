@@ -21,15 +21,6 @@ done
 IGNOREEOF=100
 
 
-# Confirm before exit shell
-eexit() {
-    read -p "${COLOR_ERED}Exit? [y/N] ${COLOR_NO}" REPLY
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        command exit
-    fi
-}
-
-
 # Terminal prompt string & title
 case "${TERM}" in
     screen*)

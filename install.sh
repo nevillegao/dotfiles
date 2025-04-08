@@ -16,6 +16,7 @@ install() {
 
     if [[ "${SHELL}" =~ "bash" ]]; then
         shell_exclude=(
+            "zshrc"
             "zsh.d"
             "zprofile"
             "starship.toml"
@@ -43,19 +44,19 @@ install() {
             continue
         fi
 
-        if [[ "${i}" == "zsh.d" && -d "${OMZ_HOME}" ]]; then
-            OMZ_CUSTOM="${OMZ_HOME}/custom"
-            if [[ ! -d "${OMZ_CUSTOM}" ]]; then
-                rm -rf "${OMZ_CUSTOM}"
-                mkdir "${OMZ_CUSTOM}"
-            fi
+        # if [[ "${i}" == "zsh.d" && -d "${OMZ_HOME}" ]]; then
+        #     OMZ_CUSTOM="${OMZ_HOME}/custom"
+        #     if [[ ! -d "${OMZ_CUSTOM}" ]]; then
+        #         rm -rf "${OMZ_CUSTOM}"
+        #         mkdir "${OMZ_CUSTOM}"
+        #     fi
 
-            for j in "${i}"/*; do
-                create_link "${j}" "${j#*/}" "${HOME}/.oh-my-zsh/custom"
-            done
+        #     for j in "${i}"/*; do
+        #         create_link "${j}" "${j#*/}" "${HOME}/.oh-my-zsh/custom"
+        #     done
 
-            continue
-        fi
+        #     continue
+        # fi
 
         if [[ "${i}" == "ssh" || "${i}" == "config" ]]; then
             if [[ ! -d "${HOME}/.${i}" ]]; then

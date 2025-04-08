@@ -50,6 +50,7 @@ modified = ' [!$count](178)'
 staged = ' +$count'
 renamed = ' »$count'
 deleted = ' ✘$count'
+style = '76'
 
 [cmd_duration]
 disabled = true

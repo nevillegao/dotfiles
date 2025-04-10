@@ -8,8 +8,14 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
 ZSH_CUSTOM="$HOME/.zsh.d"
 
+# Preloading brew plugin so compinit can correctly find brew completions
+# see https://github.com/ohmyzsh/ohmyzsh/issues/12183
+source $ZSH/plugins/brew/brew.plugin.zsh
+
 plugins=(
-    brew
+    # Source the plugin directly above
+    # uncomment the plugin below once the bug is fixed
+    # brew
     fzf
     autojump
     z

@@ -16,7 +16,7 @@
 # $character\
 # """
 
-right_format = '$time'
+# right_format = '$time'
 
 add_newline = false
 
@@ -58,8 +58,8 @@ disabled = true
 [line_break]
 disabled = true
 
-[time]
-disabled = false
+# [time]
+# disabled = false
 # format = '[[ 󱑍 $time ](bg:#1C3A5E fg:#8DFBD2)]($style)'
 # time_format = '%R' # Hour:Minute Format
 # style = 'bg:#1d2230'

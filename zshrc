@@ -1,4 +1,4 @@
-#Oh My Zsh
+# Oh My Zsh
 export ZSH="$HOME/.oh-my-zsh"
 
 DISABLE_MAGIC_FUNCTIONS="true"
@@ -8,9 +8,9 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="yyyy-mm-dd"
 ZSH_CUSTOM="$HOME/.zsh.d"
 
-# Preloading brew plugin so compinit can correctly find brew completions
+# Preload brew plugin so compinit can correctly find brew completions
 # see https://github.com/ohmyzsh/ohmyzsh/issues/12183
-source $ZSH/plugins/brew/brew.plugin.zsh
+[ -f $ZSH/plugins/brew/brew.plugin.zsh ] && source $ZSH/plugins/brew/brew.plugin.zsh
 
 plugins=(
     # Source the plugin directly above
@@ -22,7 +22,7 @@ plugins=(
     starship
 )
 
-source $ZSH/oh-my-zsh.sh
+[ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
 
 
 # History options

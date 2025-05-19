@@ -20,17 +20,19 @@
 
 add_newline = false
 
+# Simulate Powerlevel10k with lean prompt style
+#
+# Wizard options:
+#   nerdfont-complete + powerline, small icons, unicode, lean, 1 line,
+#   compact, few icons, concise, instant_prompt=verbose.
+#
+# Tip: one-liner to print colormap.
+#   for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
 [directory]
 truncation_length = 0
 truncate_to_repo = false
-# format = '[$path ](bold yellow)'
-# style = 'fg:#E4E4E4 bg:#3B76F0'
-# style = '#00AFFF'
 style = 'bold 39'
-# before_repo_root_style = 'dimmed #00AFFF'
-# before_repo_root_style = '#00739F'
 before_repo_root_style = '31'
-# repo_root_style = 'bold #00AFFF'
 repo_root_style = 'bold 39'
 
 [git_branch]

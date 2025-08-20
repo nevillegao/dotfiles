@@ -11,8 +11,11 @@ eexit() {
 pyve() {
     VENV_DIR="${HOME}/.venv"
 
-    while getopts "c:d:s:" opt; do
+    while getopts "lc:d:s:" opt; do
         case "$opt" in
+        l)
+            ls -1 "${VENV_DIR}"
+            ;;
         c)
             python3 -m venv --system-site-packages "${VENV_DIR}/$OPTARG"
             ;;

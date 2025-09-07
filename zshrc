@@ -13,13 +13,12 @@ ZSH_CUSTOM="$HOME/.zsh.d"
 [ -f $ZSH/plugins/brew/brew.plugin.zsh ] && source $ZSH/plugins/brew/brew.plugin.zsh
 
 plugins=(
-    # Source the plugin directly above
-    # uncomment the plugin below once the bug is fixed
+    # See description above about the bug and source the plugin directly
+    # Uncomment the plugin below once the bug is fixed
     # brew
     fzf
-    autojump
-    z
     starship
+    zoxide
 )
 
 [ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh

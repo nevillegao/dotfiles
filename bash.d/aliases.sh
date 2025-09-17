@@ -9,7 +9,7 @@ alias l='ls -l'
 alias la='ls -A'
 alias lh='la -I [^.]*'  # list hidden files
 
-alias rm='echo "This is not the command you are looking for. This command is an alias of \`trash\`."; trash'  # use \rm instead
+alias rm='echo "This is not the command you are looking for. Use \`trash\` instead."; false'  # fallback: \rm
 alias cp='cp -i'
 alias mv='mv -i'
 alias grep='grep -PI --color=always'

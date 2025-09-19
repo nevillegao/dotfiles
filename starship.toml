@@ -65,3 +65,13 @@ disabled = true
 # format = '[[ 󱑍 $time ](bg:#1C3A5E fg:#8DFBD2)]($style)'
 # time_format = '%R' # Hour:Minute Format
 # style = 'bg:#1d2230'
+
+[aws]
+# symbol = '󰸏 '
+# symbol = ' '
+symbol = 'aws '
+
+[gcloud]
+# symbol = '󱇶 '
+symbol = 'gcp '
+detect_env_vars = ['GCP_PROJECT_ID']

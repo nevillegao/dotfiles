@@ -41,7 +41,8 @@ set listchars=eol:¶,tab:\|→,trail:•,extends:»,precedes:«,nbsp:¬  " Unico
 " set listchars=eol:$,tab:\|_,space:.,trail:*,extends:>,precedes:<,nbsp:~  " ASCII
 set colorcolumn=+1
 set laststatus=2
-set statusline=%<[%n]\ %F\ %h%m%r%=%k[%{(&fenc==\'\')?&enc:&fenc}%{(&bomb?\',BOM\':\'\')}][%{&ff}][ASCII=\%04.4B]\ %-10.(%l,%c%V%)\ %P
+" Use `airline` instead
+" set statusline=%<[%n]\ %F\ %h%m%r%=%k[%{(&fenc==\'\')?&enc:&fenc}%{(&bomb?\',BOM\':\'\')}][%{&ff}][ASCII=\%04.4B]\ %-10.(%l,%c%V%)\ %P
 set splitbelow
 set splitright
 

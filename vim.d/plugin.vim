@@ -16,7 +16,7 @@ call plug#begin('$HOME/.vim/bundle')
 
 " Status
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline-themes'
 " Plug 'itchyny/lightline.vim'
 
 " Color
@@ -87,8 +87,6 @@ noremap <silent> <Leader><F2> :20Lexplore<CR>
 
 " airline
 let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#fnamemod = ':t'
 
 
 " setcolors

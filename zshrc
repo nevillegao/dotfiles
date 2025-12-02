@@ -4,9 +4,9 @@ export ZSH="$HOME/.oh-my-zsh"
 DISABLE_MAGIC_FUNCTIONS="true"
 DISABLE_AUTO_TITLE="true"
 COMPLETION_WAITING_DOTS="true"
-# COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
 HIST_STAMPS="yyyy-mm-dd"
 ZSH_CUSTOM="$HOME/.zsh.d"
+ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump-$HOST"
 
 # Preload brew plugin so compinit can correctly find brew completions
 # see https://github.com/ohmyzsh/ohmyzsh/issues/12183

@@ -55,7 +55,7 @@ set hlsearch
 " Fold
 set foldenable
 set foldmethod=indent
-set foldminlines=3
+set foldminlines=2
 set foldlevel=9999
 
 " Format

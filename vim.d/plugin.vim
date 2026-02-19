@@ -232,14 +232,14 @@ cnoremap <silent><expr> <C-L> fzf#vim#complete({'source': map(complete_info().it
 
 
 " ack
-let g:ackprg = 'ag --vimgrep'
+let g:ackprg = 'rg --vimgrep'
 let g:ackhighlight = 1
 nnoremap <silent> <Leader><F3> :Ack! <C-R>=expand('<cword>')<CR><CR>
 vnoremap <silent> <Leader><F3> y:Ack! "<C-R>=fnameescape(@")<CR>"<CR>
 
 
 " CtrlP
-let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
+let g:ctrlp_user_command = 'rg %s -l --color=never --hidden'
 let g:ctrlp_cache_dir = $HOME . '/.vim/ctrlp/cache'
 let g:ctrlp_arg_map = 1
 let g:ctrlp_extensions = ['dir', 'mixed']

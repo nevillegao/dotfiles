@@ -7,6 +7,27 @@ eexit() {
 }
 
 
+# Command replacement helper
+alias_if_exists() {
+    local alias_name=$1
+    shift
+
+    local candidate
+    for candidate in "$@"; do
+        # First word is the executable to test.
+        local exe=${candidate%% *}
+
+        if command -v "$exe" >/dev/null 2>&1; then
+            alias "$alias_name=$candidate"
+            return 0
+        fi
+    done
+
+    # No alias -> falls back to the original command.
+    return 1
+}
+
+
 # Python virtual environment
 pyve() {
     VENV_DIR="${HOME}/.venv"

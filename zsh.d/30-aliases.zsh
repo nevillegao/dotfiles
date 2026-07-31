@@ -1,4 +1,4 @@
-# Built-in
+# Standard utilities
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ..3='cd ../../..'
@@ -18,9 +18,24 @@ alias diff='diff -u --color=always'
 
 alias rg='rg -S'
 
+
+# Enhanced alternatives to standard utilities
+alias_if_exists "ls" \
+    "eza --icons=auto" \
+    "lsd"
+
+alias_if_exists "cat" "bat --paging=never"
+alias_if_exists "wc" "cw"
+alias_if_exists "sed" "sd"
+alias_if_exists "ps" "procs"
+alias_if_exists "top" "bottom"
+alias_if_exists "du" "dust"
+
+
 # WAN IP
 alias myip1='dig @resolver1.opendns.com myip.opendns.com +short'
 alias myip2='dig @ns1.google.com o-o.myaddr.l.google.com TXT +short'
+
 
 # Terminal
 alias screen='screen -xR'

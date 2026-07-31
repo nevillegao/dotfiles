@@ -30,11 +30,6 @@ case "${TERM}" in
                 return
             fi
 
-            # Ignore autojump
-            if [[ $1 =~ "autojump_add_to_database" ]]; then
-                return
-            fi
-
             printf "\e]0;%s\e\\" "$1";
         }
 

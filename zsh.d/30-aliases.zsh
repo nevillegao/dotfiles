@@ -21,7 +21,7 @@ alias rg='rg -S'
 
 # Enhanced alternatives to standard utilities
 alias_if_exists "ls" \
-    "eza --icons=auto" \
+    "eza" \
     "lsd"
 
 alias_if_exists "cat" "bat --paging=never"

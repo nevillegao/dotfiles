@@ -4,7 +4,7 @@ alias ...='cd ../..'
 alias ..3='cd ../../..'
 alias ..4='cd ../../../..'
 
-alias ls='ls -F --color=always'
+alias ls='ls -F --color=auto'
 alias l='ls -l'
 alias la='ls -A'
 alias lh='la -I [^.]*'  # list hidden files
@@ -12,8 +12,8 @@ alias lh='la -I [^.]*'  # list hidden files
 alias rm='echo "This is not the command you are looking for. Use \`trash\` instead."; false'  # fallback: \rm
 alias cp='cp -i'
 alias mv='mv -i'
-alias grep='grep -PI --color=always'
-alias diff='diff -u --color=always'
+alias grep='grep -EI --color=auto'
+alias diff='diff -u --color=auto'
 
 alias rg='rg -S'
 

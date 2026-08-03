@@ -31,6 +31,7 @@ alias grep='grep -EI --color=auto'
 alias diff='diff -u --color=auto'
 
 alias rg='rg -S'
+alias lg='lazygit'
 
 
 # Terminal

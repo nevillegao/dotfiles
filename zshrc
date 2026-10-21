@@ -1,3 +1,7 @@
+# Starship
+export STARSHIP_CONFIG=~/.starship.toml
+
+
 # Oh My Zsh
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -71,5 +75,5 @@ _update_title__precmd() {
 add-zsh-hook precmd _update_title__precmd
 
 
-# Starship
-export STARSHIP_CONFIG=~/.starship.toml
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"

@@ -64,7 +64,7 @@ PROMPT_STR="${PROMPT_TIME}${PROMPT_BEGIN}${PROMPT_USER}${PROMPT_HOST}${PROMPT_PA
 PS1="${PROMPT_STR}\\\$ "
 
 
-# History options
+# History
 shopt -s histappend
 HISTCONTROL=ignoredups:erasedups
 HISTSIZE=1000000000
@@ -78,7 +78,7 @@ PROMPT_COMMAND="history -a; history -c; history -r; ${PROMPT_COMMAND:+$PROMPT_CO
 [[ -x /usr/bin/dircolors ]] && eval "$(dircolors -b)"
 
 
-# 'less' options
+# less
 export LESS="-MiR"
 
 # Make 'less' more friendly for non-text input files
@@ -94,7 +94,7 @@ export LESS_TERMCAP_us=$(echo -ne "\e[04;32m")     # start underlining
 export LESS_TERMCAP_ue=$(echo -ne "\e[0m")         # end underlining
 
 
-# Utilities options
+# Utilities
 export MANPAGER='less -s -M +Gg'
 export VISUAL="$(which vim)"
 export EDITOR="${VISUAL}"

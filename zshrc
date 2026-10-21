@@ -1,3 +1,7 @@
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+
 # Starship
 export STARSHIP_CONFIG=~/.starship.toml
 
@@ -28,7 +32,7 @@ plugins=(
 [ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
 
 
-# History options
+# History
 HISTSIZE=1000000000
 SAVEHIST=$HISTSIZE
 setopt APPEND_HISTORY          # Don't erase history
@@ -45,6 +49,7 @@ setopt HIST_SAVE_NO_DUPS       # Don't write duplicate entries in the history fi
 setopt HIST_REDUCE_BLANKS      # Remove superfluous blanks before recording entry.
 setopt HIST_VERIFY             # Don't execute immediately upon history expansion.
 setopt HIST_BEEP               # Beep when accessing nonexistent history.
+
 
 # Emulate Bash $IGNOREEOF behavior
 bash-ctrl-d() {
@@ -73,7 +78,3 @@ _update_title__precmd() {
 }
 
 add-zsh-hook precmd _update_title__precmd
-
-
-# Homebrew
-eval "$(/opt/homebrew/bin/brew shellenv)"

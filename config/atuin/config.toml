@@ -1,2 +1,4 @@
+enter_accept = false
+
 [tmux]
 enabled = true
